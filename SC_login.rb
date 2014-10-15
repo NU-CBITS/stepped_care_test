@@ -3,7 +3,7 @@ class Login
   LOGIN_FORM = { css: '.btn.btn-default' }
   USERNAME_INPUT = { id: 'participant_email' }
   PASSWORD_INPUT = { id: 'participant_password' }
-  SUCCESS_MESSAGE = { id: 'sc-hamburger-menu' }
+  SUCCESS_MESSAGE = { id: 'hamburger_button' }
   FAILURE_MESSAGE = { css: '.btn.btn-default' }
 
   def  initialize(driver)
