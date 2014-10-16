@@ -3,8 +3,8 @@ class Login
   LOGIN_FORM = { css: '.btn.btn-default' }
   USERNAME_INPUT = { id: 'participant_email' }
   PASSWORD_INPUT = { id: 'participant_password' }
-  SUCCESS_MESSAGE = { id: 'hamburger_button' }
-  FAILURE_MESSAGE = { css: '.btn.btn-default' }
+  SUCCESS_MESSAGE = { css:  '.fa.fa-flag.text-success' }
+  FAILURE_MESSAGE = { css: '.fa.fa-flag.text-danger' }
 
   def  initialize(driver)
     @driver = driver
