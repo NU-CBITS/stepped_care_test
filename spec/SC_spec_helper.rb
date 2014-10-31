@@ -6,7 +6,7 @@ RSpec.configure { |config|
 
   config.before(:each) {
    case ENV['host']
-   when 'saucelabs'
+   when 'saucelabs_XP_ie_8'
      caps = Selenium::WebDriver::Remote::Capabilities.send(ENV['browser'])
      caps.version = ENV['browser_version']
      caps.platform = ENV['operating_system']
@@ -17,7 +17,7 @@ RSpec.configure { |config|
          url: "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
          desired_capabilities: caps)
 
-    when 'test'
+    when 'saucelabs_XP_firefox_27'
        caps = Selenium::WebDriver::Remote::Capabilities.send(ENV['browser'])
        caps.version = ENV['browser_version']
        caps.platform = ENV['operating_system']
