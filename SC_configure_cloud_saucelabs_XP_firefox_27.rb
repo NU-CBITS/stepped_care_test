@@ -1,6 +1,6 @@
-# filename: SC_configure_cloud_test.rb
+# filename: SC_configure_cloud_saucelabs_XP_firefox_27.rb
 
-ENV['host']             = 'test'
+ENV['host']             = 'saucelabs_XP_firefox_27'
 ENV['operating_system'] ||= 'Windows XP'
 ENV['browser']          ||= 'firefox'
 ENV['browser_version']  ||= '27'
