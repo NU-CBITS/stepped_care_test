@@ -1,4 +1,4 @@
-# filename: SC_configure_cloud.rb
+# filename: SC_configure_cloud_saucelabs_XP_ie_8.rb
 
 # just need to run this file
 # requirements:
@@ -9,7 +9,7 @@
 # SET sauce username and access key
 # SET email and password  -  example "SET Participant_email=example@example.com"
 
-ENV['host']             = 'saucelabs'
+ENV['host']             = 'saucelabs_XP_ie_8'
 ENV['operating_system'] ||= 'Windows XP'
 ENV['browser']          ||= 'internet_explorer'
 ENV['browser_version']  ||= '8'
