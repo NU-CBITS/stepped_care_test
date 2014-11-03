@@ -15,7 +15,7 @@ describe('Login') {
   }
 
   it('failed') {
-    @login.with('asdf', 'asdf')
+    @login.with('asdf@test.com', 'asdf')
     @login.failure_message_present?
   }
 

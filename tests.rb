@@ -1,3 +1,6 @@
-system("rspec -r./SC_configure_cloud_saucelabs_XP_chrome_32.rb")
-system("rspec -r./SC_configure_cloud_saucelabs_XP_firefox_27.rb")
+system("rspec -r./SC_configure_cloud_saucelabs_XP_chrome_37.rb")
+system("rspec -r./SC_configure_cloud_saucelabs_XP_firefox_32.rb")
 system("rspec -r./SC_configure_cloud_saucelabs_XP_ie_8.rb")
+system("rspec -r./SC_configure_cloud_saucelabs_win7_chrome_37.rb")
+system("rspec -r./SC_configure_cloud_saucelabs_win7_firefox_32.rb")
+system("rspec -r./SC_configure_cloud_saucelabs_win7_ie_10.rb")
