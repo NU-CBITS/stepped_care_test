@@ -41,10 +41,7 @@ RSpec.configure { |config|
 
    else
       @driver = Selenium::WebDriver.for :firefox
-
    end
-
-
   }
 
   config.after(:each) {
