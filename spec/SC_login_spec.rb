@@ -10,7 +10,7 @@ describe('Login') {
   }
 
   it('succeeded') {
-    @login.with(ENV['Generic_Participant_Email'], ENV['Generic_Participant_Password'])
+    @login.with(ENV['Participant_Email'], ENV['Participant_Password'])
     @login.success_message_present?
   }
 
