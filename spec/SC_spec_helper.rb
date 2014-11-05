@@ -1,6 +1,7 @@
 # filename: SC_spec_helper.rb
 
 require 'selenium-webdriver'
+require 'sauce_whisk'
 
 RSpec.configure { |config|
 
