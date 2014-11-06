@@ -26,6 +26,7 @@ class Learn1
 
   def select_learn
     @driver.find_element(LEARN_PAGE).click
+    @driver.find_element(xpath: '//html/body/div[1]/div[1]/div/div[2]/div[2]/div/h1').displayed?
   end
 
   def select_lesson_one
