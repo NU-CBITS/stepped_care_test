@@ -13,10 +13,21 @@ describe('Learn1') {
     @learn1.with(ENV['Participant_Email'], ENV['Participant_Password'])
     @learn1.select_learn
     @learn1.select_lesson_one
-    10.times do
-      @learn1.continue
+    4.times do
+      @learn1.continue_1
+    end
+    @learn1.continue_2
+    3.times do
+      @learn1.continue_1
     end
     @learn1.success_message_present?
   }
 
+  it('failed') {
+    @learn1.with(ENV['Participant_Email'], ENV['Participant_Password'])
+    @learn1.select_learn
+    @learn1.select_lesson_one
+    @learn1.continue_1
+    @learn1.failure_message_present?
+  }
 }
