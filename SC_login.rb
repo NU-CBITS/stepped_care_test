@@ -1,4 +1,5 @@
 # filename SC_login.rb
+
 class Login
   LOGIN_FORM = { css: '.btn.btn-default' }
   USERNAME_INPUT = { id: 'participant_email' }

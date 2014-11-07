@@ -1,5 +1,7 @@
 # filename: SC_spec_helper.rb
 
+require 'capybara'
+require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'sauce_whisk'
 
