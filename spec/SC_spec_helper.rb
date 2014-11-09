@@ -2,10 +2,11 @@
 
 require 'capybara'
 require 'sauce'
-require 'rails'
+# require 'rails'
+# require 'rspec-rails'
 require 'sauce/capybara'
 require 'capybara/rspec'
-require 'capybara/rails'
+# require 'capybara/rails'
 require 'selenium-webdriver'
 require 'sauce_whisk'
 

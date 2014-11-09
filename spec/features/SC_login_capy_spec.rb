@@ -9,9 +9,10 @@
 require_relative '../../spec/SC_spec_helper'
 
 describe "Login", :sauce => true do
-  # before(:each) do
-  #   Capybara.current_driver = :selenium
-  # end
+# describe "Login", :type => :feature do
+  before(:each) do
+    Capybara.current_driver = :selenium
+  end
 
   # before :each do
   #   Login.with(:participant_email => ENV['Participant_Email'], :participant_password => ENV['Participant_Password'])
