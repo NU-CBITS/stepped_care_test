@@ -48,8 +48,8 @@ require_relative '../../spec/SC_spec_helper'
       expect(page).to have_content 'Inbox'
       click_link 'Sent'
       expect(page).to have_content 'To: Coach'
-      click_link 'New message'
-      expect(page).to have_content 'This is a test message to my coach.'
+      click_link 'I need some help with Planning an Activity'
+      expect(page).to have_content 'I forgot where this is.'
     end
 
 end
