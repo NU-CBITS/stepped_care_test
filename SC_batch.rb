@@ -1,7 +1,16 @@
 #filename: SC_batch.rb
 
+#if running on Sauce Labs comment this block out
+puts "testing locally"
+system("rspec -r./SC_configure_cloud_saucelabs.rb")
+
+#if running locally comment this block out
 puts "testing_on_saucelabs"
 system("rspec -r./SC_configure_cloud_saucelabs.rb")
+
+
+#this block can be used as to run test on Sauce Labs in separate groups by platform so you can see the results by
+# platform on the command line
 
 # def set_environment_variables(host, operating_system, browser, browser_version)
 #   ENV['host']= host

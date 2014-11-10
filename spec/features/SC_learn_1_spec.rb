@@ -1,10 +1,21 @@
 #filename: SC_learn_1_spec,rb
 
+#this file is to test the functionality of logging in, selecting the "LEARN" section,
+# and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
 
 require_relative '../../spec/SC_spec_helper'
 
-describe "Lesson 1", :type => :feature, :sauce => true do
+#to run locally comment this line out
+describe "Login", :type => :feature, :sauce => true do
 
+#to run on Sauce Labs comment this block out
+describe "Login", :type => :feature, :sauce => false do
+
+  before(:each) do
+    Capybara.default_driver = :selenium
+  end
+
+#tests
   it "succeeded" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
