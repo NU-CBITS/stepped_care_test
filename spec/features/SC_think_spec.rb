@@ -65,6 +65,79 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Add a New Thought'
   end
 
+  it "- patterns" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_link 'THINK'
+    click_link 'Home'
+    click_link '#2 Patterns'
+    expect(page).to have_content 'Thinking Patterns'
+    click_on 'Continue'
+    expect(page).to have_content 'Patterns of Harmful Thoughts'
+    click_on 'Continue'
+    expect(page).to have_content 'Examples of Patterns'
+    click_on 'Continue'
+    expect(page).to have_content 'Your Turn'
+    click_on 'Continue'
+    expect(page).to have_content "Let's start by"
+    select 'Personalization', :from => 'thought_pattern_id'
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
+    click_on 'Continue'
+    expect(page).to have_content 'Good work!'
+    click_on 'Continue'
+    expect(page).to have_content 'Add a New Thought'
+  end
+
+  it "- reshape" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_link 'THINK'
+    click_link 'Home'
+    click_link '#3 Reshape'
+    expect(page).to have_content 'Challenging Harmful Thoughts'
+    click_on 'Continue'
+    expect(page).to have_content 'You said you had the following unhelpful thoughts:'
+    click_on 'Continue'
+    expect(page).to have_content 'Challenging a thought means'
+    click_on 'Continue'
+    expect(page).to have_content 'You said that you thought...'
+    click_on 'Continue'
+    expect(page).to have_content 'Come up with a challenging'
+    fill_in 'thought[challenging_thought]', :with => 'Example challenge'
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    expect(page).to have_content 'Because what you THINK, FEEL, Do'
+    click_on 'Continue'
+    expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
+    fill_in 'thought_act_as_if', :with => 'Example act-as-if'
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    expect(page).to have_content 'You said that you thought...'
+    click_on 'Continue'
+    expect(page).to have_content 'Come up with a challenging'
+    fill_in 'thought[challenging_thought]', :with => 'Example challenge'
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    expect(page).to have_content 'Because what you THINK, FEEL, Do'
+    click_on 'Continue'
+    expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
+    fill_in 'thought_act_as_if', :with => 'Example act-as-if'
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+ end
+
   it "- add a new thought" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -78,7 +151,7 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'Add a New Thought'
     expect(page).to have_content 'This thought is:'
     within("#new_thought") do
-      fill_in 'thought_content', :with => 'Testing negative thought'
+      fill_in 'thought_content', :with => 'Testing add a new thought'
       choose('harmful')
       select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
       fill_in 'thought_challenging_thought', :with => 'Testing challenge thought'
@@ -103,6 +176,6 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
     # the below reference will need to change depending on the data on the server
-    expect(page).to have_content 'An example harmful thought written on 9/12'
+    expect(page).to have_content 'Testing add a new thought'
   end
 end

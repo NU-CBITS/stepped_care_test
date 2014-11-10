@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b0ee1e6-5953-4adf-9c7d-51a3d2c12eaf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/SC_message_spec.rb" afterPath="$PROJECT_DIR$/spec/features/SC_message_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" afterPath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -30,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="8" column="56" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
+              <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -40,27 +39,27 @@
         <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="986">
-              <caret line="11" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+              <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_message_spec.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SC_message_spec.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3107861" vertical-offset="0" max-vertical-offset="1037">
-              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+              <caret line="10" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_think_spec.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_think_spec.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
-              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+            <state vertical-scroll-proportion="5.531993" vertical-offset="0" max-vertical-offset="3179">
+              <caret line="178" column="59" selection-start-line="178" selection-start-column="59" selection-end-line="178" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -540,7 +539,11 @@
       <created>1415645235533</created>
       <updated>1415645235534</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="updated message test and add identifying to think test">
+      <created>1415647705352</created>
+      <updated>1415647705352</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -624,7 +627,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="update host names" />
     <MESSAGE value="update file name and host name" />
     <MESSAGE value="add browsers" />
     <MESSAGE value="batch file to run each environment" />
@@ -649,7 +651,8 @@
     <MESSAGE value="updated with functionality for running locally and adding comments for understandability" />
     <MESSAGE value="updated wait time and added test for composing and reading messages" />
     <MESSAGE value="updated read message test and added a test for adding a new thought" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated read message test and added a test for adding a new thought" />
+    <MESSAGE value="updated message test and add identifying to think test" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated message test and add identifying to think test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1040,18 +1043,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
-          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="8" column="56" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
+          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1059,15 +1054,23 @@
     <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="986">
-          <caret line="11" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+          <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3107861" vertical-offset="0" max-vertical-offset="1037">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+          <caret line="10" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.531993" vertical-offset="0" max-vertical-offset="3179">
+          <caret line="178" column="59" selection-start-line="178" selection-start-column="59" selection-end-line="178" selection-end-column="59" />
           <folding />
         </state>
       </provider>
