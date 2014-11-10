@@ -238,4 +238,5 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
   end
+
 end
