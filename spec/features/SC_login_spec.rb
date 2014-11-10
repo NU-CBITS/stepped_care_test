@@ -1,4 +1,4 @@
-#filename: SC_login_capy_spec,rb
+#filename: SC_login_spec,rb
 
 require_relative '../../spec/SC_spec_helper'
 

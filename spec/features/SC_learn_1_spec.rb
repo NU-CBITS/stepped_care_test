@@ -1,4 +1,4 @@
-#filename: SC_learn_1_capy_spec,rb
+#filename: SC_learn_1_spec,rb
 
 
 require_relative '../../spec/SC_spec_helper'

@@ -12,6 +12,7 @@
     <orderEntry type="library" scope="PROVIDED" name="cmdparse (v2.0.6, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.6, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="highline (v1.6.21, ruby-2.0.0-p594) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v2.4.3, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_portile (v0.6.1, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.10.1, ruby-2.0.0-p594) [gem]" level="application" />
@@ -27,7 +28,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rest-client (v1.7.2, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v1.1.6, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sauce (v3.5.3, ruby-2.0.0-p594) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sauce_whisk (v0.0.12, ruby-2.0.0-p594) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sauce_whisk (v0.0.15, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v2.44.0, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.1, ruby-2.0.0-p594) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v2.0.0, ruby-2.0.0-p594) [gem]" level="application" />
