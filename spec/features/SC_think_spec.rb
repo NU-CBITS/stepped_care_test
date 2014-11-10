@@ -16,6 +16,55 @@ describe "Think", :type => :feature, :sauce => false do
   end
 
 #tests
+  it "- identifying" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_link 'THINK'
+    click_link 'Home'
+    click_link '#1 Identifying'
+    expect(page).to have_content 'You are what you think...'
+    click_link 'Continue'
+    expect(page).to have_content 'Types of thoughts'
+    click_link 'Continue'
+    expect(page).to have_content 'Helpful thoughts are...'
+    click_link 'Continue'
+    expect(page).to have_content 'Harmful thoughts are...'
+    click_link 'Continue'
+    expect(page).to have_content 'Some quick examples...'
+    click_link 'Continue'
+    expect(page).to have_content 'Now, your turn...'
+    within("#new_thought") do
+      fill_in 'thought_content', :with => 'Testing helpful thought'
+      choose('helpful')
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    within("#new_thought") do
+      fill_in 'thought_content', :with => 'Testing negative thought'
+      choose('harmful')
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Thought saved'
+    within("#new_thought") do
+      fill_in 'thought_content', :with => 'Testing neither thought'
+      choose('neither')
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Now one more,'
+    within("#new_thought") do
+      fill_in 'thought_content', :with => 'Forced negative thought'
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Good work'
+    click_on 'Continue'
+    expect(page).to have_content 'Add a New Thought'
+  end
+
   it "- add a new thought" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -41,4 +90,19 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Add a New Thought'
   end
 
+  it "- check thoughts" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_link 'THINK'
+    click_link 'Home'
+    click_link 'Thoughts'
+    expect(page).to have_content 'Harmful Thoughts'
+    # the below reference will need to change depending on the data on the server
+    expect(page).to have_content 'An example harmful thought written on 9/12'
+  end
 end

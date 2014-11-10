@@ -48,6 +48,7 @@ require_relative '../../spec/SC_spec_helper'
       expect(page).to have_content 'Inbox'
       click_link 'Sent'
       expect(page).to have_content 'To: Coach'
+      # the below reference will change depending on what data is on the server
       click_link 'I need some help with Planning an Activity'
       expect(page).to have_content 'I forgot where this is.'
     end
