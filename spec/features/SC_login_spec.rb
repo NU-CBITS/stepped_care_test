@@ -6,7 +6,7 @@
 require_relative '../../spec/SC_spec_helper'
 
 #to run locally comment this line out
-describe "Login", :type => :feature, :sauce => true do
+# describe "Login", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
 describe "Login", :type => :feature, :sauce => false do

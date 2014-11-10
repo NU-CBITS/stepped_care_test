@@ -6,10 +6,10 @@
 require_relative '../../spec/SC_spec_helper'
 
 #to run locally comment this line out
-describe "Login", :type => :feature, :sauce => true do
+# describe "Learn_1", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
-describe "Login", :type => :feature, :sauce => false do
+describe "Learn_1", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
@@ -49,20 +49,5 @@ describe "Login", :type => :feature, :sauce => false do
     click_link 'Continue'
     expect(page).to have_content 'You have read'
   end
-
-  # it "Learn1 failed" do
-  #   visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
-  #   within("#new_participant") do
-  #     fill_in 'participant_email', :with => ENV['Participant_Email']
-  #     fill_in 'participant_password', :with => ENV['Participant_Password']
-  #   end
-  #   click_button 'Sign in'
-  #   expect(page).to have_content 'Signed in successfully'
-  #   click_link 'LEARN'
-  #   expect(page).to have_content 'You have read'
-  #   click_link 'Think, Feel, Do Your Way Out of Depression'
-  #   expect(page).to have_content 'Why should I sse ThinkFeelDo?'
-  # end
-
 
 end
