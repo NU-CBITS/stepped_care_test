@@ -205,7 +205,7 @@ describe "Think", :type => :feature, :sauce => false do
     click_link '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
-    expect(page).to have_content 'You said you had the following unhelpful thoughts:'
+    expect(page).to have_content "You don't have"
   end
 
   it "- navbar functionality" do
