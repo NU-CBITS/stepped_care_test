@@ -179,7 +179,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Testing add a new thought'
  end
 
-  it "- skip functionality" do
+ it "- skip functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -206,9 +206,9 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
     expect(page).to have_content "You don't have"
-  end
+ end
 
-  it "- navbar functionality" do
+ it "- navbar functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -237,6 +237,27 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK'
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
+ end
+
+  #this can only be run if the user has logged 3+ thoughts distortions
+  it "- visualization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_link 'THINK'
+    click_link 'THINK Landing'
+    expect(page).to have_content 'Add a New Thought'
+    find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
+    expect(page).to have_content 'Click a bubble for more info'
+    find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
+    expect(page).to have_content "Some Thoughts You've Entered"
+    expect(page).to have_content 'Testing negative thought'
+    click_on 'Close'
+    expect(page).to have_content 'Click a bubble for more info'
   end
 
 end
