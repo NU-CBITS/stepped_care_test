@@ -16,7 +16,7 @@ describe "Think", :type => :feature, :sauce => false do
   end
 
 #tests
-it "- identifying" do
+  it "- identifying" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -63,9 +63,9 @@ it "- identifying" do
     expect(page).to have_content 'Good work'
     click_on 'Continue'
     expect(page).to have_content 'Add a New Thought'
-end
+  end
 
-it "- patterns" do
+  it "- patterns" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -93,9 +93,9 @@ it "- patterns" do
     expect(page).to have_content 'Good work!'
     click_on 'Continue'
     expect(page).to have_content 'Add a New Thought'
-end
+  end
 
-it "- reshape" do
+  it "- reshape" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -136,9 +136,9 @@ it "- reshape" do
     fill_in 'thought_act_as_if', :with => 'Example act-as-if'
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
-end
+  end
 
-it "- add a new thought" do
+  it "- add a new thought" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -161,9 +161,9 @@ it "- add a new thought" do
     expect(page).to have_content 'Thought saved'
     click_on 'Continue'
     expect(page).to have_content 'Add a New Thought'
-end
+  end
 
-it "- check thoughts" do
+  it "- check thoughts" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -177,9 +177,9 @@ it "- check thoughts" do
     expect(page).to have_content 'Harmful Thoughts'
     # the below reference will need to change depending on the data on the server
     expect(page).to have_content 'Testing add a new thought'
-end
+  end
 
-it "- skip functionality" do
+  it "- skip functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -206,9 +206,9 @@ it "- skip functionality" do
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
     expect(page).to have_content "You don't have"
-end
+  end
 
-it "- navbar functionality" do
+  it "- navbar functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -237,7 +237,7 @@ it "- navbar functionality" do
     click_link 'THINK'
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
-end
+  end
 
   #this can only be run if the user has logged 3+ thoughts distortions
   it "- visualization" do
