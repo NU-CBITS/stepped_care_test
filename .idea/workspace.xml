@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b0ee1e6-5953-4adf-9c7d-51a3d2c12eaf" name="Default" comment="updated verification text and wait times">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/SC_spec_helper.rb" afterPath="$PROJECT_DIR$/spec/SC_spec_helper.rb" />
+    <list default="true" id="1b0ee1e6-5953-4adf-9c7d-51a3d2c12eaf" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\cjb391\RubymineProjects\stepped_care_test\spec\features\SC_learn_1_spec.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/SC_login_spec.rb" afterPath="$PROJECT_DIR$/spec/features/SC_login_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" afterPath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/stepped_care_test.iml" afterPath="$PROJECT_DIR$/.idea/stepped_care_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="stepped_care_test.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,86 +30,86 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SC_login_spec.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_login_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.1551095" vertical-offset="0" max-vertical-offset="1360">
+              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_learn_1_spec.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
+      <file leaf-file-name="SC_learn_spec.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="986">
-              <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+              <caret line="0" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_message_spec.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_message_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1037">
               <caret line="10" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_think_spec.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_think_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4199">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
+              <caret line="162" column="52" selection-start-line="162" selection-start-column="52" selection-end-line="162" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_spec_helper.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SC_spec_helper.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/SC_spec_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2797075" vertical-offset="0" max-vertical-offset="1071">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1071">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="42" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_batch.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_batch.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SC_batch.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1513">
               <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SC_configure_cloud_saucelabs.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SC_configure_cloud_saucelabs.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SC_configure_cloud_saucelabs.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="238">
               <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="374">
               <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
           </provider>
         </entry>
       </file>
@@ -125,43 +129,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SC_configure_cloud_test.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud.rb" />
-        <option value="$PROJECT_DIR$/spec/SC_DO_Awareness_spec.rb" />
-        <option value="$PROJECT_DIR$/SC_DO_Awareness.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_XP_chrome_32.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_XP_firefox_27.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_win7_ie_10.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_XP_chrome_37.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_XP_firefox_32.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_win7_firefox_32.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs_win7_chrome_37.rb" />
-        <option value="$PROJECT_DIR$/tests.rb" />
-        <option value="$PROJECT_DIR$/configure_clouds/SC_configure_cloud_saucelabs_OSX_106_chrome_37.rb" />
-        <option value="$PROJECT_DIR$/configure_clouds/SC_configure_cloud_generic.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_generic.rb" />
-        <option value="$PROJECT_DIR$/generic_batch.rb" />
-        <option value="$PROJECT_DIR$/batch.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_Learn1_spec.rb" />
-        <option value="$PROJECT_DIR$/my_script.rb" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/spec/SC_Learn1_spec.rb" />
-        <option value="$PROJECT_DIR$/SC_Learn1.rb" />
-        <option value="$PROJECT_DIR$/SC_login.rb" />
-        <option value="$PROJECT_DIR$/spec/SC_login_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_learn_1_capy_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_login_capy_spec.rb" />
-        <option value="$PROJECT_DIR$/SC_configure_cloud_saucelabs.rb" />
+        <option value="$PROJECT_DIR$/spec/SC_spec_helper.rb" />
         <option value="$PROJECT_DIR$/SC_batch.rb" />
         <option value="$PROJECT_DIR$/spec/features/SC_think_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/SC_message_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/features/SC_learn_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/SC_login_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/SC_spec_helper.rb" />
       </list>
     </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -195,7 +175,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,13 +231,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
+    <property name="options.lastSelected" value="preferences.updates" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -364,6 +344,14 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -374,185 +362,298 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="1b0ee1e6-5953-4adf-9c7d-51a3d2c12eaf" name="Default" comment="" />
       <created>1411766540704</created>
+      <option name="number" value="Default" />
       <updated>1411766540704</updated>
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1411766972788</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
       <updated>1411766972788</updated>
     </task>
     <task id="LOCAL-00002" summary="Initial commit">
       <created>1413411126259</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
       <updated>1413411126259</updated>
     </task>
     <task id="LOCAL-00003" summary="Update successful login and failed login verification to use success and failure css on the site.">
       <created>1413481471371</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
       <updated>1413481471371</updated>
     </task>
     <task id="LOCAL-00004" summary="Adding additional browser tests">
       <created>1414791213385</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
       <updated>1414791213385</updated>
     </task>
     <task id="LOCAL-00005" summary="Adding additional browser tests">
       <created>1414791232706</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
       <updated>1414791232706</updated>
     </task>
     <task id="LOCAL-00006" summary="Adding additional browser tests">
       <created>1414791246152</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
       <updated>1414791246152</updated>
     </task>
     <task id="LOCAL-00007" summary="update host names">
       <created>1414791832728</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
       <updated>1414791832728</updated>
     </task>
     <task id="LOCAL-00008" summary="update file name and host name">
       <created>1414791851932</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
       <updated>1414791851932</updated>
     </task>
     <task id="LOCAL-00009" summary="update file name and host name">
       <created>1414791862222</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
       <updated>1414791862222</updated>
     </task>
     <task id="LOCAL-00010" summary="add browsers">
       <created>1414792058040</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
       <updated>1414792058040</updated>
     </task>
     <task id="LOCAL-00011" summary="add browsers">
       <created>1414792068553</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
       <updated>1414792068553</updated>
     </task>
     <task id="LOCAL-00012" summary="batch file to run each environment">
       <created>1414795063483</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
       <updated>1414795063483</updated>
     </task>
     <task id="LOCAL-00013" summary="cleaning">
       <created>1415043044034</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
       <updated>1415043044034</updated>
     </task>
     <task id="LOCAL-00014" summary="update browsers, add windows 7">
       <created>1415049409769</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
       <updated>1415049409769</updated>
     </task>
     <task id="LOCAL-00015" summary="update browsers, add windows 7">
       <created>1415049456971</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
       <updated>1415049456971</updated>
     </task>
     <task id="LOCAL-00016" summary="added configure_cloud directory">
       <created>1415050071964</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
       <updated>1415050071964</updated>
     </task>
     <task id="LOCAL-00017" summary="update file name">
       <created>1415052062797</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
       <updated>1415052062797</updated>
     </task>
     <task id="LOCAL-00018" summary="update file name">
       <created>1415052130583</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
       <updated>1415052130583</updated>
     </task>
     <task id="LOCAL-00019" summary="environment configuration is now handled within batch file removing need for multiple configuration files. configure cloud file, batch file, and spec helper updated to reflect this. implicit wait added to tests">
       <created>1415126337827</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
       <updated>1415126337827</updated>
     </task>
     <task id="LOCAL-00020" summary="renamed configure cloud file to reflect where this is pointing">
       <created>1415126449215</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
       <updated>1415126449215</updated>
     </task>
     <task id="LOCAL-00021" summary="renamed configure cloud file to reflect where this is pointing">
       <created>1415126551990</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
       <updated>1415126551990</updated>
     </task>
     <task id="LOCAL-00022" summary="minor updates to variables and filenames">
       <created>1415127488776</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
       <updated>1415127488776</updated>
     </task>
     <task id="LOCAL-00023" summary="added sauce_whisk to insert pass/fail result in sauce labs job">
       <created>1415137380570</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
       <updated>1415137380570</updated>
     </task>
     <task id="LOCAL-00024" summary="added &quot;Learn1&quot; test. this is randomly throw one of two exceptions for the following reasons: 1. NoSuchElementError: did not wait long enough for page to load OR 2. StaleElementReferenceError: confusion over looking for the same element.">
       <created>1415229208342</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
       <updated>1415229208343</updated>
     </task>
     <task id="LOCAL-00025" summary="added a failure test and attempted to deal with StaleElementReferenceError">
       <created>1415296249940</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
       <updated>1415296249940</updated>
     </task>
     <task id="LOCAL-00026" summary="minor tweak to verify first page of lesson loaded">
       <created>1415299225699</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
       <updated>1415299225699</updated>
     </task>
     <task id="LOCAL-00027" summary="updated README">
       <created>1415299902500</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
       <updated>1415299902500</updated>
     </task>
     <task id="LOCAL-00028" summary="updated README">
       <created>1415300228951</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
       <updated>1415300228951</updated>
     </task>
     <task id="LOCAL-00029" summary="updated README">
       <created>1415374149648</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
       <updated>1415374149648</updated>
     </task>
     <task id="LOCAL-00030" summary="updated README">
       <created>1415374215351</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
       <updated>1415374215351</updated>
     </task>
     <task id="LOCAL-00031" summary="started trying to use capybara (this build does not work)">
       <created>1415393644697</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
       <updated>1415393644697</updated>
     </task>
     <task id="LOCAL-00032" summary="started trying to use capybara (this build does not work)">
       <created>1415393665591</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
       <updated>1415393665591</updated>
     </task>
     <task id="LOCAL-00033" summary="reverted to last partially working directory and added capybara specific file">
       <created>1415399826158</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
       <updated>1415399826158</updated>
     </task>
     <task id="LOCAL-00034" summary="got the capybara test to run locally now trying to add in sauce configuration">
       <created>1415569710295</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
       <updated>1415569710295</updated>
     </task>
     <task id="LOCAL-00035" summary="got the capybara test to run locally now trying to add in sauce configuration">
       <created>1415571408724</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
       <updated>1415571408724</updated>
     </task>
     <task id="LOCAL-00036" summary="updated README with new versions in requirements">
       <created>1415571666649</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
       <updated>1415571666649</updated>
     </task>
     <task id="LOCAL-00037" summary="removed unneeded files and updated all tests to use capybara">
       <created>1415578617467</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
       <updated>1415578617467</updated>
     </task>
     <task id="LOCAL-00038" summary="updated batch and spec helper as well as renamed specs">
       <created>1415582619640</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
       <updated>1415582619640</updated>
     </task>
     <task id="LOCAL-00039" summary="updated with functionality for running locally and adding comments for understandability">
       <created>1415630850826</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
       <updated>1415630850826</updated>
     </task>
     <task id="LOCAL-00040" summary="updated wait time and added test for composing and reading messages">
       <created>1415640102780</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
       <updated>1415640102780</updated>
     </task>
     <task id="LOCAL-00041" summary="updated read message test and added a test for adding a new thought">
       <created>1415645235533</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
       <updated>1415645235534</updated>
     </task>
     <task id="LOCAL-00042" summary="updated message test and add identifying to think test">
       <created>1415647705352</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
       <updated>1415647705352</updated>
     </task>
     <task id="LOCAL-00043" summary="completed THINK test suite">
       <created>1415652774703</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
       <updated>1415652774703</updated>
     </task>
     <task id="LOCAL-00044" summary="add tests for skip and navbar functionality">
       <created>1415653693498</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
       <updated>1415653693498</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="updated verification text and wait times">
+      <created>1415656200450</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1415656200450</updated>
+    </task>
+    <task id="LOCAL-00046" summary="minor update">
+      <created>1415657455717</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1415657455717</updated>
+    </task>
+    <task id="LOCAL-00047" summary="update file name">
+      <created>1415751207179</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1415751207179</updated>
+    </task>
+    <task id="LOCAL-00048" summary="added viz test">
+      <created>1415825899271</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1415825899271</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -579,22 +680,23 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39537328" sideWeight="0.49840257" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.394958" sideWeight="0.49840257" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32878152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21321961" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2260128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39537328" sideWeight="0.50159746" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957938" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -636,11 +738,7 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="batch file to run each environment" />
-    <MESSAGE value="cleaning" />
-    <MESSAGE value="update browsers, add windows 7" />
     <MESSAGE value="added configure_cloud directory" />
-    <MESSAGE value="update file name" />
     <MESSAGE value="environment configuration is now handled within batch file removing need for multiple configuration files. configure cloud file, batch file, and spec helper updated to reflect this. implicit wait added to tests" />
     <MESSAGE value="renamed configure cloud file to reflect where this is pointing" />
     <MESSAGE value="minor updates to variables and filenames" />
@@ -661,15 +759,20 @@
     <MESSAGE value="updated message test and add identifying to think test" />
     <MESSAGE value="completed THINK test suite" />
     <MESSAGE value="add tests for skip and navbar functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests for skip and navbar functionality" />
+    <MESSAGE value="updated verification text and wait times" />
+    <MESSAGE value="minor update" />
+    <MESSAGE value="update file name" />
+    <MESSAGE value="added viz test" />
+    <option name="LAST_COMMIT_MESSAGE" value="added viz test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="2" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1054">
           <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
@@ -708,9 +811,6 @@
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
@@ -720,7 +820,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1054">
           <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
@@ -759,9 +859,6 @@
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
@@ -771,7 +868,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1054">
           <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
@@ -809,9 +906,6 @@
           <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SC_batch.rb">
@@ -1017,21 +1111,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SC_configure_cloud_saucelabs.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="374">
           <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SC_configure_cloud_saucelabs.rb">
+    <entry file="file://$PROJECT_DIR$/spec/SC_spec_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="42" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1046,44 +1148,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4199">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
+          <caret line="162" column="52" selection-start-line="162" selection-start-column="52" selection-end-line="162" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1037">
           <caret line="10" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_1_spec.rb">
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_learn_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="986">
-          <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/SC_spec_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2797075" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.1551095" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
   </component>
 </project>
-
