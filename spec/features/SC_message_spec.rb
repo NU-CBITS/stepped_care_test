@@ -53,4 +53,20 @@ require_relative '../../spec/SC_spec_helper'
       expect(page).to have_content 'I forgot where this is.'
     end
 
+    #this will only work if a message has been sent to the test participant containing the content below
+    it "- accessing a link from a message in inbox" do
+      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      within("#new_participant") do
+        fill_in 'participant_email', :with => ENV['Participant_Email']
+        fill_in 'participant_password', :with => ENV['Participant_Password']
+      end
+      click_button 'Sign in'
+      expect(page).to have_content 'Signed in successfully'
+      click_link 'MESSAGES'
+      expect(page).to have_content 'Inbox'
+      click_on 'GO TO INTRO'
+      expect(page).to have_content 'Introduction to ThinkFeelDo'
+      click_on 'Introduction to ThinkFeelDo'
+      expect(page).to have_content 'Welcome to ThinkFeelDo'
+    end
 end
