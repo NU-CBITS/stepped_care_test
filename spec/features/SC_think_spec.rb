@@ -252,7 +252,6 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Add a New Thought'
   end
 
-  #this can only be run if the user has logged 3+ thoughts distortions
   it "- visualization" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -264,13 +263,17 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK'
     click_link 'THINK Landing'
     expect(page).to have_content 'Add a New Thought'
-    find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
-    expect(page).to have_content 'Click a bubble for more info'
-    find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
-    expect(page).to have_content "Some Thoughts You've Entered"
-    expect(page).to have_content 'Testing negative thought'
-    click_on 'Close'
-    expect(page).to have_content 'Click a bubble for more info'
+    if page.has_text?('Click a bubble for more info')
+      find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
+      expect(page).to have_content 'Click a bubble for more info'
+      find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
+      expect(page).to have_content "Some Thoughts You've Entered"
+      expect(page).to have_content 'Testing negative thought'
+      click_on 'Close'
+      expect(page).to have_content 'Click a bubble for more info'
+    else
+      expect(page).to have_content 'Thoughts'
+    end
   end
 
 end
