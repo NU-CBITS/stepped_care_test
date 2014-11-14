@@ -31,14 +31,14 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'You are what you do'
     click_on 'Continue'
     expect(page).to have_content "OK, let's talk about yesterday."
-  #use this line if there is already a time period set for yesterday
-    click_on 'Complete'
-  #use this next block if there is not a time period already set for yesterday
-  #need to figure out how to set the day automatically - currently you need to change the day to reflect yesterday
-    # select 'Wed 7 AM', :from => 'awake_period_start_time'
-    # select 'Wed 10 PM', :from => 'awake_period_end_time'
-    # click_on 'Create'
-    # expect(page).to have_content 'Awake Period saved'
+  # #use this line if there is already a time period set for yesterday
+  #   click_on 'Complete'
+  # #use this next block if there is not a time period already set for yesterday
+    yesterday=Date.today.prev_day
+    select yesterday.strftime('%a') + ' 7 AM', :from => 'awake_period_start_time'
+    select yesterday.strftime('%a') + ' 10 PM', :from => 'awake_period_end_time'
+    click_on 'Create'
+    expect(page).to have_content 'Awake Period saved'
     fill_in 'activity_type_0', :with => 'Get ready for work'
     within("#pleasure_0") do
       choose '6'
@@ -121,8 +121,57 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'You are what you do'
     click_on 'Continue'
     expect(page).to have_content "OK, let's talk about yesterday."
-  #need to figure out how to set the day automatically - currently you need to change the day to reflect yesterday
-    expect { select 'Wed 9 AM', :from => 'awake_period_start_time' }.to raise_error
-    expect { select 'Wed 8 PM', :from => 'awake_period_end_time' }.to raise_error
+    yesterday=Date.today.prev_day
+    expect { select yesterday.strftime('%a') + ' 7 AM', :from => 'awake_period_start_time' }.to raise_error
+    expect { select yesterday.strftime('%a') + ' 10 PM', :from => 'awake_period_end_time' }.to raise_error
   end
+
+#this test passes because I do not select a time in the "future_time_picker_0" - should probably sort that out.
+  it "- planning" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    click_on '#2 Planning'
+    expect(page).to have_content 'The last few times you were here...'
+    click_on 'Continue'
+    expect(page).to have_content 'We want you to plan one fun thing'
+    fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
+    today=Date.today
+    tomorrow = today + 1
+    fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
+    within("#pleasure_0") do
+      choose '6'
+    end
+    within("#accomplishment_0") do
+      choose '3'
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Activity saved'
+    expect(page).to have_content 'Now, plan something that gives you a sense of accomplishment.'
+    fill_in 'activity_activity_type_new_title', :with => 'Another planned activity'
+    today=Date.today
+    tomorrow = today + 1
+    fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
+    within("#pleasure_0") do
+      choose '4'
+    end
+    within("#accomplishment_0") do
+      choose '8'
+    end
+    click_on 'Continue'
+    expect(page).to have_content 'Activity saved'
+    expect(page).to have_content 'Your Planned Activities'
+    click_on 'Continue'
+    expect(page).to have_content 'Try to stick with your plans'
+    click_on 'Continue'
+    expect(page).to have_content 'Upcoming Activities'
+  end
+
 end
