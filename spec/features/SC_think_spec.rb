@@ -26,6 +26,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
     click_link 'THINK'
     click_link 'THINK Landing'
+    expect(page).to have_content 'Add a New Thought'
     click_link '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
     click_link 'Continue'

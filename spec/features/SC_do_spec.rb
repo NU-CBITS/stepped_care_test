@@ -1,4 +1,4 @@
-# #filename: SC_think_spec,rb
+# #filename: SC_do_spec,rb
 
 #this file is to test the functionality of logging in, selecting the "LEARN" section,
 # and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
