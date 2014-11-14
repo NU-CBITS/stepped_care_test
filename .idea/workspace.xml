@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b0ee1e6-5953-4adf-9c7d-51a3d2c12eaf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/features/SC_do_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" afterPath="$PROJECT_DIR$/spec/features/SC_think_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="stepped_care_test.iws" />
@@ -40,8 +40,8 @@
       <file leaf-file-name="SC_do_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_do_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
-              <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="2261">
+              <caret line="42" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -50,7 +50,7 @@
       <file leaf-file-name="SC_spec_helper.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/SC_spec_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1071">
+            <state vertical-scroll-proportion="0.0" vertical-offset="524" max-vertical-offset="1071">
               <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding />
             </state>
@@ -103,8 +103,8 @@
       <file leaf-file-name="SC_think_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="4573">
-              <caret line="13" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2428" max-vertical-offset="4845">
+              <caret line="252" column="22" selection-start-line="252" selection-start-column="22" selection-end-line="252" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -113,8 +113,8 @@
       <file leaf-file-name="SC_message_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.031021899" vertical-offset="187" max-vertical-offset="4148">
-              <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="238" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.24862888" vertical-offset="187" max-vertical-offset="4148">
+              <caret line="19" column="85" selection-start-line="0" selection-start-column="0" selection-end-line="238" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -140,10 +140,10 @@
       <list>
         <option value="$PROJECT_DIR$/spec/SC_spec_helper.rb" />
         <option value="$PROJECT_DIR$/SC_batch.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_do_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_learn_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/SC_login_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/SC_think_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/features/SC_learn_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/features/SC_do_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/features/SC_login_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/SC_message_spec.rb" />
       </list>
     </option>
@@ -697,7 +697,13 @@
       <option name="project" value="LOCAL" />
       <updated>1415914050103</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="added DO spec, added a test for completing awareness and a test for making sure awake time from completed task was no longer available">
+      <created>1415935195117</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1415935195117</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -724,8 +730,9 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.394958" sideWeight="0.49840257" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39537328" sideWeight="0.49840257" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -740,7 +747,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32878152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957938" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -782,7 +788,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="added &quot;Learn1&quot; test. this is randomly throw one of two exceptions for the following reasons: 1. NoSuchElementError: did not wait long enough for page to load OR 2. StaleElementReferenceError: confusion over looking for the same element." />
     <MESSAGE value="added a failure test and attempted to deal with StaleElementReferenceError" />
     <MESSAGE value="minor tweak to verify first page of lesson loaded" />
     <MESSAGE value="updated README" />
@@ -807,7 +812,8 @@
     <MESSAGE value="updated link in messages to test all links aside from Lessons" />
     <MESSAGE value="updated format" />
     <MESSAGE value="completed all tests for messaging" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed all tests for messaging" />
+    <MESSAGE value="added DO spec, added a test for completing awareness and a test for making sure awake time from completed task was no longer available" />
+    <option name="LAST_COMMIT_MESSAGE" value="added DO spec, added a test for completing awareness and a test for making sure awake time from completed task was no longer available" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1182,10 +1188,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_do_spec.rb">
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2428" max-vertical-offset="4845">
+          <caret line="252" column="22" selection-start-line="252" selection-start-column="22" selection-end-line="252" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1198,6 +1204,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/features/SC_do_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="2261">
+          <caret line="42" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_login_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="286" max-vertical-offset="1360">
@@ -1206,18 +1220,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/features/SC_think_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="4573">
-          <caret line="13" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/SC_message_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031021899" vertical-offset="187" max-vertical-offset="4148">
-          <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="238" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.24862888" vertical-offset="187" max-vertical-offset="4148">
+          <caret line="19" column="85" selection-start-line="0" selection-start-column="0" selection-end-line="238" selection-end-column="3" />
           <folding />
         </state>
       </provider>
