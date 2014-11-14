@@ -232,13 +232,7 @@ describe "Think", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_link 'THINK'
-    click_link 'THINK Landing'
-    expect(page).to have_content 'Add a New Thought'
-    click_link 'THINK'
-    click_link 'THINK Landing'
-    expect(page).to have_content 'Add a New Thought'
-    click_link 'THINK'
+        click_link 'THINK'
     click_link '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
     click_link 'THINK'
@@ -253,6 +247,9 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK'
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
+    click_link 'THINK'
+    click_link 'THINK Landing'
+    expect(page).to have_content 'Add a New Thought'
   end
 
   #this can only be run if the user has logged 3+ thoughts distortions

@@ -213,4 +213,125 @@ describe "Do", :type => :feature, :sauce => false do
       expect(page).to have_content 'Plan a New Activity'
     end
   end
+
+  it "- plan a new activity" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    click_on 'Plan a New Activity'
+    expect(page).to have_content "But you don't have to start from scratch,"
+    fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
+    today=Date.today
+    tomorrow = today + 1
+    fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
+    choose 'activity_predicted_pleasure_intensity_4'
+    choose 'activity_predicted_accomplishment_intensity_3'
+  end
+
+  it "- your activities" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    click_on 'Your Activities'
+    expect(page).to have_content 'Activities Overview'
+    expect(page).to have_content 'Over the past week'
+    page.find("#nav_main li:nth-child(2) a").click
+    expect(page).to have_content '3 day view'
+    page.find("#nav_main li:nth-child(3) a").click
+    expect(page).to have_content 'Completion score'
+  end
+
+  it "- navbar functionality" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on '#1 Awareness'
+    expect(page).to have_content 'You are what you do'
+    click_on 'DO'
+    click_on '#2 Planning'
+    expect(page).to have_content 'The last few times you were here...'
+    click_on 'DO'
+    click_on '#3 Reviewing'
+    expect(page).to have_content 'Welcome back!'
+    click_on 'DO'
+    click_on 'Plan a New Activity'
+    expect(page).to have_content "But you don't have to start from scratch,"
+    click_on 'DO'
+    click_on 'Your Activities'
+    expect(page).to have_content 'Activities Overview'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+  end
+
+  it "- skip functionality" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    click_on '#1 Awareness'
+    expect(page).to have_content 'You are what you do'
+    click_on 'Skip'
+    expect(page).to have_content "OK, let's talk about yesterday."
+    click_on 'DO'
+    click_on '#2 Planning'
+    expect(page).to have_content 'The last few times you were here...'
+    click_on 'Skip'
+    expect(page).to have_content 'We want you to plan one fun thing'
+    click_on 'DO'
+    click_on '#3 Reviewing'
+    expect(page).to have_content 'Welcome back!'
+    click_on 'Skip'
+    if page.has_text?('You said you were going to')
+      expect(page).to have_content 'You said you were going to'
+    else
+      expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
+    end
+  end
+
+  it "- visualization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    if page.has_text?('Have you done any of these?')
+      click_on 'Edit'
+      expect(page).to have_content 'You said you were going to'
+    elsif page.has_text?('Upcoming Activities')
+      expect(page).to have_content 'Activities in your near future '
+    else
+      expect { page.has_text?('Have you done any of these?') }.to raise_error
+    end
+  end
 end
