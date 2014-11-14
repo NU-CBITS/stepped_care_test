@@ -31,13 +31,14 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'You are what you do'
     click_on 'Continue'
     expect(page).to have_content "OK, let's talk about yesterday."
-  # #use this line if there is already a time period set for yesterday
-  #   click_on 'Complete'
-  # #use this next block if there is not a time period already set for yesterday
-    yesterday=Date.today.prev_day
-    select yesterday.strftime('%a') + ' 7 AM', :from => 'awake_period_start_time'
-    select yesterday.strftime('%a') + ' 10 PM', :from => 'awake_period_end_time'
-    click_on 'Create'
+    if page.has_text?('Last Recorded Awake Period:')
+      click_on 'Complete'
+    else
+      yesterday=Date.today.prev_day
+      select yesterday.strftime('%a') + ' 7 AM', :from => 'awake_period_start_time'
+      select yesterday.strftime('%a') + ' 10 PM', :from => 'awake_period_end_time'
+      click_on 'Create'
+    end
     expect(page).to have_content 'Awake Period saved'
     fill_in 'activity_type_0', :with => 'Get ready for work'
     within("#pleasure_0") do
@@ -174,4 +175,42 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Upcoming Activities'
   end
 
+  it "- reviewing" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'DO'
+    click_on 'DO Landing'
+    expect(page).to have_content 'Plan a New Activity'
+    click_on '#3 Reviewing'
+    expect(page).to have_content 'Welcome back!'
+    click_on 'Continue'
+    expect(page).to have_content "Let's do this..."
+    click_on 'Continue'
+    if page.has_text?('You said you were going to')
+      choose 'Yes'
+      choose 'activity_actual_pleasure_intensity_8'
+      choose 'activity_actual_accomplishment_intensity_6'
+      click_on 'Continue'
+      expect(page).to have_content 'Activity saved'
+      expect(page).to have_content 'You said you were going to'
+      choose 'No'
+      fill_in 'activity[noncompliance_reason]', :with => "I didn't have time"
+      click_on 'Continue'
+      expect(page).to have_content 'Activity saved'
+      expect(page).to have_content 'Good Work!'
+      click_on 'Continue'
+      expect(page).to have_content 'Plan a New Activity'
+    else
+      expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
+      click_on 'Continue'
+      expect(page).to have_content 'Good Work!'
+      click_on 'Continue'
+      expect(page).to have_content 'Plan a New Activity'
+    end
+  end
 end
