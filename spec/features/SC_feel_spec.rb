@@ -9,7 +9,7 @@ require_relative '../../spec/SC_spec_helper'
 # describe "Feel", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
-describe "Do", :type => :feature, :sauce => false do
+describe "Feel", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
