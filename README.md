@@ -12,5 +12,6 @@ login information for the Stepped Care staging site is needed. You will need to 
 "SC_configure_cloud_saucelabs.rb" locally. This is to maintain security. 
 
 Once these environment variables are set you will just need to run the "SC_batch.rb" file. This will run the test 
-suite for every environment set in the batch file. You should comment out all but one environment while tweaking and 
-running the rest of the files. 
+suite for every environment set in the spec_helper file.
+
+In the batch file you can decide to run locally or on saucelabs.
