@@ -1,10 +1,10 @@
 # filename: SC_spec_helper.rb
 
 require 'capybara'
-require 'sauce'
-require 'sauce/capybara'
 require 'capybara/rspec'
 require 'selenium-webdriver'
+require 'sauce'
+require 'sauce/capybara'
 require 'sauce_whisk'
 
 Capybara.default_wait_time = 30
