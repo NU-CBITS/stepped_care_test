@@ -2,7 +2,7 @@
 
 #if running on Sauce Labs comment this block out
 puts "testing locally"
-system("rspec -r./spec/features/SC_do_spec.rb")
+system("rspec")
 
 #if running locally comment this block out
 # puts "testing_on_saucelabs"
