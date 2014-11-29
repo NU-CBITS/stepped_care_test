@@ -41,19 +41,19 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Now, your turn...'
     within("#new_thought") do
       fill_in 'thought_content', :with => 'Testing helpful thought'
-      choose('helpful')
+      choose 'thought_effect_helpful'
     end
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     within("#new_thought") do
       fill_in 'thought_content', :with => 'Testing negative thought'
-      choose('harmful')
+      choose 'thought_effect_harmful'
     end
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     within("#new_thought") do
       fill_in 'thought_content', :with => 'Testing neither thought'
-      choose('neither')
+      choose 'thought_effect_neither'
     end
     click_on 'Continue'
     expect(page).to have_content 'Now one more,'
