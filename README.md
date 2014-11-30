@@ -3,8 +3,9 @@ stepped_care_test
 This is a repo for development of automated testing which I am running on the stepped care staging app. This is a 
 very new process therefore this repo will be changing drastically over time.
 
-##Required: 
-Ruby 2.0.0; Capybara 2.4.4; Sauce 3.5.3; Selenium-WebDriver 2.44.0
+##Clone
+
+git clone https://github.com/cbitstech/stepped_care_test.git
 
 ##Steps to take to run this test suite:
 
