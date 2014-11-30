@@ -46,7 +46,7 @@ Seed data:
 ##To run this test suite:
 To run this test suite you will need to set the new participant login as environment variables:
 
-    $ Participant_Email='new participant email address' ; export Participant_Email
+    $ Participant_Email='new participant email address'; export Participant_Email
     $ Participant_Password='new participant password'; export Participant_Password
 
 To run the test suite on locally against the staging server simply run:
