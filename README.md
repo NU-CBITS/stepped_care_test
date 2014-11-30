@@ -5,7 +5,7 @@ very new process therefore this repo will be changing drastically over time.
 
 ##Clone
 
-  'git clone https://github.com/cbitstech/stepped_care_test.git'
+    git clone https://github.com/cbitstech/stepped_care_test.git
 
 ##Steps to take to run this test suite:
 
