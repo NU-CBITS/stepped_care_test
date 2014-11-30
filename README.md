@@ -56,4 +56,4 @@ To run the test suite on locally against the staging server simply run:
 To run this test suite on Sauce Labs you will need to set the environment variables found in
 "SC_configure_cloud_saucelabs.rb" locally. Once the environment variables have been set, run:
 
-    $ rspec -r./SC_configure_cloud_saucelabs.rb
+    $ rspec -r./spec/SC_configure_cloud_saucelabs.rb
