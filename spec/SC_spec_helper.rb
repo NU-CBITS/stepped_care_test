@@ -34,7 +34,7 @@ Sauce.config do |config|
     ["OS X 10.10", "Chrome", "37"]
   ]
 
-  config.after(:each) do |example|
+  config[:each] do |example|
       if example.exception.nil?
         SauceWhisk::Jobs.pass_job @driver.session_id
       else

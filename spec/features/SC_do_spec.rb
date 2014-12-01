@@ -15,6 +15,19 @@ describe "Do", :type => :feature, :sauce => false do
     Capybara.default_driver = :selenium
   end
 
+#define methods for this spec file
+  def choose_rating(element_id, value)
+    find("##{ element_id } .intensity_btn:nth-child(#{ value + 1 })").click
+  end
+
+  def choose_pleasure_rating(value)
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form[1]/span[1]/div[1]/div[2]/div/label[#{ value + 1 }]").click
+  end
+
+  def choose_accomplishment_rating(value)
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form[1]/span[1]/div[2]/div[2]/div/label[#{ value + 1 }]").click
+  end
+
 #tests
   it "- awareness" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
@@ -40,27 +53,19 @@ describe "Do", :type => :feature, :sauce => false do
       click_on 'Create'
       expect(page).to have_content 'Awake Period saved'
     end
+
     fill_in 'activity_type_0', :with => 'Get ready for work'
-    within("#pleasure_0") do
-      choose '6'
-    end
-    within("#accomplishment_0") do
-      choose '7'
-    end
+    choose_rating("pleasure_0", 6)
+    choose_rating("accomplishment_0", 7)
+
     fill_in 'activity_type_1', :with => 'Travel to work'
-    within("#pleasure_1") do
-      choose '3'
-    end
-    within("#accomplishment_1") do
-      choose '5'
-    end
+    choose_rating("pleasure_1", 3)
+    choose_rating("accomplishment_1", 5)
+
     fill_in 'activity_type_2', :with => 'Work'
-    within("#pleasure_2") do
-      choose '5'
-    end
-    within("#accomplishment_2") do
-      choose '8'
-    end
+    choose_rating("pleasure_2", 5)
+    choose_rating("accomplishment_2", 8)
+
     click_on 'copy_3'
     click_on 'copy_4'
     click_on 'copy_5'
@@ -68,35 +73,25 @@ describe "Do", :type => :feature, :sauce => false do
     click_on 'copy_7'
     click_on 'copy_8'
     click_on 'copy_9'
+
     fill_in 'activity_type_10', :with => 'Travel from work'
-    within("#pleasure_10") do
-      choose '5'
-    end
-    within("#accomplishment_10") do
-      choose '8'
-    end
+    choose_rating("pleasure_10", 5)
+    choose_rating("accomplishment_10", 8)
+
     fill_in 'activity_type_11', :with => 'eat dinner'
-    within("#pleasure_11") do
-      choose '8'
-    end
-    within("#accomplishment_11") do
-      choose '8'
-    end
+    choose_rating("pleasure_11", 8)
+    choose_rating("accomplishment_11", 8)
+
     fill_in 'activity_type_12', :with => 'Watch TV'
-    within("#pleasure_12") do
-      choose '9'
-    end
-    within("#accomplishment_12") do
-      choose '3'
-    end
+    choose_rating("pleasure_12", 9)
+    choose_rating("accomplishment_12", 3)
+
     click_on 'copy_13'
+
     fill_in 'activity_type_14', :with => 'Get ready for bed'
-    within("#pleasure_14") do
-      choose '2'
-    end
-    within("#accomplishment_14") do
-      choose '3'
-    end
+    choose_rating("pleasure_14", 2)
+    choose_rating("accomplishment_14", 3)
+
     click_on 'Continue'
     expect(page).to have_content 'Activity saved'
     click_on 'Continue'
@@ -146,26 +141,22 @@ describe "Do", :type => :feature, :sauce => false do
     fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
     today=Date.today
     tomorrow = today + 1
+
     fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
-    within("#pleasure_0") do
-      choose '6'
-    end
-    within("#accomplishment_0") do
-      choose '3'
-    end
+    choose_rating("pleasure_0", 6)
+    choose_rating("accomplishment_0", 3)
+
     click_on 'Continue'
     expect(page).to have_content 'Activity saved'
     expect(page).to have_content 'Now, plan something that gives you a sense of accomplishment.'
     fill_in 'activity_activity_type_new_title', :with => 'Another planned activity'
     today=Date.today
     tomorrow = today + 1
+
     fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
-    within("#pleasure_0") do
-      choose '4'
-    end
-    within("#accomplishment_0") do
-      choose '8'
-    end
+    choose_rating("pleasure_0", 4)
+    choose_rating("accomplishment_0", 8)
+
     click_on 'Continue'
     expect(page).to have_content 'Activity saved'
     expect(page).to have_content 'Your Planned Activities'
@@ -192,19 +183,21 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content "Let's do this..."
     click_on 'Continue'
     if page.has_text?('You said you were going to')
-      choose 'Yes'
-      choose 'activity_actual_pleasure_intensity_8'
-      choose 'activity_actual_accomplishment_intensity_6'
+      find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[1]/div[2]/label[1])").click
+      choose_pleasure_rating(8)
+      choose_accomplishment_rating(6)
       click_on 'Continue'
       expect(page).to have_content 'Activity saved'
-      expect(page).to have_content 'You said you were going to'
-      choose 'No'
+      if page.has_text?('You said you were going to')
+      find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[2]/div[2]/label[2])").click
       fill_in 'activity[noncompliance_reason]', :with => "I didn't have time"
       click_on 'Continue'
+      else
       expect(page).to have_content 'Activity saved'
       expect(page).to have_content 'Good Work!'
       click_on 'Continue'
       expect(page).to have_content 'Plan a New Activity'
+      end
     else
       expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
       click_on 'Continue'
@@ -325,13 +318,14 @@ describe "Do", :type => :feature, :sauce => false do
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
-    if page.has_text?('Have you done any of these?')
+
+    if page.has_text?('Recent Past Activities')
       click_on 'Edit'
       expect(page).to have_content 'You said you were going to'
     elsif page.has_text?('Upcoming Activities')
-      expect(page).to have_content 'Activities in your near future '
+      expect(page).to have_content 'Activities in your near future'
     else
-      expect { page.has_text?('Have you done any of these?') }.to raise_error
+      expect { expect(page).to have_content'Recent Past Activities' }.to raise_error
     end
   end
 end
