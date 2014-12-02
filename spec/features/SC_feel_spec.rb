@@ -24,22 +24,27 @@ describe "Feel", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_link 'FEEL'
     click_link 'FEEL Landing'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
+
     click_link 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
-    choose 'mood_rating_6'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[7]").click
     click_on 'Continue'
+
     expect(page).to have_content 'Mood saved'
     expect(page).to have_content 'You just rated your mood as a 6 (Good)'
     expect(page).to have_content 'Rate your Emotions'
     select 'anxious', :from => 'emotional_rating_emotion_id'
-    choose 'emotional_rating_rating_4'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/div[3]/form/div[4]/div[2]/div/label[5]").click
+
     click_on 'Add Emotion'
     fill_in 'emotional_rating_name', :with => 'crazy'
-    page.find('#subcontainer-1').find('#emotional_rating_rating_2').click
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/div[3]/div/form/div[4]/div[2]/div/label[3]").click
     click_on 'Continue'
+
     expect(page).to have_content 'Emotional Rating saved'
     expect(page).to have_content 'Your Recent Emotions'
     click_on 'Continue'
