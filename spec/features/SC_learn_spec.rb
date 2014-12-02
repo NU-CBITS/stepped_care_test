@@ -9,14 +9,14 @@ require_relative '../../spec/SC_spec_helper'
 # describe "Learn_1", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
-describe "Learn_1", :type => :feature, :sauce => false do
+describe "Learn", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
   end
 
 #tests
-  it "succeeded" do
+  it "- read Lesson 1" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']

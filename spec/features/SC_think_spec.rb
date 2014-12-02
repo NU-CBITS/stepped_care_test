@@ -39,27 +39,22 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Some quick examples...'
     click_link 'Continue'
     expect(page).to have_content 'Now, your turn...'
-    within("#new_thought") do
-      fill_in 'thought_content', :with => 'Testing helpful thought'
-      choose 'thought_effect_helpful'
-    end
+    fill_in 'thought_content', :with => 'Testing helpful thought'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[1]").click
     click_on 'Continue'
+
     expect(page).to have_content 'Thought saved'
-    within("#new_thought") do
-      fill_in 'thought_content', :with => 'Testing negative thought'
-      choose 'thought_effect_harmful'
-    end
+    fill_in 'thought_content', :with => 'Testing negative thought'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
     click_on 'Continue'
+
     expect(page).to have_content 'Thought saved'
-    within("#new_thought") do
-      fill_in 'thought_content', :with => 'Testing neither thought'
-      choose 'thought_effect_neither'
-    end
+    fill_in 'thought_content', :with => 'Testing neither thought'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
     click_on 'Continue'
+
     expect(page).to have_content 'Now one more,'
-    within("#new_thought") do
-      fill_in 'thought_content', :with => 'Forced negative thought'
-    end
+    fill_in 'thought_content', :with => 'Forced negative thought'
     click_on 'Continue'
     expect(page).to have_content 'Good work'
     click_on 'Continue'
@@ -151,13 +146,11 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK Landing'
     click_link 'Add a New Thought'
     expect(page).to have_content 'This thought is:'
-    within("#new_thought") do
-      fill_in 'thought_content', :with => 'Testing add a new thought'
-      choose('harmful')
-      select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
-      fill_in 'thought_challenging_thought', :with => 'Testing challenge thought'
-      fill_in 'thought_act_as_if', :with => 'Testing act-as-if action'
-    end
+    fill_in 'thought_content', :with => 'Testing add a new thought'
+    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
+    select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
+    fill_in 'thought_challenging_thought', :with => 'Testing challenge thought'
+    fill_in 'thought_act_as_if', :with => 'Testing act-as-if action'
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     click_on 'Continue'
@@ -192,8 +185,7 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK Landing'
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
-    # the below reference will need to change depending on the data on the server
-    expect(page).to have_content 'Testing add a new thought'
+    expect(page).to have_content 'Example thought 1'
   end
 
   it "- skip functionality" do
@@ -233,8 +225,13 @@ describe "Think", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-        click_link 'THINK'
-    click_link '#1 Identifying'
+    click_link 'THINK'
+    click_link('THINK Landing')
+    expect(page).to have_content 'Add a New Thought'
+    within("#navbar-collapse") do
+      click_link 'THINK'
+      click_link '#1 Identifying'
+    end
     expect(page).to have_content 'You are what you think...'
     click_link 'THINK'
     click_link '#2 Patterns'
@@ -248,10 +245,8 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'THINK'
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
-    click_link 'THINK'
-    click_link 'THINK Landing'
-    expect(page).to have_content 'Add a New Thought'
   end
+
 
   it "- visualization" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
@@ -269,7 +264,7 @@ describe "Think", :type => :feature, :sauce => false do
       expect(page).to have_content 'Click a bubble for more info'
       find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
       expect(page).to have_content "Some Thoughts You've Entered"
-      expect(page).to have_content 'Testing negative thought'
+      expect(page).to have_content 'Example thought 1'
       click_on 'Close'
       expect(page).to have_content 'Click a bubble for more info'
     else
