@@ -35,12 +35,12 @@ Seed data:
 3. Send a message from Coach to new Participant:
   - subject: All links
   - content: links to all other tools/slideshows except lessons
-      - There is an issue in this one - Thought Distortions - needs to exist 
-      - To make this exist there needs to be 3 thoughts rated with the same distortions
-        - Login as new participant
-        - Go to THINK > Add a New Thought
-        - Put in fake data 
-        - Do this 3 times, selecting the same distortion each time
+4. Add three harmful thoughts
+  - Login as new participant
+  - Navigate to THINK > Add a New Thought
+  - Enter "Example thought 1", select "harmful", select "Magnifying or Minimizing", enter "Challenge", enter "As if Action"
+  - Repeat but change entered text to "Example thought 2", "Challenge 1", "As if Action 2"
+  - Repeat again changing text to "Example thought 3", "Challenge 2", "As if Action 3"
 
 
 ##To run this test suite:
