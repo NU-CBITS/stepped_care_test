@@ -42,6 +42,11 @@ Seed data:
   - Repeat but change entered text to "Example thought 2", "Challenge 1", "As if Action 2"
   - Repeat again changing text to "Example thought 3", "Challenge 2", "As if Action 3"
 
+Something to note:
+  The "Reviewing" test in the DO spec will run fine without seeded data, however, it won't actually test the
+  functionality of the Reviewing tool. To test this functionality you will need to go to "Plan a New Activity" and plan
+  two activities an hour prior to running this test.
+
 
 ##To run this test suite:
 To run this test suite you will need to set the new participant login as environment variables:
