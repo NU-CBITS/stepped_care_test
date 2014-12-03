@@ -57,7 +57,7 @@ describe "Think", :type => :feature, :sauce => false do
     find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
 
     click_on 'Continue'
-    expect(page).to have_content 'Now one more,'
+    expect(page).to have_content 'Now one more'
     fill_in 'thought_content', :with => 'Forced negative thought'
 
     click_on 'Continue'
@@ -96,11 +96,20 @@ describe "Think", :type => :feature, :sauce => false do
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
-
     click_on 'Continue'
+
+    if page.has_content?("One thought you had:")
+      select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
+      click_on 'Continue'
+      expect(page).to have_content 'Good work!'
+      click_on 'Continue'
+      expect(page).to have_content 'Add a New Thought'
+
+    else
     expect(page).to have_content 'Good work!'
     click_on 'Continue'
     expect(page).to have_content 'Add a New Thought'
+    end
   end
 
   #Testing the #3-Reshape portion of the THINK tool
