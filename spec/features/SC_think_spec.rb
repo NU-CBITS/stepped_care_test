@@ -267,7 +267,13 @@ describe "Think", :type => :feature, :sauce => false do
     click_link '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
-    expect(page).to have_content "You don't have"
+
+    if page.has_text?('You said you had')
+      expect(page).to have_content "In case you've forgotten"
+
+    else
+      expect(page).to have_content "You don't have"
+    end
   end
 
   #Testing navbar functionality specifically surrounding the THINK tool
