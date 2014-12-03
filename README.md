@@ -45,7 +45,7 @@ Seed data:
 Something to note:
   The "Reviewing" test in the DO spec will run fine without seeded data, however, it won't actually test the
   functionality of the Reviewing tool. To test this functionality you will need to go to "Plan a New Activity" and plan
-  two activities an hour prior to running this test.
+  two activities at least an hour prior to running this test (for a time before you will run the test).
 
 
 ##To run this test suite:
