@@ -42,5 +42,4 @@ Sauce.config do |config|
       end
     @driver.quit
   end
-
 end

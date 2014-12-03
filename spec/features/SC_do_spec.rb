@@ -1,7 +1,6 @@
 # #filename: SC_do_spec,rb
 
-#this file is to test the functionality of logging in, selecting the "LEARN" section,
-# and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
+#this file is to test the functionality of using the DO tool
 
 require_relative '../../spec/SC_spec_helper'
 
@@ -29,6 +28,8 @@ describe "Do", :type => :feature, :sauce => false do
   end
 
 #tests
+
+  #Testing the #1 Awareness portion of the DO tool
   it "- awareness" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -37,15 +38,19 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
+
     click_on 'Continue'
     expect(page).to have_content "OK, let's talk about yesterday."
+
     if page.has_text?('Last Recorded Awake Period:')
       click_on 'Complete'
+
     else
       yesterday=Date.today.prev_day
       select yesterday.strftime('%a') + ' 7 AM', :from => 'awake_period_start_time'
@@ -102,6 +107,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Plan a New Activity'
   end
 
+  #Testing that previously entered and completed wake period is not available
   it "- awareness, already entered wake period" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -110,11 +116,13 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
+
     click_on 'Continue'
     expect(page).to have_content "OK, let's talk about yesterday."
     yesterday=Date.today.prev_day
@@ -122,7 +130,9 @@ describe "Do", :type => :feature, :sauce => false do
     expect { select yesterday.strftime('%a') + ' 10 PM', :from => 'awake_period_end_time' }.to raise_error
   end
 
-#this test passes because I do not select a time in the "future_time_picker_0" - should probably sort that out.
+  #Testing the #2-Planning of the DO tool
+  #this test passes because I do not select a time in the "future_time_picker_0" - this is likely going to be updated
+  #I will update this test when that is completed
   it "- planning" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -131,11 +141,13 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#2 Planning'
     expect(page).to have_content 'The last few times you were here...'
+
     click_on 'Continue'
     expect(page).to have_content 'We want you to plan one fun thing'
     fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
@@ -166,6 +178,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Upcoming Activities'
   end
 
+  #Testing the #3-Reviewing section of the DO tool
   it "- reviewing" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -174,6 +187,7 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
@@ -182,22 +196,26 @@ describe "Do", :type => :feature, :sauce => false do
     click_on 'Continue'
     expect(page).to have_content "Let's do this..."
     click_on 'Continue'
+
     if page.has_text?('You said you were going to')
       find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[1]/div[2]/label[1])").click
       choose_pleasure_rating(8)
       choose_accomplishment_rating(6)
       click_on 'Continue'
       expect(page).to have_content 'Activity saved'
+
       if page.has_text?('You said you were going to')
       find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[2]/div[2]/label[2])").click
       fill_in 'activity[noncompliance_reason]', :with => "I didn't have time"
       click_on 'Continue'
+
       else
       expect(page).to have_content 'Activity saved'
       expect(page).to have_content 'Good Work!'
       click_on 'Continue'
       expect(page).to have_content 'Plan a New Activity'
       end
+
     else
       expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
       click_on 'Continue'
@@ -207,6 +225,7 @@ describe "Do", :type => :feature, :sauce => false do
     end
   end
 
+  #Testing Plan a New Activity portion of the DO tool
   it "- plan a new activity" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -215,9 +234,11 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
+
     click_on 'Plan a New Activity'
     expect(page).to have_content "But you don't have to start from scratch,"
     fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
@@ -228,6 +249,7 @@ describe "Do", :type => :feature, :sauce => false do
     choose 'activity_predicted_accomplishment_intensity_3'
   end
 
+  #Testing Your Activities portion of the DO tool
   it "- your activities" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -236,6 +258,7 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
@@ -248,6 +271,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Completion score'
   end
 
+  #Testing the navbar functionality specifically surrounding the DO tool
   it "- navbar functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -256,26 +280,33 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
+
     click_on 'DO'
     click_on '#2 Planning'
     expect(page).to have_content 'The last few times you were here...'
+
     click_on 'DO'
     click_on '#3 Reviewing'
     expect(page).to have_content 'Welcome back!'
+
     click_on 'DO'
     click_on 'Plan a New Activity'
     expect(page).to have_content "But you don't have to start from scratch,"
+
     click_on 'DO'
     click_on 'Your Activities'
     expect(page).to have_content 'Activities Overview'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
   end
 
+  #Testing the skip functionality in the slideshow portions of the first three parts of the DO tool
   it "- skip functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -284,29 +315,38 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
+
     click_on 'Skip'
     expect(page).to have_content "OK, let's talk about yesterday."
+
     click_on 'DO'
     click_on '#2 Planning'
     expect(page).to have_content 'The last few times you were here...'
+
     click_on 'Skip'
     expect(page).to have_content 'We want you to plan one fun thing'
+
     click_on 'DO'
     click_on '#3 Reviewing'
     expect(page).to have_content 'Welcome back!'
+
     click_on 'Skip'
+
     if page.has_text?('You said you were going to')
       expect(page).to have_content 'You said you were going to'
+
     else
       expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
     end
   end
 
+  #Testing the DO tool visualization
   it "- visualization" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -315,6 +355,7 @@ describe "Do", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_on 'DO'
     click_on 'DO Landing'
     expect(page).to have_content 'Plan a New Activity'
@@ -322,8 +363,10 @@ describe "Do", :type => :feature, :sauce => false do
     if page.has_text?('Recent Past Activities')
       click_on 'Edit'
       expect(page).to have_content 'You said you were going to'
+
     elsif page.has_text?('Upcoming Activities')
       expect(page).to have_content 'Activities in your near future'
+
     else
       expect { expect(page).to have_content'Recent Past Activities' }.to raise_error
     end

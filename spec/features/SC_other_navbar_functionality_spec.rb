@@ -1,7 +1,6 @@
 #filename: SC_other_navbar_functionality_spec,rb
 
-#this file is to test the functionality of logging in, selecting the "LEARN" section,
-# and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
+#this file is to test the functionality of navbar not covered in the other specs
 
 require_relative '../../spec/SC_spec_helper'
 
@@ -16,6 +15,8 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
   end
 
 #tests
+
+  #Testing the Sign Out functionality
   it "- sign out" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -24,10 +25,12 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     page.find('#navbar-collapse').find(:xpath, "(//a[@href='/participants/sign_out'])[1]").click
     expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 
+  #Testing Replay Intro button functionality
   it "- replay intro" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -36,6 +39,7 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     page.find('#navbar-collapse').find(:xpath, "(//a[@href='/participants/public_slideshows/8/slides/7'])[1]").click
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'

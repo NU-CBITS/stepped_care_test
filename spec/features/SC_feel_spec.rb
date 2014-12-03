@@ -1,7 +1,6 @@
 #filename: SC_feel_spec,rb
 
-#this file is to test the functionality of logging in, selecting the "LEARN" section,
-# and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
+#this file is to test the functionality of using the FEEL to
 
 require_relative '../../spec/SC_spec_helper'
 
@@ -16,6 +15,8 @@ describe "Feel", :type => :feature, :sauce => false do
   end
 
 #tests
+
+  #Testing Tracking Your Mood and Emotions in the FEEL to
   it "- tracking your mood and emotions" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -51,6 +52,7 @@ describe "Feel", :type => :feature, :sauce => false do
     expect(page).to have_content 'Tracking Your Mood and Emotions'
   end
 
+  #Testing the View Your Recent Emotions portion of the FEEL to
   it "- view your recent emotions" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -59,15 +61,18 @@ describe "Feel", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_link 'FEEL'
     click_link 'FEEL Landing'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
+
     click_on 'View Your Recent Emotions'
     expect(page).to have_content 'Mood'
     click_on 'Continue'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
   end
 
+  #Testing navbar functionality specifically surrounding the FEEL to
   it "- navbar functionality" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
@@ -76,12 +81,15 @@ describe "Feel", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_link 'FEEL'
     click_link 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
+
     click_link 'FEEL'
     click_on 'View Your Recent Emotions'
     expect(page).to have_content 'Your Recent Emotions'
+
     click_link 'FEEL'
     click_link 'FEEL Landing'
     expect(page).to have_content 'Tracking Your Mood and Emotions'

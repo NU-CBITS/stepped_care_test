@@ -24,6 +24,7 @@ describe "Learn", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+
     click_link 'LEARN'
     expect(page).to have_content 'You have read'
     click_link 'Think, Feel, Do Your Way Out of Depression'
@@ -49,5 +50,4 @@ describe "Learn", :type => :feature, :sauce => false do
     click_link 'Continue'
     expect(page).to have_content 'You have read'
   end
-
 end

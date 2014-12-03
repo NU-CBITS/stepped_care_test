@@ -1,7 +1,6 @@
 #filename: SC_message_spec,rb
 
-#this file is to test the functionality of logging in, selecting the "LEARN" section,
-# and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
+#this file is to test the messaging functionality
 
 require_relative '../../spec/SC_spec_helper'
 
@@ -16,6 +15,8 @@ require_relative '../../spec/SC_spec_helper'
     end
 
 #tests
+
+    #Testing Compose a new message
     it "- compose new" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -24,18 +25,23 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
+
       click_link 'Compose'
       expect(page).to have_content 'To Your Coach'
+
       within ("#new_message") do
         fill_in 'message_subject', :with => 'New message'
         fill_in 'message_body', :with => 'This is a test message to my coach. Hello, Coach! How are you??'
       end
+
       click_button 'Send'
       expect(page).to have_content 'Message saved'
     end
 
+    #Testing reading a new message in inbox
     it "- read new" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -44,15 +50,18 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_link 'Sent'
       expect(page).to have_content 'To: Coach'
+
       click_link 'I need some help with Planning an Activity'
       expect(page).to have_content 'I forgot where this is.'
     end
 
-     it "- accessing ALL links from a message in inbox" do
+    #Testing the links provided by a Coach in the messages
+    it "- accessing ALL links from a message in inbox" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -60,8 +69,10 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
+
       if page.has_text?('GO TO INTRO')
         click_on 'GO TO INTRO'
         expect(page).to have_content 'Introduction to ThinkFeelDo'
@@ -80,99 +91,144 @@ require_relative '../../spec/SC_spec_helper'
         click_on 'Continue'
         expect(page).to have_content 'Get Started'
         click_on 'Done'
+
       else
         expect(page).to have_content 'Inbox'
       end
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
+
       if page.has_text?('All links')
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#1 Identifying'
         expect(page).to have_content 'You are what you think...'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#2 Patterns'
         expect(page).to have_content 'Thinking Patterns'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#3 Reshape'
         expect(page).to have_content 'Challenging Harmful Thoughts'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Add a New Thought'
         expect(page).to have_content 'This thought is:'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Thoughts'
         expect(page).to have_content 'Harmful Thoughts'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Thought Distortions'
         expect(page).to have_content 'Click a bubble for more info'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Tracking Your Mood and Emotions'
         expect(page).to have_content 'Rate your Mood'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Tracking Your Mood'
         expect(page).to have_content 'Rate your Mood'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'View Your Recent Emotions'
         expect(page).to have_content 'Your Recent Emotions'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#1 Awareness'
         expect(page).to have_content 'You are what you do'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#2 Planning'
         expect(page).to have_content 'The last few times you were here...'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on '#3 Reviewing'
         expect(page).to have_content 'Welcome back!'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Your Activities'
         expect(page).to have_content 'Activities Overview'
+
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
+
         click_on 'All links'
         expect(page).to have_content 'From Coach'
+
         click_on 'Plan a New Activity'
         expect(page).to have_content "But you don't have to start from scratch,"
+
       else
         expect(page).to have_content 'Inbox'
       end
     end
 
+    #Testing the reply functionality
     it "- reply" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -181,12 +237,15 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'GO TO INTRO'
       expect(page).to have_content 'Introduction to ThinkFeelDo'
+
       click_on 'Reply'
       expect(page).to have_content 'To Coach'
+
       within ("#new_message") do
         fill_in 'message_body', :with => 'Got it. Thanks!'
       end
@@ -194,6 +253,7 @@ require_relative '../../spec/SC_spec_helper'
       expect(page).to have_content 'Message saved'
     end
 
+    #Testing composing a message from reading a message
     it "- compose while reading a message" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -202,14 +262,17 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'GO TO INTRO'
       expect(page).to have_content 'Introduction to ThinkFeelDo'
+
       click_on 'Compose'
       expect(page).to have_content 'To Your Coach'
     end
 
+    #Testing the cancel button in compose
     it "- cancel button" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -218,6 +281,7 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'Compose'
@@ -226,6 +290,7 @@ require_relative '../../spec/SC_spec_helper'
       expect(page).to have_content 'Inbox'
     end
 
+    #Testing the return button in compose
     it "- return button" do
       visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
       within("#new_participant") do
@@ -234,6 +299,7 @@ require_relative '../../spec/SC_spec_helper'
       end
       click_button 'Sign in'
       expect(page).to have_content 'Signed in successfully'
+
       click_link 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'Compose'
