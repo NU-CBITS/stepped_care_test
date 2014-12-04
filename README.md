@@ -54,11 +54,11 @@ To run this test suite you will need to set the new participant login as environ
     $ export Participant_Email='new participant email address'
     $ export Participant_Password='new participant password'
 
-To run the test suite on locally against the staging server simply run:
+To run this test suite on Sauce Labs you will need to set the following environment variables:
+
+    $ export SAUCE_USERNAME='sauce username'
+    $ export SAUCE_ACCESS_KEY='sauce access key'
+
+To run the test suite against the staging server simply run:
 
     $ rspec
-
-To run this test suite on Sauce Labs you will need to set the environment variables found in
-"SC_configure_cloud_saucelabs.rb" locally. Once the environment variables have been set, run:
-
-    $ rspec -r./spec/SC_configure_cloud_saucelabs.rb
