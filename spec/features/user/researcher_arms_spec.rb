@@ -26,7 +26,7 @@ describe "Research, Arms", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_button 'Researcher Dashboard'
+    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
@@ -46,17 +46,38 @@ describe "Research, Arms", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_button 'Researcher Dashboard'
+    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
-    click on 'Edit'
+    click_on 'Edit'
     expect(page).to have_content 'Editing Arms'
     fill_in 'arm_title', :with => 'Updated fake'
     click on 'Update'
     expect(page).to have_content 'Arm was successfully updated.'
     expect(page).to have_content 'Title: Updated fake'
+  end
+
+  #Testing destroying an arm
+  it "- destroys an arm" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Researcher Dashboard'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
+    click_on 'Test Arm'
+    expect(page).to have_content 'Title: Test Arm'
+    click_on 'Destroy'
+    click_on 'Ok'
+    expect(page).to have_content 'Arm was successfully destroyed.'
+    expect(page).to_not have_content 'Test Arm'
   end
 end
