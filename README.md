@@ -49,10 +49,12 @@ Something to note:
 
 
 ##To run this test suite:
-You will need to set the new participant login as environment variables:
+You will need to set the new participant login as environment variables as well as the super user login:
 
     $ export Participant_Email='new participant email address'
     $ export Participant_Password='new participant password'
+    $ export User_Email='super user email address'
+    $ export User_Password='super user password'
 
 To run on Sauce Labs you will need to set the following environment variables, otherwise you can run it locally on your machine:
 
