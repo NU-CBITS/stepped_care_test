@@ -14,6 +14,7 @@ very new process therefore this repo will be changing drastically over time.
 1. Add a new Participant:
   - Study ID: 
   - Email:
+  - This needs to be linked to a real email address because you will need to go to the participant site and select "Forgot Your Password?" You will enter your email address and reset the password for this participant.
 2. Add a new Membership
   - Group: Access to Everything
   - Participant: choose new participant
@@ -22,9 +23,6 @@ very new process therefore this repo will be changing drastically over time.
 3. Add a new Coach assignment
   - Coach: choose yourself so you can see data
   - Participant: choose new participant
-
-  - This needs to be linked to a real email address because you will need to go to the participant site and select 
-    "Forgot Your Password?" You will enter your email address and reset the password for this participant. 
 
 ###Seed data:
 
@@ -51,16 +49,18 @@ Something to note:
 
 
 ##To run this test suite:
-To run this test suite you will need to set the new participant login as environment variables:
+You will need to set the new participant login as environment variables as well as the super user login:
 
     $ export Participant_Email='new participant email address'
     $ export Participant_Password='new participant password'
+    $ export User_Email='super user email address'
+    $ export User_Password='super user password'
 
-To run the test suite on locally against the staging server simply run:
+To run on Sauce Labs you will need to set the following environment variables, otherwise you can run it locally on your machine:
+
+    $ export SAUCE_USERNAME='sauce username'
+    $ export SAUCE_ACCESS_KEY='sauce access key'
+
+To run the test suite against the staging server simply run:
 
     $ rspec
-
-To run this test suite on Sauce Labs you will need to set the environment variables found in
-"SC_configure_cloud_saucelabs.rb" locally. Once the environment variables have been set, run:
-
-    $ rspec -r./spec/SC_configure_cloud_saucelabs.rb
