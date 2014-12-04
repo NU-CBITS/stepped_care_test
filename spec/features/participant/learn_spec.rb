@@ -1,12 +1,13 @@
-#filename: SC_learn_spec,rb
+#filename: learn_spec.rb
 
 #this file is to test the functionality of logging in, selecting the "LEARN" section,
 # and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
-# describe "Learn_1", :type => :feature, :sauce => true do
+# describe "Learn", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
 describe "Learn", :type => :feature, :sauce => false do

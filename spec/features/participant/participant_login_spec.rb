@@ -1,8 +1,9 @@
-#filename: SC_login_spec,rb
+#filename: participant_login_spec.rb
 
 #this is to test the login functionality.
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
 # describe "Login", :type => :feature, :sauce => true do

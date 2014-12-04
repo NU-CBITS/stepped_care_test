@@ -1,8 +1,9 @@
-#filename: SC_think_spec,rb
+#filename: think_spec.rb
 
 #this file is to test the functionality of the THINK tool
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
 # describe "Think", :type => :feature, :sauce => true do
@@ -91,12 +92,24 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_on 'Continue'
     expect(page).to have_content "Let's start by"
-    select 'Personalization', :from => 'thought_pattern_id'
 
+    if page.has_text?("You haven't listed any negative thoughts")
+      click_on 'Continue'
+
+    else
+      select 'Personalization', :from => 'thought_pattern_id'
+      click_on 'Continue'
+    end
+
+    if page.has_content?("One thought you had:")
+      select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
+      click_on 'Continue'
+
+    else
+    expect(page).to have_content 'Good work!'
     click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
-    select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
-    click_on 'Continue'
+    expect(page).to have_content 'Add a New Thought'
+    end
 
     if page.has_content?("One thought you had:")
       select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
@@ -106,9 +119,9 @@ describe "Think", :type => :feature, :sauce => false do
       expect(page).to have_content 'Add a New Thought'
 
     else
-    expect(page).to have_content 'Good work!'
-    click_on 'Continue'
-    expect(page).to have_content 'Add a New Thought'
+      expect(page).to have_content 'Good work!'
+      click_on 'Continue'
+      expect(page).to have_content 'Add a New Thought'
     end
   end
 

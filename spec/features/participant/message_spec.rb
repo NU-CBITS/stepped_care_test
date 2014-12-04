@@ -1,8 +1,9 @@
-#filename: SC_message_spec,rb
+#filename: message_spec.rb
 
 #this file is to test the messaging functionality
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
 # describe "Messages", :type => :feature, :sauce => true do

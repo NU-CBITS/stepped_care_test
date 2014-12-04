@@ -1,8 +1,9 @@
-# #filename: SC_do_spec,rb
+# #filename: do_spec.rb
 
 #this file is to test the functionality of using the DO tool
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
 # describe "Do", :type => :feature, :sauce => true do
@@ -245,8 +246,8 @@ describe "Do", :type => :feature, :sauce => false do
     today=Date.today
     tomorrow = today + 1
     fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
-    choose 'activity_predicted_pleasure_intensity_4'
-    choose 'activity_predicted_accomplishment_intensity_3'
+    choose_rating("pleasure_0", 4)
+    choose_rating("accomplishment_0", 3)
   end
 
   #Testing Your Activities portion of the DO tool

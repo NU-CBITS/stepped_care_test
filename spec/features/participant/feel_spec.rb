@@ -1,8 +1,9 @@
-#filename: SC_feel_spec,rb
+#filename: feel_spec.rb
 
 #this file is to test the functionality of using the FEEL to
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
 # describe "Feel", :type => :feature, :sauce => true do

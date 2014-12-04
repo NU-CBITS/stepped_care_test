@@ -1,14 +1,15 @@
-#filename: SC_other_navbar_functionality_spec,rb
+#filename: bugs_spec.rb
 
-#this file is to test the functionality of navbar not covered in the other specs
+#this file is to test bug fixes
 
-require_relative '../../spec/SC_spec_helper'
+require_relative '../../../spec/spec_helper'
+require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
-# describe "Other navbar functionality", :type => :feature, :sauce => true do
+# describe "Bugs", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
-describe "Other navbar functionality", :type => :feature, :sauce => false do
+describe "Bugs", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
@@ -16,22 +17,8 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
 
 #tests
 
-  #Testing the Sign Out functionality
-  it "- sign out" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
-    within("#new_participant") do
-      fill_in 'participant_email', :with => ENV['Participant_Email']
-      fill_in 'participant_password', :with => ENV['Participant_Password']
-    end
-    click_button 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    page.find('#navbar-collapse').find(:xpath, "(//a[@href='/participants/sign_out'])[1]").click
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
-  end
-
-  #Testing Replay Intro button functionality
-  it "- replay intro" do
+#Testing bug that redirects participant to user login upon completion of the replay introduction feature
+  it "- redirect error at completion of Replay Intro " do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
