@@ -1,6 +1,6 @@
 #filename: researcher_participants_spec.rb
 
-#this is to test the groups functionality on the researcher dashboard.
+#this is to test the participants functionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud_saucelabs'
