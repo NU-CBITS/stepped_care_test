@@ -33,14 +33,14 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     click_on 'New'
     expect(page).to have_content 'New Group'
     fill_in 'group_title', :with => 'Testing Group'
-    select 'fake', :from => 'group_arm_id'
+    select 'fun', :from => 'group_arm_id'
     select ENV['User_Email'], :from => 'group_user_id'
     click_on 'Create'
     expect(page).to have_content 'Group was successfully created.'
   end
 
   #Testing updating a group
-  it "- create a group" do
+  it "- update a group" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -60,6 +60,12 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     click_on 'Update'
     expect(page).to have_content 'Group was successfully updated.'
     expect(page).to have_content 'Title: Updated fun'
+    click_on 'Edit'
+    expect(page).to have_content 'Editing Group'
+    fill_in 'group_title', :with => 'fun'
+    click_on 'Update'
+    expect(page).to have_content 'Group was successfully updated.'
+    expect(page).to have_content 'Title: fun'
   end
 
   #Testing destroying a group
@@ -78,7 +84,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     click_on 'Testing Group'
     expect(page).to have_content 'Title: Testing Group'
     click_on 'Destroy'
-    click_on 'Ok'
+    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Group was successfully destroyed.'
     expect(page).to_not have_content 'Testing Group'
   end

@@ -38,7 +38,7 @@ describe "Research, Arms", :type => :feature, :sauce => false do
   end
 
   #Testing updating an arm
-  it "- create an arm" do
+  it "- update an arm" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -53,11 +53,17 @@ describe "Research, Arms", :type => :feature, :sauce => false do
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
     click_on 'Edit'
-    expect(page).to have_content 'Editing Arms'
+    expect(page).to have_content 'Editing Arm'
     fill_in 'arm_title', :with => 'Updated fake'
-    click on 'Update'
+    click_on 'Update'
     expect(page).to have_content 'Arm was successfully updated.'
     expect(page).to have_content 'Title: Updated fake'
+    click_on 'Edit'
+    expect(page).to have_content 'Editing Arm'
+    fill_in 'arm_title', :with => 'fake'
+    click_on 'Update'
+    expect(page).to have_content 'Arm was successfully updated.'
+    expect(page).to have_content 'Title: fake'
   end
 
   #Testing destroying an arm
@@ -76,7 +82,7 @@ describe "Research, Arms", :type => :feature, :sauce => false do
     click_on 'Test Arm'
     expect(page).to have_content 'Title: Test Arm'
     click_on 'Destroy'
-    click_on 'Ok'
+    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Arm was successfully destroyed.'
     expect(page).to_not have_content 'Test Arm'
   end
