@@ -154,7 +154,6 @@ describe "Do", :type => :feature, :sauce => false do
     fill_in 'activity_activity_type_new_title', :with => 'New planned activity'
     today=Date.today
     tomorrow = today + 1
-
     fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
     choose_rating("pleasure_0", 6)
     choose_rating("accomplishment_0", 3)
@@ -165,7 +164,6 @@ describe "Do", :type => :feature, :sauce => false do
     fill_in 'activity_activity_type_new_title', :with => 'Another planned activity'
     today=Date.today
     tomorrow = today + 1
-
     fill_in 'future_date_picker_0', :with => tomorrow.strftime('%d %b, %Y')
     choose_rating("pleasure_0", 4)
     choose_rating("accomplishment_0", 8)
