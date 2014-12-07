@@ -201,7 +201,9 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
     expect(page).to have_content 'Content Modules'
     if page.has_text?('DO Activities')
       click_on 'DO Activities'
+      expect(page).to have_content 'Edit Module'
       click_on 'slideshow provider'
+      expect(page).to have_content 'Slideshow: Home Introduction'
       click_on 'Destroy'
       page.accept_alert 'Are you sure?'
       expect(page).to have_content 'Content provider was successfully destroyed.'
@@ -209,14 +211,18 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
       find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[3]').click
       if page.has_text?('DO Activities')
         click_on 'DO Activities'
+        expect(page).to have_content 'Edit Module'
         click_on 'slideshow provider'
+        expect(page).to have_content 'Slideshow: Home Introduction'
         click_on 'Destroy'
         page.accept_alert 'Are you sure?'
         expect(page).to have_content 'Content provider was successfully destroyed.'
       else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
         click_on 'DO Activities'
+        expect(page).to have_content 'Edit Module'
         click_on 'slideshow provider'
+        expect(page).to have_content 'Slideshow: Home Introduction'
         click_on 'Destroy'
         page.accept_alert 'Are you sure?'
         expect(page).to have_content 'Content provider was successfully destroyed.'
