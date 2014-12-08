@@ -1,4 +1,4 @@
-#filename: bugs_spec.rb
+#filename: participant/bugs_spec.rb
 
 #this file is to test bug fixes
 
@@ -6,10 +6,10 @@ require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud_saucelabs'
 
 #to run locally comment this line out
-# describe "Bugs", :type => :feature, :sauce => true do
+# describe "Participant Bugs", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
-describe "Bugs", :type => :feature, :sauce => false do
+describe "Participant Bugs", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
