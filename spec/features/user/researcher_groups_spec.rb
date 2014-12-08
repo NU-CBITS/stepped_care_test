@@ -88,4 +88,35 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     expect(page).to have_content 'Group was successfully destroyed.'
     expect(page).to_not have_content 'Testing Group'
   end
+
+  #Testing managing tasks
+  it "- manage tasks within a group" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Researcher Dashboard'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fun'
+    expect(page).to have_content 'Title: fun'
+    click_on 'Manage Tasks'
+    expect(page).to have_content 'Recurring termination day (if applicable)'
+    select 'DO: #1 Awareness', :from => 'task_bit_core_content_module_id'
+    fill_in 'task_release_day', :with => '1'
+    click_on 'Assign'
+    expect(page).to have_content 'Task assigned.'
+    within '#tasks' do
+      find(:xpath, "//a[@href='/arms/5/bit_maker/content_modules/339588004']")
+    end
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[6]/a').click
+    page.accept_alert 'Are you sure?'
+    within '#tasks' do
+      expect(page).to_not have_content 'DO: #1 Awareness'
+    end
+  end
 end
