@@ -41,6 +41,42 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     expect(page).to have_content 'Test slideshow'
   end
 
+  #Testing updating a slideshow
+  it "- update slideshow" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'fun'
+    expect(page).to have_content 'Manage Content'
+    expect(page).to have_content 'Click the group below for which you wish to moderate.'
+    click_on 'Manage Content'
+    expect(page).to have_content 'Content Dashboard'
+    click_on 'Slideshows'
+    expect(page).to have_content 'Listing Slideshows'
+    click_on 'Testing adding/updating slides/lessons'
+    expect(page).to have_content 'Slideshow'
+    expect(page).to have_content 'Testing adding/updating slides/lessons'
+    expect(page).to have_content 'Anchors'
+    click_on 'Edit'
+    expect(page).to have_content 'Edit Slideshow'
+    fill_in 'slideshow_title', :with => 'Testing adding/updating slides/lessons 123'
+    click_on 'Update'
+    expect(page).to have_content 'Successfully updated slideshow'
+    click_on 'Testing adding/updating slides/lessons 123'
+    expect(page).to have_content 'Slideshow'
+    expect(page).to have_content 'Testing adding/updating slides/lessons 123'
+    expect(page).to have_content 'Anchors'
+    click_on 'Edit'
+    expect(page).to have_content 'Edit Slideshow'
+    fill_in 'slideshow_title', :with => 'Testing adding/updating slides/lessons'
+    click_on 'Update'
+    expect(page).to have_content 'Successfully updated slideshow'
+  end
+
   #Testing destroying a slideshow
   it "- destroy slideshow" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
