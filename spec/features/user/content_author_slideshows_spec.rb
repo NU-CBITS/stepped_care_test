@@ -61,7 +61,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     expect(page).to have_content 'Slideshow'
     expect(page).to have_content 'Testing adding/updating slides/lessons'
     expect(page).to have_content 'Anchors'
-    click_on 'Edit'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[1]/a[4]').click
     expect(page).to have_content 'Edit Slideshow'
     fill_in 'slideshow_title', :with => 'Testing adding/updating slides/lessons 123'
     click_on 'Update'
@@ -70,7 +70,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     expect(page).to have_content 'Slideshow'
     expect(page).to have_content 'Testing adding/updating slides/lessons 123'
     expect(page).to have_content 'Anchors'
-    click_on 'Edit'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[1]/a[4]').click
     expect(page).to have_content 'Edit Slideshow'
     fill_in 'slideshow_title', :with => 'Testing adding/updating slides/lessons'
     click_on 'Update'
