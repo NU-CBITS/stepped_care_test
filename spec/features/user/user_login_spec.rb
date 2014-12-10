@@ -77,4 +77,58 @@ describe "Login", :type => :feature, :sauce => false do
     click_button 'Send me reset password instructions'
     expect(page).to have_content 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end
+
+  #Testing authorization - Clinician
+  it "- clinician authorization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['Clinician_Email']
+      fill_in 'user_password', :with => ENV['Clinician_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to_not have_content 'Researcher Dashboard'
+  end
+
+  #Testing authorization - Researcher
+  it "- researcher authorization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['Researcher_Email']
+      fill_in 'user_password', :with => ENV['Researcher_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to_not have_content 'Coach Dashboard'
+  end
+
+  #Testing authorization - Content Author
+  it "- content author authorization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['Content_Author_Email']
+      fill_in 'user_password', :with => ENV['Content_Author_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to_not have_content 'Coach Dashboard'
+    expect(page).to_not have_content 'Researcher Dashboard'
+    click_on 'fun'
+    expect(page).to have_content 'Manage Content'
+  end
+
+  #Testing authorization - Super User
+  it "- super user authorization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to have_content 'Coach Dashboard'
+    expect(page).to have_content 'Researcher Dashboard'
+    click_on 'fun'
+    expect(page).to have_content 'Manage Content'
+  end
 end
