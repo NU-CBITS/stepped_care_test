@@ -124,7 +124,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
     expect(page).to have_content 'Study Id: Tests'
     click_on 'Assign Group'
     expect(page).to have_content 'Assigning Group to Participant'
-    select 'fun', :from => 'membership_group_id'
+    select 'fake', :from => 'membership_group_id'
     yesterday=Date.today.prev_day
     fill_in 'membership_start_date', :with => yesterday.strftime('%Y-%m-%d')
     today=Date.today
@@ -133,7 +133,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
     click_on 'Assign'
     expect(page).to have_content 'Group was successfully assigned'
     expect(page).to have_content 'Participant: Tests'
-    expect(page).to have_content 'Group: fun'
+    expect(page).to have_content 'Group: fake'
     expect(page).to have_content 'Membership Status: Active'
     expect(page).to have_content 'Start Date: ' + yesterday.strftime('%Y-%m-%d')
     expect(page).to have_content 'End Date: ' + next_year.strftime('%Y-%m-%d')
