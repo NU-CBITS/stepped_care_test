@@ -60,8 +60,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[1]/a[2]').click
     fill_in 'lesson_title', :with => 'Testing adding/updating slides/lessons 123'
     click_on 'Update'

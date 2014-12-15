@@ -31,12 +31,11 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
     click_on 'Lesson Modules'
-    expect(page).to have_content 'Listing Lesson Moduels'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    click_on 'Test video 1'
-    expect(page).to have_content 'List item 3'
+    expect(page).to have_content 'Test video slide 1'
+    click_on 'Test video slide 1'
+    expect(page).to have_content 'This slide was added for automated testing purposes'
   end
 
   #Testing bug where you receive error message when trying to edit a provider
