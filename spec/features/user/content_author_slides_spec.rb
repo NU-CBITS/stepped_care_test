@@ -1,6 +1,6 @@
 #filename: content_author_slides_spec.rb
 
-#this is to test the users functionality on the researcher dashboard.
+#this is to test the users Arm 1ctionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud_saucelabs'
@@ -25,16 +25,15 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
     click_on 'Add Slide'
     expect(page).to have_content 'New Slide for Lesson'
     expect(page).to have_content 'Testing adding/updating slides/lessons'
@@ -55,16 +54,15 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[1]/span[3]/a[1]').click
     expect(page).to have_content 'Edit Slide'
     uncheck 'slide_is_title_visible'
@@ -86,21 +84,19 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    click_on 'Test 1'
-    expect(page).to have_content 'List item 2'
+    expect(page).to have_content 'Test video slide 1'
+    click_on 'Slide 2'
+    expect(page).to have_content 'Log in once a day'
     click_on 'Done'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
   end
 
   #testing destroying a slide in a lesson
@@ -112,21 +108,20 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[3]/span[3]/a[2]').click
+    expect(page).to have_content 'Test video slide 1'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[5]/span[3]/a[2]').click
     page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Slide deleted'
     expect(page).to_not have_content 'Test slide 2'
-   end
+  end
 
   #testing adding a video slide to a lesson
   it "- adding a video slide to a lesson" do
@@ -137,16 +132,15 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
     click_on 'Add Video Slide'
     expect(page).to have_content 'New Slide for Lesson'
     expect(page).to have_content 'Testing adding/updating slides/lessons'
@@ -167,23 +161,22 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[2]/span[3]/a[1]').click
+    expect(page).to have_content 'Test video slide 1'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[4]/span[3]/a[1]').click
     expect(page).to have_content 'Edit Slide'
-    expect(page).to have_content 'Test video 1'
+    expect(page).to have_content 'Test video slide 1'
     uncheck 'slide_is_title_visible'
     click_on 'Update'
     expect(page).to have_content 'Successfully updated slide for lesson'
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[2]/span[3]/a[1]').click
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[4]/span[3]/a[1]').click
     expect(page).to have_content 'Edit Slide'
     check 'slide_is_title_visible'
     click_on 'Update'
@@ -199,18 +192,17 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    click_on 'Test video 1'
-    expect(page).to have_content 'List item 3'
+    expect(page).to have_content 'Test video slide 1'
+    click_on 'Test video slide 1'
+    expect(page).to have_content 'This slide was added for automated testing purposes'
   end
 
   #testing destroying a video slide in a lesson
@@ -222,17 +214,16 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
     expect(page).to have_content 'Content Dashboard'
-    click_on 'Lessons'
-    expect(page).to have_content 'Listing Lessons'
+    click_on 'Lesson Modules'
+    expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test 1'
-    expect(page).to have_content 'Test video 1'
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[3]/span[3]/a[2]').click
+    expect(page).to have_content 'Test video slide 1'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/ol/li[5]/span[3]/a[2]').click
     page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Slide deleted'
     expect(page).to_not have_content 'Test video slide 2'
@@ -247,7 +238,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -275,7 +266,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -306,7 +297,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -332,7 +323,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -356,7 +347,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -385,7 +376,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -416,7 +407,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -445,7 +436,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
