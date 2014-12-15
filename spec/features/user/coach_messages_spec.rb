@@ -16,7 +16,6 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
   end
 
 #tests
-
   #Testing inbox
   it "- inbox" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
