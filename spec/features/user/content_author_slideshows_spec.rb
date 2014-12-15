@@ -1,6 +1,6 @@
 #filename: content_author_slideshows_spec.rb
 
-#this is to test the users functionality on the researcher dashboard.
+#this is to test the users Arm 1ctionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud_saucelabs'
@@ -26,7 +26,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -50,7 +50,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
@@ -86,7 +86,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
     click_on 'Manage Content'
