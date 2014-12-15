@@ -62,16 +62,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
       expect(page).to have_content 'slideshow provider'
       click_on 'Edit'
       expect(page).to have_content 'Editing Content Provider'
-      fill_in 'content_provider_position', :with => '10'
-      click_on 'Update'
-      expect(page).to have_content 'ContentProvider was successfully updated.'
-      expect(page).to have_content 'Position: 10 / 10'
-      click_on 'Edit'
-      expect(page).to have_content 'Editing Content Provider'
-      fill_in 'content_provider_position', :with => '1'
-      click_on 'Update'
-      expect(page).to have_content 'ContentProvider was successfully updated.'
-      expect(page).to have_content 'Position: 1 / 1'
     else
       find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[3]').click
       if page.has_text?('Testing adding/updating slides/lessons')
@@ -82,16 +72,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
         expect(page).to have_content 'slideshow provider'
         click_on 'Edit'
         expect(page).to have_content 'Editing Content Provider'
-        fill_in 'content_provider_position', :with => '10'
-        click_on 'Update'
-        expect(page).to have_content 'ContentProvider was successfully updated.'
-        expect(page).to have_content 'Position: 10 / 10'
-        click_on 'Edit'
-        expect(page).to have_content 'Editing Content Provider'
-        fill_in 'content_provider_position', :with => '1'
-        click_on 'Update'
-        expect(page).to have_content 'ContentProvider was successfully updated.'
-        expect(page).to have_content 'Position: 1 / 1'
       else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
           click_on 'Testing adding/updating slides/lessons'
@@ -101,17 +81,26 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
           expect(page).to have_content 'slideshow provider'
           click_on 'Edit'
           expect(page).to have_content 'Editing Content Provider'
-          fill_in 'content_provider_position', :with => '10'
-          click_on 'Update'
-          expect(page).to have_content 'ContentProvider was successfully updated.'
-          expect(page).to have_content 'Position: 10 / 10'
-          click_on 'Edit'
-          expect(page).to have_content 'Editing Content Provider'
-          fill_in 'content_provider_position', :with => '1'
-          click_on 'Update'
-          expect(page).to have_content 'ContentProvider was successfully updated.'
-          expect(page).to have_content 'Position: 1 / 1'
       end
     end
+  end
+
+  #Testing bug where you receive an error message when trying to access a specific group on Researcher Dashboard
+  it "- error message when accesing a group" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Researcher Dashboard'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fun'
+    expect(page).to have_content 'Title: fun'
+    click_on 'Edit'
+    expect(page).to have_content 'Editing Group'
   end
 end
