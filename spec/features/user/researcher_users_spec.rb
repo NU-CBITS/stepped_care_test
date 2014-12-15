@@ -53,15 +53,15 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
-    click_on 'testsuperusertest@test.com'
-    expect(page).to have_content 'Email: testsuperusertest@test.com'
+    click_on 'genericadmin@test.com'
+    expect(page).to have_content 'Email: genericadmin@test.com'
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     check 'user_user_roles_clinician'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: Yes'
-    expect(page).to have_content 'Email: testsuperusertest@test.com'
+    expect(page).to have_content 'Email: genericadmin@test.com'
     expect(page).to have_content 'Roles: Clinician'
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
@@ -69,7 +69,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: Yes'
-    expect(page).to have_content 'Email: testsuperusertest@test.com'
+    expect(page).to have_content 'Email: genericadmin@test.com'
     expect(page).to_not have_content 'Roles: Clinician'
   end
 
@@ -131,23 +131,23 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
-    click_on 'testresearchertest@test.com'
-    expect(page).to have_content 'Email: testresearchertest@test.com'
+    click_on ENV['Researcher_Email']
+    expect(page).to have_content 'Email: ' + ENV['Researcher_Email']
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     check 'user_user_roles_clinician'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testresearchertest@test.com'
-    expect(page).to have_content 'Roles: Researcher and Clinician'
+    expect(page).to have_content 'Email: ' + ENV['Researcher_Email']
+    expect(page).to have_content 'Roles: Clinician and Researcher'
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_clinician'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testresearchertest@test.com'
+    expect(page).to have_content 'Email: ' + ENV['Researcher_Email']
     expect(page).to have_content 'Roles: Researcher'
     expect(page).to_not have_content 'Roles: Clinician and Researcher'
   end
@@ -210,25 +210,25 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
-    click_on 'testcliniciantest@test.com'
-    expect(page).to have_content 'Email: testcliniciantest@test.com'
+    click_on ENV['Clinician_Email']
+    expect(page).to have_content 'Email: ' + ENV['Clinician_Email']
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     check 'user_user_roles_content_author'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testcliniciantest@test.com'
-    expect(page).to have_content 'Roles: Clinician and Content Author'
+    expect(page).to have_content 'Email: ' + ENV['Clinician_Email']
+    expect(page).to have_content 'Roles: Content Author and Clinician'
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_content_author'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testcliniciantest@test.com'
+    expect(page).to have_content 'Email: ' + ENV['Clinician_Email']
     expect(page).to have_content 'Roles: Clinician'
-    expect(page).to_not have_content 'Roles: Clinician and Content Author'
+    expect(page).to_not have_content 'Roles: Content Author and Clinician'
   end
 
   #Testing detroying a clinician
@@ -289,23 +289,23 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
-    click_on 'testcontentauthortest@test.com'
-    expect(page).to have_content 'Email: testcontentauthortest@test.com'
+    click_on ENV['Content_Author_Email']
+    expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     check 'user_user_roles_clinician'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testcontentauthortest@test.com'
-    expect(page).to have_content 'Roles: Content Author and Clinician'
+    expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
+    expect(page).to have_content 'Roles: Clinician and Content Author'
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_clinician'
     click_on 'Update'
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
-    expect(page).to have_content 'Email: testcontentauthortest@test.com'
+    expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
     expect(page).to have_content 'Roles: Content Author'
     expect(page).to_not have_content 'Roles: Clinician and Content Author'
   end
