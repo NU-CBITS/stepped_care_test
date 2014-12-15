@@ -113,7 +113,7 @@ describe "Login", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
     expect(page).to_not have_content 'Coach Dashboard'
     expect(page).to_not have_content 'Researcher Dashboard'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
   end
 
@@ -128,7 +128,7 @@ describe "Login", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'Coach Dashboard'
     expect(page).to have_content 'Researcher Dashboard'
-    click_on 'fun'
+    click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
   end
 end
