@@ -103,4 +103,21 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     click_on 'Edit'
     expect(page).to have_content 'Editing Group'
   end
+
+  #Testing bug where you receive an error message when trying to access specific user on Researcher Dashboard
+  it "- update a content author" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Researcher Dashboard'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Users'
+    expect(page).to have_content 'Listing Users'
+    click_on ENV['Content_Author_Email']
+    expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
+  end
 end
