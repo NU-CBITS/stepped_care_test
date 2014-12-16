@@ -41,7 +41,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
@@ -119,7 +119,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
@@ -144,7 +144,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#2 Planning'
     expect(page).to have_content 'The last few times you were here...'
@@ -188,7 +188,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#3 Reviewing'
     expect(page).to have_content 'Welcome back!'
@@ -235,7 +235,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
 
     click_on 'Plan a New Activity'
@@ -259,7 +259,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on 'Your Activities'
     expect(page).to have_content 'Activities Overview'
@@ -301,7 +301,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Activities Overview'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
   end
 
@@ -316,7 +316,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
     click_on '#1 Awareness'
     expect(page).to have_content 'You are what you do'
@@ -356,7 +356,7 @@ describe "Do", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
-    click_on 'DO Landing'
+    click_on 'DO Home'
     expect(page).to have_content 'Plan a New Activity'
 
     if page.has_text?('Recent Past Activities')

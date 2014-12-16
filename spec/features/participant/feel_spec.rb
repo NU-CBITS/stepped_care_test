@@ -28,7 +28,7 @@ describe "Feel", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'FEEL'
-    click_link 'FEEL Landing'
+    click_link 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
 
     click_link 'Tracking Your Mood and Emotions'
@@ -64,7 +64,7 @@ describe "Feel", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'FEEL'
-    click_link 'FEEL Landing'
+    click_link 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
 
     click_on 'View Your Recent Emotions'
@@ -92,7 +92,7 @@ describe "Feel", :type => :feature, :sauce => false do
     expect(page).to have_content 'Your Recent Emotions'
 
     click_link 'FEEL'
-    click_link 'FEEL Landing'
+    click_link 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
   end
 end

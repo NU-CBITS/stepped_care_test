@@ -28,7 +28,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link '#1 Identifying'
@@ -78,7 +78,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link '#2 Patterns'
@@ -136,7 +136,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link '#3 Reshape'
@@ -191,7 +191,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link 'Add a New Thought'
@@ -219,7 +219,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link 'Add a New Thought'
@@ -240,7 +240,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link 'Thoughts'
@@ -259,7 +259,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     click_link '#1 Identifying'
@@ -268,7 +268,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Now, your turn...'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     click_link '#2 Patterns'
     expect(page).to have_content 'Thinking Patterns'
     click_on 'Skip'
@@ -276,7 +276,7 @@ describe "Think", :type => :feature, :sauce => false do
     identified might match."
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     click_link '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
@@ -300,7 +300,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link('THINK Landing')
+    click_link('THINK Home')
     expect(page).to have_content 'Add a New Thought'
 
     within("#navbar-collapse") do
@@ -338,7 +338,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
 
     click_link 'THINK'
-    click_link 'THINK Landing'
+    click_link 'THINK Home'
     expect(page).to have_content 'Add a New Thought'
 
     if page.has_text?('Click a bubble for more info')
