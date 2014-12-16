@@ -3,7 +3,7 @@
 #this is to test the groups functionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
 # describe "Researcher, Groups", :type => :feature, :sauce => true do

@@ -4,7 +4,7 @@
 # and reading through the first lesson "Think, Feel, Do Your Way Out of Depression"
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
 # describe "Learn", :type => :feature, :sauce => true do

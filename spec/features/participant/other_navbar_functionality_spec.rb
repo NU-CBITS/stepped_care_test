@@ -3,7 +3,7 @@
 #this file is to test the functionality of navbar not covered in the other specs
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
 # describe "Other navbar functionality", :type => :feature, :sauce => true do

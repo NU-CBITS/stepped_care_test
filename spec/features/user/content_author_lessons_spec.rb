@@ -3,7 +3,7 @@
 #this is to test the users Arm 1ctionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 
 

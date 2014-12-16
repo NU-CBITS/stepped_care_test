@@ -3,7 +3,7 @@
 #this file is to test the functionality of the THINK tool
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
 # describe "Think", :type => :feature, :sauce => true do

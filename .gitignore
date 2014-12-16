@@ -1,3 +1,3 @@
 .idea
 
-spec/configure_cloud_saucelabs.rb
+spec/configure_cloud.rb

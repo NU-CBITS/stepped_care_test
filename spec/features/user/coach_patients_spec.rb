@@ -3,7 +3,7 @@
 #this is to test the users functionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud_saucelabs'
+require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
 # describe "Coach, Patients", :type => :feature, :sauce => true do
