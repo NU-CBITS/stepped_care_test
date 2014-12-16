@@ -12,18 +12,10 @@ very new process therefore this repo will be changing drastically over time.
 ###Login to steppedcare-staging as an admin:
 
 1. Add a new Participant:
-  - Study ID: 
-  - Email:
   - This needs to be linked to a real email address because you will need to go to the participant site and select
   "Forgot Your Password?" You will enter your email address and reset the password for this participant.
 2. Add a new Membership
-  - Group: Access to Everything
-  - Participant: choose new participant
-  - Start Date: one week prior to today’s
-  - End Date: today’s date plus one year
 3. Add a new Coach assignment
-  - Coach: choose yourself so you can see data
-  - Participant: choose new participant
 
 ###Seed data:
 
