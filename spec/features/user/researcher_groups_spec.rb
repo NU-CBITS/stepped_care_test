@@ -33,7 +33,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     click_on 'New'
     expect(page).to have_content 'New Group'
     fill_in 'group_title', :with => 'Testing Group'
-    select 'fun', :from => 'group_arm_id'
+    select 'Arm 1', :from => 'group_arm_id'
     select ENV['User_Email'], :from => 'group_user_id'
     click_on 'Create'
     expect(page).to have_content 'Group was successfully created.'
@@ -69,7 +69,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
   end
 
   #Testing adding/removing a moderator from a group
-  it "- update a group" do
+  it "- update moderator" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -84,12 +84,13 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
     click_on 'Remove Moderator'
+    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Moderator was successfully removed.'
     expect(page).to have_content 'Moderator: None'
     click_on 'Edit'
     select ENV['Clinician_Email'], :from => 'group_user_id'
     click_on 'Update'
-    expect(page).to have_content 'Groups was successfully updated.'
+    expect(page).to have_content 'Group was successfully updated.'
     expect(page).to have_content 'Moderator: ' + ENV['Clinician_Email']
   end
 
@@ -127,17 +128,14 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Title: fake'
+    click_on 'fun'
+    expect(page).to have_content 'Title: fun'
     click_on 'Manage Tasks'
     expect(page).to have_content 'Recurring termination day (if applicable)'
     select 'DO: #1 Awareness', :from => 'task_bit_core_content_module_id'
     fill_in 'task_release_day', :with => '1'
     click_on 'Assign'
     expect(page).to have_content 'Task assigned.'
-    within '#tasks' do
-      find(:xpath, "//a[@href='/arms/5/bit_maker/content_modules/339588004']")
-    end
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[6]/a').click
     page.accept_alert 'Are you sure?'
     within '#tasks' do
