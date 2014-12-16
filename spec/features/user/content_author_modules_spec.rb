@@ -216,7 +216,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
       fill_in 'content_provider_position', :with => '1'
       click_on 'Update'
       expect(page).to have_content 'ContentProvider was successfully updated.'
-      expect(page).to have_content 'Position: 1 / 1'
+      expect(page).to have_content 'Position: 1 / 4'
     else
       find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[3]').click
       if page.has_text?('Testing adding/updating slides/lessons')
@@ -236,7 +236,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
         fill_in 'content_provider_position', :with => '1'
         click_on 'Update'
         expect(page).to have_content 'ContentProvider was successfully updated.'
-        expect(page).to have_content 'Position: 1 / 1'
+        expect(page).to have_content 'Position: 1 / 4'
       else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
         click_on 'Testing adding/updating slides/lessons'
@@ -255,7 +255,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
         fill_in 'content_provider_position', :with => '1'
         click_on 'Update'
         expect(page).to have_content 'ContentProvider was successfully updated.'
-        expect(page).to have_content 'Position: 1 / 1'
+        expect(page).to have_content 'Position: 1 / 4'
       end
     end
   end
