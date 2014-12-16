@@ -1,17 +1,15 @@
 # filename: configure_cloud_saucelabs.rb
 
-#make sure to set these environment variables before testing
-#Sauce variables are only needed if you are running the test on Sauce Labs
 
-ENV['SAUCE_USERNAME']           ||= 'Your Sauce Username'
-ENV['SAUCE_ACCESS_KEY']         ||= 'Your Sauce Access Key'
-ENV['Participant_Email']        ||= 'SC Participant Email'
-ENV['Participant_Password']     ||= 'SC Participant Password'
-ENV['User_Email']               ||= 'SC User Email'
-ENV['User_Password']            ||= 'SC User Password'
-ENV['Clinician_Email']          ||= 'SC Clinician Email'
-ENV['Clinician_Password']       ||= 'SC Clinician Password'
-ENV['Researcher_Email']         ||= 'SC Researcher Email'
-ENV['Researcher_Password']      ||= 'SC Researcher Password'
-ENV['Content_Author_Email']     ||= 'SC Content Author Email'
-ENV['Content_Author_Password']  ||= 'SC Content Author Password'
+ENV['SAUCE_USERNAME']           ||= 'christopherbrenner1'
+ENV['SAUCE_ACCESS_KEY']         ||= '0ff3e3a5-2dc7-4d94-bdca-45149fa4e355'
+ENV['Participant_Email']        ||= 'cbrenner265@gmail.com'
+ENV['Participant_Password']     ||= 'this is a password'
+ENV['User_Email']               ||= 'christopher.brenner1@northwestern.edu'
+ENV['User_Password']            ||= 'this is a password'
+ENV['Clinician_Email']          ||= 'cbrenner265+clinician@gmail.com'
+ENV['Clinician_Password']       ||= 'this is a password'
+ENV['Researcher_Email']         ||= 'cbrenner265+researcher@gmail.com'
+ENV['Researcher_Password']      ||= 'this is a password'
+ENV['Content_Author_Email']     ||= 'cbrenner265+content_author@gmail.com'
+ENV['Content_Author_Password']  ||= 'this is a password'
