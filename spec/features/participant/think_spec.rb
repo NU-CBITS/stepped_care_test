@@ -49,6 +49,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
+    expect(page).to have_content 'Now list another thought...'
     fill_in 'thought_content', :with => 'Testing negative thought'
     find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
 
@@ -58,13 +59,23 @@ describe "Think", :type => :feature, :sauce => false do
     find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
 
     click_on 'Continue'
-    expect(page).to have_content 'Now one more'
-    fill_in 'thought_content', :with => 'Forced negative thought'
-
-    click_on 'Continue'
-    expect(page).to have_content 'Good work'
-    click_on 'Continue'
-    expect(page).to have_content 'Add a New Thought'
+    if page.has_text?("Now one more")
+      fill_in 'thought_content', :with => 'Forced negative thought'
+      click_on 'Continue'
+      expect(page).to have_content 'Good work'
+      click_on 'Continue'
+      expect(page).to have_content 'Add a New Thought'
+    else
+      fill_in 'thought_content', :with => 'Testing neither thought'
+      find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
+      click_on 'Continue'
+      expect(page).to have_content 'Now one more'
+      fill_in 'thought_content', :with => 'Forced negative thought'
+      click_on 'Continue'
+      expect(page).to have_content 'Good work'
+      click_on 'Continue'
+      expect(page).to have_content 'Add a New Thought'
+    end
   end
 
   #Testing the #2-Patterns portion of the THINK tool
@@ -106,22 +117,19 @@ describe "Think", :type => :feature, :sauce => false do
       click_on 'Continue'
 
     else
-    expect(page).to have_content 'Good work!'
-    click_on 'Continue'
-    expect(page).to have_content 'Add a New Thought'
-    end
 
-    if page.has_content?("One thought you had:")
-      select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
-      click_on 'Continue'
-      expect(page).to have_content 'Good work!'
-      click_on 'Continue'
-      expect(page).to have_content 'Add a New Thought'
+      if page.has_content?("One thought you had:")
+        select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
+        click_on 'Continue'
+        expect(page).to have_content 'Good work!'
+        click_on 'Continue'
+        expect(page).to have_content 'Add a New Thought'
 
-    else
-      expect(page).to have_content 'Good work!'
-      click_on 'Continue'
-      expect(page).to have_content 'Add a New Thought'
+      else
+        expect(page).to have_content 'Good work!'
+        click_on 'Continue'
+        expect(page).to have_content 'Add a New Thought'
+      end
     end
   end
 
@@ -142,42 +150,48 @@ describe "Think", :type => :feature, :sauce => false do
     click_link '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Continue'
-    expect(page).to have_content 'You said you had the following unhelpful thoughts:'
-    click_on 'Continue'
-    expect(page).to have_content 'Challenging a thought means'
-    click_on 'Continue'
-    expect(page).to have_content 'You said that you thought...'
+    if page.has_text?("You don't have any harmful thoughts that you've logged and haven't challenged.")
+      click_link 'THINK'
+      find(:xpath, ".//*[@id='navbar-collapse']/ul[1]/li[2]/ul/li[1]/a")
+      expect(page).to have_content 'Add a New Thought'
+    else
+      expect(page).to have_content 'You said you had the following unhelpful thoughts:'
+      click_on 'Continue'
+      expect(page).to have_content 'Challenging a thought means'
+      click_on 'Continue'
+      expect(page).to have_content 'You said that you thought...'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Come up with a challenging'
-    fill_in 'thought[challenging_thought]', :with => 'Example challenge'
+      click_on 'Continue'
+      expect(page).to have_content 'Come up with a challenging'
+      fill_in 'thought[challenging_thought]', :with => 'Example challenge'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
-    expect(page).to have_content 'Because what you THINK, FEEL, Do'
+      click_on 'Continue'
+      expect(page).to have_content 'Thought saved'
+      expect(page).to have_content 'Because what you THINK, FEEL, Do'
 
-    click_on 'Continue'
-    expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
-    fill_in 'thought_act_as_if', :with => 'Example act-as-if'
+      click_on 'Continue'
+      expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
+      fill_in 'thought_act_as_if', :with => 'Example act-as-if'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
-    expect(page).to have_content 'You said that you thought...'
+      click_on 'Continue'
+      expect(page).to have_content 'Thought saved'
+      expect(page).to have_content 'You said that you thought...'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Come up with a challenging'
-    fill_in 'thought[challenging_thought]', :with => 'Example challenge'
+      click_on 'Continue'
+      expect(page).to have_content 'Come up with a challenging'
+      fill_in 'thought[challenging_thought]', :with => 'Example challenge'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
-    expect(page).to have_content 'Because what you THINK, FEEL, Do'
+      click_on 'Continue'
+      expect(page).to have_content 'Thought saved'
+      expect(page).to have_content 'Because what you THINK, FEEL, Do'
 
-    click_on 'Continue'
-    expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
-    fill_in 'thought_act_as_if', :with => 'Example act-as-if'
+      click_on 'Continue'
+      expect(page).to have_content 'What could you do to ACT AS IF you believe this?'
+      fill_in 'thought_act_as_if', :with => 'Example act-as-if'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
+      click_on 'Continue'
+      expect(page).to have_content 'Thought saved'
+    end
   end
 
   #Testing the Add a New Thought portion of the THINK tool
