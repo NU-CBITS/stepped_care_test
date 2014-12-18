@@ -198,21 +198,21 @@ describe "Do", :type => :feature, :sauce => false do
 
     if page.has_text?('You said you were going to')
       find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[1]/div[2]/label[1])").click
-      choose_pleasure_rating(8)
-      choose_accomplishment_rating(6)
+      select '7', :from => 'activity[actual_pleasure_intensity]'
+      select '5', :from => 'activity[actual_accomplishment_intensity]'
       click_on 'Continue'
       expect(page).to have_content 'Activity saved'
 
       if page.has_text?('You said you were going to')
-      find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[2]/div[2]/label[2])").click
-      fill_in 'activity[noncompliance_reason]', :with => "I didn't have time"
-      click_on 'Continue'
+        find(:xpath, "(/html/body/div[1]/div[1]/div/div[2]/form[2]/div[2]/label[2])").click
+        fill_in 'activity[noncompliance_reason]', :with => "I didn't have time"
+        click_on 'Continue'
 
       else
-      expect(page).to have_content 'Activity saved'
-      expect(page).to have_content 'Good Work!'
-      click_on 'Continue'
-      expect(page).to have_content 'Plan a New Activity'
+        expect(page).to have_content 'Activity saved'
+        expect(page).to have_content 'Good Work!'
+        click_on 'Continue'
+        expect(page).to have_content 'Plan a New Activity'
       end
 
     else
