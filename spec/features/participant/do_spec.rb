@@ -17,7 +17,7 @@ describe "Do", :type => :feature, :sauce => false do
 
 #define methods for this spec file
   def choose_rating(element_id, value)
-    find("##{ element_id } .intensity_btn:nth-child(#{ value + 1 })").click
+    find("##{ element_id } select").find(:xpath, "option[#{(value + 1)}]").select_option
   end
 
   def choose_pleasure_rating(value)
