@@ -20,14 +20,6 @@ describe "Do", :type => :feature, :sauce => false do
     find("##{ element_id } select").find(:xpath, "option[#{(value + 1)}]").select_option
   end
 
-  def choose_pleasure_rating(value)
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form[1]/span[1]/div[1]/div[2]/div/label[#{ value + 1 }]").click
-  end
-
-  def choose_accomplishment_rating(value)
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form[1]/span[1]/div[2]/div[2]/div/label[#{ value + 1 }]").click
-  end
-
 #tests
 
   #Testing the #1 Awareness portion of the DO tool
