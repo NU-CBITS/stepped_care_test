@@ -25,6 +25,8 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
@@ -47,6 +49,8 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
     expect(page).to have_content 'Click the group below for which you wish to moderate.'
@@ -94,8 +98,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
-    expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
     click_on 'fun'
@@ -112,9 +114,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
       fill_in 'user_password', :with => ENV['User_Password']
     end
     click_button 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
-    expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
     click_on ENV['Content_Author_Email']
