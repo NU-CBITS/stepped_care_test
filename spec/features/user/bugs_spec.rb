@@ -120,6 +120,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
   end
 
+  #Testing bug where you receive an error message when creating a membership
   it "- create a group membership" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
     within("#new_user") do
@@ -150,5 +151,27 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     expect(page).to have_content 'End Date: ' + next_year.strftime('%Y-%m-%d')
     click_on 'Destroy'
     expect(page).to have_content 'Membership was successfully destroyed.'
+  end
+
+  #Testing bug where a clinician user cannot access their group
+  it "- clinician authorization" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['Clinician_Email']
+      fill_in 'user_password', :with => ENV['Clinician_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to_not have_content 'Users'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
+    click_on 'Arm 1'
+    expect(page).to have_content 'Title: Arm 1'
+    expect(page).to_not have_content 'Manage Content'
+    click_on 'Access to Everything'
+    expect(page).to have_content 'Title: Access to Everything'
+    expect(page).to have_content 'Patients'
+    expect(page).to have_content 'Messaging'
+    expect(page).to_not have_content 'Manage Tasks'
   end
 end
