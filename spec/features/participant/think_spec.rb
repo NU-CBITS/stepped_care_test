@@ -209,7 +209,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Add a New Thought'
 
     click_link 'Add a New Thought'
-    expect(page).to have_content 'This thought is:'
+    expect(page).to have_content 'Add a New Harmful Thought'
     fill_in 'thought_content', :with => 'Testing add a new thought'
     find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
     select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
@@ -237,7 +237,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Add a New Thought'
 
     click_link 'Add a New Thought'
-    expect(page).to have_content 'This thought is:'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_on 'Cancel'
     expect(page).to have_content '#1 Identifying'
@@ -333,7 +333,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'Add a New Thought'
-    expect(page).to have_content 'This thought is:'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link 'THINK'
     click_link 'Thoughts'

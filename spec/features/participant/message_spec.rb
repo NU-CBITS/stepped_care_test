@@ -132,7 +132,7 @@ require_relative '../../../spec/configure_cloud'
         expect(page).to have_content 'From Coach'
 
         click_on 'Add a New Thought'
-        expect(page).to have_content 'This thought is:'
+        expect(page).to have_content 'Add a New Harmful Thought'
 
         click_link 'MESSAGES'
         expect(page).to have_content 'Inbox'
