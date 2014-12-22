@@ -27,7 +27,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -49,7 +48,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -82,7 +80,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
+    
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -104,7 +102,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -127,7 +124,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -161,7 +157,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -183,7 +178,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -206,7 +200,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -240,7 +233,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -262,7 +254,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -285,7 +276,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
@@ -319,7 +309,6 @@ describe "Research, Users", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'

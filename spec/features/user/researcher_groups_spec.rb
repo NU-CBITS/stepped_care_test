@@ -26,7 +26,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
@@ -34,7 +33,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     expect(page).to have_content 'New Group'
     fill_in 'group_title', :with => 'Testing Group'
     select 'Arm 1', :from => 'group_arm_id'
-    select ENV['User_Email'], :from => 'group_user_id'
+    select ENV['User_Email'], :from => 'group_moderator_id'
     click_on 'Create'
     expect(page).to have_content 'Group was successfully created.'
   end
@@ -48,7 +47,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
@@ -77,21 +75,19 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
-    click_on 'Remove Moderator'
-    page.accept_alert 'Are you sure?'
-    expect(page).to have_content 'Moderator was successfully removed.'
-    expect(page).to have_content 'Moderator: None'
     click_on 'Edit'
-    select ENV['Clinician_Email'], :from => 'group_user_id'
+    select ENV['Clinician_Email'], :from => 'group_moderator_id'
     click_on 'Update'
     expect(page).to have_content 'Group was successfully updated.'
-    expect(page).to have_content 'Moderator: ' + ENV['Clinician_Email']
+    click_on 'Edit'
+    select ENV['User_Email'], :from => 'group_moderator_id'
+    click_on 'Update'
+    expect(page).to have_content 'Group was successfully updated.'
   end
 
   #Testing destroying a group
@@ -103,7 +99,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
@@ -124,7 +119,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Researcher Dashboard'
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
