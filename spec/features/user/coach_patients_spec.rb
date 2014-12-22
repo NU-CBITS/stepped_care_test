@@ -25,8 +25,10 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Coach Dashboard'
-    expect(page).to have_content 'Site Messages'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     page.find("#patients")[:class].include?("table table hover")
@@ -41,8 +43,10 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Coach Dashboard'
-    expect(page).to have_content 'Site Messages'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
@@ -58,8 +62,10 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Coach Dashboard'
-    expect(page).to have_content 'Site Messages'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
@@ -95,8 +101,10 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Coach Dashboard'
-    expect(page).to have_content 'Site Messages'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
@@ -122,8 +130,10 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    click_on 'Coach Dashboard'
-    expect(page).to have_content 'Site Messages'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
