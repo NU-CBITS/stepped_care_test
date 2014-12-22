@@ -119,4 +119,36 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     click_on ENV['Content_Author_Email']
     expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
   end
+
+  it "- create a group membership" do
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Participants'
+    expect(page).to have_content 'Listing Participants'
+    click_on 'Tests'
+    expect(page).to have_content 'Study Id: Tests'
+    click_on 'Assign New Group'
+    expect(page).to have_content 'Assigning New Group to Participant'
+    select 'fake', :from => 'membership_group_id'
+    yesterday=Date.today.prev_day
+    fill_in 'membership_start_date', :with => yesterday.strftime('%Y-%m-%d')
+    today=Date.today
+    next_year = today + 365
+    fill_in 'membership_end_date', :with => next_year.strftime('%Y-%m-%d')
+    click_on 'Assign'
+    expect(page).to have_content 'Group was successfully assigned'
+    expect(page).to have_content 'Study Id: Tests'
+    expect(page).to have_content 'Group: fake'
+    expect(page).to have_content 'Membership Status: Active'
+    expect(page).to have_content 'Start Date: ' + yesterday.strftime('%Y-%m-%d')
+    expect(page).to have_content 'End Date: ' + next_year.strftime('%Y-%m-%d')
+    click_on 'Destroy'
+    expect(page).to have_content 'Membership was successfully destroyed.'
+  end
 end
