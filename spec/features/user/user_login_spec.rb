@@ -17,7 +17,7 @@ describe "Login", :type => :feature, :sauce => false do
 
 #tests
 
-#Testing a successful login
+  #Testing a successful login
   it "- success" do
     visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
     within("#new_user") do
@@ -41,7 +41,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing redirect to login screen
   it "- not logged in, redirect" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/arms'
+    visit 'https://steppedcare-staging.cbits.northwestern.edu/think_feel_do_dashboard'
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
 
@@ -87,7 +87,17 @@ describe "Login", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    expect(page).to_not have_content 'Researcher Dashboard'
+    expect(page).to_not have_content 'Users'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
+    click_on 'Arm 1'
+    expect(page).to have_content 'Title: Arm 1'
+    expect(page).to_not have_content 'Manage Content'
+    click_on 'Access to Everything'
+    expect(page).to have_content 'Title: Access to Everything'
+    expect(page).to have_content 'Patients'
+    expect(page).to have_content 'Messaging'
+    expect(page).to_not have_content 'Manage Tasks'
   end
 
   #Testing authorization - Researcher
@@ -99,7 +109,15 @@ describe "Login", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    expect(page).to_not have_content 'Coach Dashboard'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
+    click_on 'Arm 1'
+    expect(page).to have_content 'Title: Arm 1'
+    expect(page).to_not have_content 'Manage Content'
+    click_on 'Access to Everything'
+    expect(page).to have_content 'Title: Access to Everything'
+    expect(page).to_not have_content 'Messaging'
+    expect(page).to have_content 'Manage Tasks'
   end
 
   #Testing authorization - Content Author
@@ -111,8 +129,8 @@ describe "Login", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    expect(page).to_not have_content 'Coach Dashboard'
-    expect(page).to_not have_content 'Researcher Dashboard'
+    click_on 'Arms'
+    expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
   end
@@ -126,9 +144,15 @@ describe "Login", :type => :feature, :sauce => false do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'Coach Dashboard'
-    expect(page).to have_content 'Researcher Dashboard'
+    expect(page).to have_content 'Arms'
+    expect(page).to have_content 'Groups'
+    expect(page).to have_content 'Participants'
+    expect(page).to have_content 'Users'
+    expect(page).to have_content 'CSV Reports'
+    click_on 'Arms'
+    expect(page).to have_content 'New'
     click_on 'Arm 1'
     expect(page).to have_content 'Manage Content'
+    expect(page).to have_content 'Edit'
   end
 end
