@@ -45,21 +45,18 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'Continue'
     expect(page).to have_content 'Now, your turn...'
     fill_in 'thought_content', :with => 'Testing helpful thought'
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[1]").click
 
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
-    expect(page).to have_content 'Now list another thought...'
+    expect(page).to have_content 'Now list another harmful thought...'
     fill_in 'thought_content', :with => 'Testing negative thought'
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
 
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     fill_in 'thought_content', :with => 'Testing neither thought'
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
 
     click_on 'Continue'
-    if page.has_text?("Now one more")
+    if page.has_text?("Just one more")
       fill_in 'thought_content', :with => 'Forced negative thought'
       click_on 'Continue'
       expect(page).to have_content 'Good work'
@@ -67,9 +64,8 @@ describe "Think", :type => :feature, :sauce => false do
       expect(page).to have_content 'Add a New Thought'
     else
       fill_in 'thought_content', :with => 'Testing neither thought'
-      find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[3]").click
       click_on 'Continue'
-      expect(page).to have_content 'Now one more'
+      expect(page).to have_content 'Just one more'
       fill_in 'thought_content', :with => 'Forced negative thought'
       click_on 'Continue'
       expect(page).to have_content 'Good work'
@@ -211,7 +207,6 @@ describe "Think", :type => :feature, :sauce => false do
     click_link 'Add a New Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
     fill_in 'thought_content', :with => 'Testing add a new thought'
-    find(:xpath, "html/body/div[1]/div[1]/div/div[2]/form/div[3]/div/label[2]").click
     select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
     fill_in 'thought_challenging_thought', :with => 'Testing challenge thought'
     fill_in 'thought_act_as_if', :with => 'Testing act-as-if action'
