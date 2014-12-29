@@ -29,7 +29,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
@@ -61,7 +61,7 @@ describe "Think", :type => :feature, :sauce => false do
       click_on 'Continue'
       expect(page).to have_content 'Good work'
       click_on 'Continue'
-      expect(page).to have_content 'Add a New Thought'
+      expect(page).to have_content 'Add a New Harmful Thought'
     else
       fill_in 'thought_content', :with => 'Testing neither thought'
       click_on 'Continue'
@@ -70,7 +70,7 @@ describe "Think", :type => :feature, :sauce => false do
       click_on 'Continue'
       expect(page).to have_content 'Good work'
       click_on 'Continue'
-      expect(page).to have_content 'Add a New Thought'
+      expect(page).to have_content 'Add a New Harmful Thought'
     end
   end
 
@@ -86,7 +86,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link '#2 Patterns'
     expect(page).to have_content 'Thinking Patterns'
@@ -119,12 +119,12 @@ describe "Think", :type => :feature, :sauce => false do
         click_on 'Continue'
         expect(page).to have_content 'Good work!'
         click_on 'Continue'
-        expect(page).to have_content 'Add a New Thought'
+        expect(page).to have_content 'Add a New Harmful Thought'
 
       else
         expect(page).to have_content 'Good work!'
         click_on 'Continue'
-        expect(page).to have_content 'Add a New Thought'
+        expect(page).to have_content 'Add a New Harmful Thought'
       end
     end
   end
@@ -141,7 +141,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
@@ -149,7 +149,7 @@ describe "Think", :type => :feature, :sauce => false do
     if page.has_text?("You don't have any harmful thoughts that you've logged and haven't challenged.")
       click_link 'THINK'
       find(:xpath, ".//*[@id='navbar-collapse']/ul[1]/li[2]/ul/li[1]/a")
-      expect(page).to have_content 'Add a New Thought'
+      expect(page).to have_content 'Add a New Harmful Thought'
     else
       expect(page).to have_content 'You said you had the following unhelpful thoughts:'
       click_on 'Continue'
@@ -202,9 +202,9 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'Add a New Thought'
+    click_link 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
     fill_in 'thought_content', :with => 'Testing add a new thought'
     select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
@@ -214,7 +214,7 @@ describe "Think", :type => :feature, :sauce => false do
     click_on 'Continue'
     expect(page).to have_content 'Thought saved'
     click_on 'Continue'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
   end
 
   #Testing the Cancel button in Add a New Thought
@@ -229,9 +229,9 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'Add a New Thought'
+    click_link 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
 
     click_on 'Cancel'
@@ -250,7 +250,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
@@ -269,7 +269,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
@@ -310,7 +310,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link('THINK Home')
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     within("#navbar-collapse") do
       click_link 'THINK'
@@ -327,7 +327,7 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Challenging Harmful Thoughts'
 
     click_link 'THINK'
-    click_link 'Add a New Thought'
+    click_link 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
 
     click_link 'THINK'
@@ -348,7 +348,7 @@ describe "Think", :type => :feature, :sauce => false do
 
     click_link 'THINK'
     click_link 'THINK Home'
-    expect(page).to have_content 'Add a New Thought'
+    expect(page).to have_content 'Add a New Harmful Thought'
 
     if page.has_text?('Click a bubble for more info')
       find('.thoughtviz_text.viz-clickable', :text => 'Magnifying or Minimizing').click
