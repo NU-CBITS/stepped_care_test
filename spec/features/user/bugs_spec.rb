@@ -1,6 +1,6 @@
 #filename: user/bugs_spec.rb
 
-#this is to test the users Arm 1ctionality on the researcher dashboard.
+#this is to test the users Arm 1 functionality on the researcher dashboard.
 
 require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud'
@@ -141,10 +141,12 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     expect(page).to have_content 'Study Id: fake'
     expect(page).to have_content 'Group: fake'
     expect(page).to have_content 'Membership Status: Active'
+    find(:xpath, 'html/body/div[1]/div[3]/ul/a').click
+    expect(page).to have_content 'Membership'
     expect(page).to have_content 'Start Date: ' + yesterday.strftime('%Y-%m-%d')
-    expect(page).to have_content 'End Date: ' + next_year.strftime('%Y-%m-%d')
     click_on 'Destroy'
-    expect(page).to have_content 'Membership was successfully destroyed.'
+    page.accept_alert 'Are you sure?'
+    expect(page).to have_content 'Group was successfully removed.'
   end
 
   #Testing bug where a clinician user cannot access their group

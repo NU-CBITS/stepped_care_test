@@ -131,8 +131,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
     expect(page).to have_content 'Study Id: Tests'
     expect(page).to have_content 'Group: fake'
     expect(page).to have_content 'Membership Status: Active'
-    expect(page).to have_content 'Start Date: ' + yesterday.strftime('%Y-%m-%d')
-    expect(page).to have_content 'End Date: ' + next_year.strftime('%Y-%m-%d')
   end
 
   #Testing destroying a participant
