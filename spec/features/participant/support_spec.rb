@@ -1,12 +1,12 @@
 #filename: support_spec.rb
 
-#this file is to test the functionality of navbar not covered in the other specs
+#this file is to test the functionality of the SUPPORT tool
 
 require_relative '../../../spec/spec_helper'
 require_relative '../../../spec/configure_cloud'
 
 #to run locally comment this line out
-# describe "Other navbar functionality", :type => :feature, :sauce => true do
+# describe "Support", :type => :feature, :sauce => true do
 
 #to run on Sauce Labs comment this block out
 describe "Support", :type => :feature, :sauce => false do
@@ -45,4 +45,6 @@ describe "Support", :type => :feature, :sauce => false do
     click_on 'Continue'
     expect(page).to have_content 'Additional Resources'
   end
+
+  #Will need to add tests for other tools within SUPPORT when these are finalized
 end
