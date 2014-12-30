@@ -19,16 +19,27 @@ very new process therefore this repo will be changing drastically over time.
 
 ###Seed data:
 
-1. Send a message from participant to Coach
-  - subject: I need some help with Planning an Activity
-  - content: I forgot where this is.
-2. Send a message from Coach to new Participant:
-  - subject: GO TO INTRO
-  - content: link to Introduction slideshow
-3. Send a message from Coach to new Participant:
-  - subject: All links
-  - content: links to all other tools/slideshows except lessons
-4. Add three harmful thoughts
+1. Send two messages from participant to Coach
+  - First Message
+    - subject: I need some help with Planning an Activity
+    - content: I forgot where this is.
+  - Second Message
+    - subject: This message is a test to my coach
+    - content: This message is for testing the inbox functionality on the coach dashboard.
+2. Send three messages from Coach to Participant:
+  - First Message
+    - subject: GO TO INTRO
+    - content: link to Introduction slideshow
+  - Second Message
+    - subject: All links
+    - content: links to all other tools/slideshows except lessons
+  - Third Message
+    - subject: Testing sent message
+    - content: This message is to a participant for testing the sent box functionality.
+3. Send a site message from coach to participant
+  - subject: The first message
+  - content: This is a site message for testing purposes.
+4. As a participant, add three harmful thoughts
   - Login as new participant
   - Navigate to THINK > Add a New Thought
   - Enter "Example thought 1", select "harmful", select "Magnifying or Minimizing", enter "Challenge", enter "As if
