@@ -19,7 +19,7 @@ describe "Feel", :type => :feature, :sauce => false do
 
   #Testing Tracking Your Mood and Emotions in the FEEL to
   it "- tracking your mood and emotions" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -55,7 +55,7 @@ describe "Feel", :type => :feature, :sauce => false do
 
   #Testing the View Your Recent Emotions portion of the FEEL to
   it "- view your recent emotions" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -75,7 +75,7 @@ describe "Feel", :type => :feature, :sauce => false do
 
   #Testing navbar functionality specifically surrounding the FEEL to
   it "- navbar functionality" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']

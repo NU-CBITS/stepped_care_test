@@ -18,7 +18,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 #tests
   #Testing bug where viewing a video slide in a lesson throws an error
   it "- viewing a video slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -39,7 +39,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive error message when trying to edit a provider
   it "- editing a provider" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -85,7 +85,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when trying to access a specific group on Researcher Dashboard
   it "- error message when accesing a group" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -102,7 +102,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when trying to access specific user on Researcher Dashboard
   it "- update a content author" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -116,7 +116,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when creating a membership
   it "- create a group membership" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -151,7 +151,7 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where a clinician user cannot access their group
   it "- clinician authorization" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['Clinician_Email']
       fill_in 'user_password', :with => ENV['Clinician_Password']

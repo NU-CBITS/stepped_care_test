@@ -19,7 +19,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
 #Testing creating a participant
   it "- create a participant" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -45,7 +45,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing updating a participant
   it "- updating a participant" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -83,7 +83,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing assigning a coach
   it "- assign a coach" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -106,7 +106,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing creating a group membership
   it "- create a group membership" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -135,7 +135,7 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing destroying a participant
   it "- destroy a participant" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

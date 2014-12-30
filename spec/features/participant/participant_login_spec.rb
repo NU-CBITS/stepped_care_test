@@ -19,7 +19,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a successful login
   it "- success" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -30,7 +30,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a failed login
   it "- failure" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => 'asdf@test.com'
       fill_in 'participant_password', :with => 'asdf'
@@ -39,15 +39,26 @@ describe "Login", :type => :feature, :sauce => false do
     expect(page).to have_content 'Invalid email address or password'
   end
 
+  #Testing a login for a participant who's end date has passed
+  it "- after end date" do
+    visit ENV['Base_URL']+ '/participants/sign_in'
+    within('#new_participant') do
+      fill_in 'participant_email', :with => ENV['Old_Participant_Email']
+      fill_in 'participant_password', :with => ENV['Old_Participant_Password']
+    end
+    click_on 'Sign in'
+    expect(page).to have_content 'You need to sign in or sign up before continuing'
+  end
+
   #Testing redirect to login screen
   it "- not logged in, redirect" do
-    visit ENV['Base URL'] + '/navigator/contexts/THINK'
+    visit ENV['Base_URL']+ '/navigator/contexts/THINK'
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
 
   #Testing the Introduction Slideshow if a person hits it who isn't logged in
   it "- not logged in, intro slideshow" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     click_on 'Introduction to ThinkFeelDo'
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'
@@ -68,7 +79,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing Forgot Your Password? functionality
   it "- forgot password" do
-    visit ENV['Base URL'] + '/participants/sign_in'
+    visit ENV['Base_URL']+ '/participants/sign_in'
     click_on 'Forgot your password?'
     expect(page).to have_content 'Forgot your password?'
     within("#new_participant") do

@@ -18,7 +18,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 #tests
   #testing adding a slide to a lesson
   it "- adding a slide to a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -47,7 +47,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a slide in a lesson
   it "- updating a slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -77,7 +77,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a slide in a lesson
   it "- viewing a slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -100,7 +100,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a slide in a lesson
   it "- destroying a slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -124,7 +124,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a video slide to a lesson
   it "- adding a video slide to a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -153,7 +153,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a video slide in a lesson
   it "- updating a video slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -184,7 +184,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a video slide in a lesson
   it "- viewing a video slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -206,7 +206,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a video slide in a lesson
   it "- destroying a video slide in a lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -230,7 +230,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a slide to a slideshow
   it "- adding a slide to a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -258,7 +258,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a slide in a slideshow
   it "- updating a slide in a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -289,7 +289,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a slide to a slideshow
   it "- viewing a slide in a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -315,7 +315,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a slide in a slideshow
   it "- destroying a slide in a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -339,7 +339,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a video slide to a slideshow
   it "- adding a video slide to a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -368,7 +368,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a video slide in a slideshow
   it "- updating a video slide in a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -399,7 +399,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a video slide in a slideshow
   it "- viewing a video slide in a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -422,7 +422,7 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a video slide to a slideshow
   it "- destroying a video slide to a slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

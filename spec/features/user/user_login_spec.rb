@@ -19,7 +19,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a successful login
   it "- success" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -30,7 +30,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a failed login
   it "- failure" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => 'asdf@test.com'
       fill_in 'user_password', :with => 'asdf'
@@ -41,13 +41,13 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing redirect to login screen
   it "- not logged in, redirect" do
-    visit ENV['Base URL'] + '/think_feel_do_dashboard'
+    visit ENV['Base_URL']+ '/think_feel_do_dashboard'
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
 
   #Testing the Introduction Slideshow if a person hits it who isn't logged in
   it "- not logged in, intro slideshow" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     click_on 'Introduction to ThinkFeelDo'
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'
@@ -68,7 +68,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing Forgot Your Password? functionality
   it "- forgot password" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     click_on 'Forgot your password?'
     expect(page).to have_content 'Forgot your password?'
     within("#new_user") do
@@ -80,7 +80,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing authorization - Clinician
   it "- clinician authorization" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['Clinician_Email']
       fill_in 'user_password', :with => ENV['Clinician_Password']
@@ -102,7 +102,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing authorization - Researcher
   it "- researcher authorization" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['Researcher_Email']
       fill_in 'user_password', :with => ENV['Researcher_Password']
@@ -122,7 +122,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing authorization - Content Author
   it "- content author authorization" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['Content_Author_Email']
       fill_in 'user_password', :with => ENV['Content_Author_Password']
@@ -137,7 +137,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing authorization - Super User
   it "- super user authorization" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

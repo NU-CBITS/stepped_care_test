@@ -20,7 +20,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
 #tests
   #Testing creating a lesson
   it "- new lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -45,7 +45,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
 
   #Testing updating a lesson
   it "- updating lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -77,7 +77,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
 
   #Testing drag and drop lesson sorting
   it "- drag and drop sorting" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -113,7 +113,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
 
   #Testing destroying  a lesson
   it "- destroy lesson" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

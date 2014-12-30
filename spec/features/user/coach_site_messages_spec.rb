@@ -19,7 +19,7 @@ describe "Coach, Site Messages", :type => :feature, :sauce => false do
 
 #Testing new site messages
   it "- new site message" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -49,7 +49,7 @@ describe "Coach, Site Messages", :type => :feature, :sauce => false do
 
 #Testing site messages show
   it "- show site message" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

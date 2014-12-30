@@ -18,7 +18,7 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
 #tests
   #Testing inbox
   it "- inbox" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -41,7 +41,7 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
 
   #Testing reply
   it "- reply" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -73,7 +73,7 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
 
   #Testing sent box
   it "- sent box" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -104,7 +104,7 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
 
   #Testing compose
   it "- compose" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -137,7 +137,7 @@ describe "Coach, Messages", :type => :feature, :sauce => false do
 
   #Testing search functionality
   it "- search" do
-    visit ENV['Base URL'] + '/users/sign_in'
+    visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
