@@ -1,4 +1,4 @@
-#filename: user/bugs_spec.rb
+#filename: user_bugs_spec.rb
 
 #this is to test the users Arm 1 functionality on the researcher dashboard.
 

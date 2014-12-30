@@ -1,4 +1,4 @@
-#filename: participant/bugs_spec.rb
+#filename: participant_bugs_spec.rb
 
 #this file is to test bug fixes
 
