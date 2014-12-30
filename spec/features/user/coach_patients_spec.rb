@@ -18,7 +18,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 #tests
   #Testing view patient dashboard
   it "- view patients dashboard" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -36,7 +36,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing specific patient report
   it "- view patient report" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -55,7 +55,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing managing PHQ9 in patient report
   it "- managing PHQ9" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -94,7 +94,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing viewing activities viz in patient report
   it "- view activities viz" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -123,7 +123,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing viewing thoughts viz in patient report
   it "- view thoughts viz" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

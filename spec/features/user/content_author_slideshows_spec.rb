@@ -19,7 +19,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   #Testing creating a slideshow
   it "- new slideshow" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -43,7 +43,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   #Testing updating a slideshow
   it "- update slideshow" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -79,7 +79,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   #Testing destroying a slideshow
   it "- destroy slideshow" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

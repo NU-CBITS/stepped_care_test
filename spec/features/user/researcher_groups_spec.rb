@@ -19,7 +19,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
 #Testing creating a group
   it "- create a group" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -40,7 +40,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing updating a group
   it "- update a group" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -68,7 +68,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing adding/removing a moderator from a group
   it "- update moderator" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -92,7 +92,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing destroying a group
   it "- destroy a group" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -112,7 +112,7 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing managing tasks
   it "- manage tasks within a group" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

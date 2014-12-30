@@ -20,7 +20,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
   #Super Users
   #Testing creating a super user
   it "- create a super user" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -41,7 +41,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing updating a super user
   it "- update a super user" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -73,7 +73,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing detroying a super user
   it "- destroy a super user" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -95,7 +95,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
   #Researchers
   #Testing creating a Researcher
   it "- create a researcher" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -117,7 +117,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing updating a researcher
   it "- update a researcher" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -150,7 +150,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing detroying a researcher
   it "- destroy a researcher" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -171,7 +171,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
   #Clinicians
   #Testing creating a clinician
   it "- create a clincian" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -193,7 +193,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing updating a clinician
   it "- update a clinician" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -226,7 +226,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing detroying a clinician
   it "- destroy a clinician" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -247,7 +247,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
   #Content Authors
   #Testing creating a content author
   it "- create a content author" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -269,7 +269,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing updating a content author
   it "- update a content author" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -302,7 +302,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
 
   #Testing detroying a content author
   it "- destroy a content author" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']

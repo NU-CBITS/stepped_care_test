@@ -19,7 +19,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the #1-Identifying portion of the THINK tool
   it "- identifying" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -76,7 +76,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the #2-Patterns portion of the THINK tool
   it "- patterns" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -131,7 +131,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the #3-Reshape portion of the THINK tool
   it "- reshape" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -192,7 +192,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the Add a New Thought portion of the THINK tool
   it "- add a new thought" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -219,7 +219,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the Cancel button in Add a New Thought
   it "- add a new thought, cancel" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -240,7 +240,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the Thoughts portion of the THINK tool
   it "- check thoughts" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -259,7 +259,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the skip functionality in the first slideshows of the first three portions of the THINK tool
   it "- skip functionality" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -300,7 +300,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing navbar functionality specifically surrounding the THINK tool
   it "- navbar functionality" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -338,7 +338,7 @@ describe "Think", :type => :feature, :sauce => false do
 
   #Testing the THINK tool visualization
   it "- visualization" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']

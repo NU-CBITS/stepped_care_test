@@ -18,7 +18,7 @@ describe "Learn", :type => :feature, :sauce => false do
 
 #tests
   it "- read Lesson 1" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']

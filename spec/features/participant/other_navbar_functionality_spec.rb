@@ -19,7 +19,7 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
 
   #Testing the Sign Out functionality
   it "- sign out" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -33,7 +33,7 @@ describe "Other navbar functionality", :type => :feature, :sauce => false do
 
   #Testing Replay Intro button functionality
   it "- replay intro" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']

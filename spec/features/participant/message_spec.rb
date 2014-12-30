@@ -19,7 +19,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing Compose a new message
     it "- compose new" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -44,7 +44,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing reading a new message in inbox
     it "- read new" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -63,7 +63,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing the links provided by a Coach in the messages
     it "- accessing ALL links from a message in inbox" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -231,7 +231,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing the reply functionality
     it "- reply" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -256,7 +256,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing composing a message from reading a message
     it "- compose while reading a message" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -275,7 +275,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing the cancel button in compose
     it "- cancel button" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -293,7 +293,7 @@ require_relative '../../../spec/configure_cloud'
 
     #Testing the return button in compose
     it "- return button" do
-      visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+      visit ENV['Base URL'] + '/participants/sign_in'
       within("#new_participant") do
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']

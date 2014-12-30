@@ -19,7 +19,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a successful login
   it "- success" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
@@ -30,7 +30,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing a failed login
   it "- failure" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => 'asdf@test.com'
       fill_in 'participant_password', :with => 'asdf'
@@ -41,13 +41,13 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing redirect to login screen
   it "- not logged in, redirect" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/navigator/contexts/THINK'
+    visit ENV['Base URL'] + '/navigator/contexts/THINK'
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
 
   #Testing the Introduction Slideshow if a person hits it who isn't logged in
   it "- not logged in, intro slideshow" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     click_on 'Introduction to ThinkFeelDo'
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'
@@ -68,7 +68,7 @@ describe "Login", :type => :feature, :sauce => false do
 
   #Testing Forgot Your Password? functionality
   it "- forgot password" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/participants/sign_in'
+    visit ENV['Base URL'] + '/participants/sign_in'
     click_on 'Forgot your password?'
     expect(page).to have_content 'Forgot your password?'
     within("#new_participant") do

@@ -19,7 +19,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing creating a module
   it "- new module" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -45,7 +45,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing updating a module
   it "- edit module" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -110,7 +110,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing destroying a module
   it "- destroy module" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -151,7 +151,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing creating a provider
   it "- create a provider" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -185,7 +185,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing updating a provider
   it "- updating a provider" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
@@ -262,7 +262,7 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing destroying a provider
   it "- destroying a provider" do
-    visit 'https://steppedcare-staging.cbits.northwestern.edu/users/sign_in'
+    visit ENV['Base URL'] + '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
