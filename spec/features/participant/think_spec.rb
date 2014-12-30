@@ -24,25 +24,25 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link '#1 Identifying'
+    click_on '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
-    click_link 'Continue'
+    click_on 'Continue'
     expect(page).to have_content 'Types of thoughts'
-    click_link 'Continue'
+    click_on 'Continue'
     expect(page).to have_content 'Helpful thoughts are...'
-    click_link 'Continue'
+    click_on 'Continue'
     expect(page).to have_content 'Harmful thoughts are...'
-    click_link 'Continue'
+    click_on 'Continue'
     expect(page).to have_content 'Some quick examples...'
 
-    click_link 'Continue'
+    click_on 'Continue'
     expect(page).to have_content 'Now, your turn...'
     fill_in 'thought_content', :with => 'Testing helpful thought'
 
@@ -51,27 +51,13 @@ describe "Think", :type => :feature, :sauce => false do
     expect(page).to have_content 'Now list another harmful thought...'
     fill_in 'thought_content', :with => 'Testing negative thought'
 
-    click_on 'Continue'
-    expect(page).to have_content 'Thought saved'
-    fill_in 'thought_content', :with => 'Testing neither thought'
 
     click_on 'Continue'
-    if page.has_text?("Just one more")
-      fill_in 'thought_content', :with => 'Forced negative thought'
-      click_on 'Continue'
-      expect(page).to have_content 'Good work'
-      click_on 'Continue'
-      expect(page).to have_content 'Add a New Harmful Thought'
-    else
-      fill_in 'thought_content', :with => 'Testing neither thought'
-      click_on 'Continue'
-      expect(page).to have_content 'Just one more'
-      fill_in 'thought_content', :with => 'Forced negative thought'
-      click_on 'Continue'
-      expect(page).to have_content 'Good work'
-      click_on 'Continue'
-      expect(page).to have_content 'Add a New Harmful Thought'
-    end
+    expect(page).to have_content 'Thought saved'
+    expect(page).to have_content 'Just one more'
+    fill_in 'thought_content', :with => 'Forced negative thought'
+    click_on 'Continue'
+    expect(page).to have_content 'Good work'
   end
 
   #Testing the #2-Patterns portion of the THINK tool
@@ -81,14 +67,14 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link '#2 Patterns'
+    click_on '#2 Patterns'
     expect(page).to have_content 'Thinking Patterns'
     click_on 'Continue'
     expect(page).to have_content 'Patterns of Harmful Thoughts'
@@ -136,18 +122,18 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link '#3 Reshape'
+    click_on '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Continue'
     if page.has_text?("You don't have any harmful thoughts that you've logged and haven't challenged.")
-      click_link 'THINK'
+      click_on 'THINK'
       find(:xpath, ".//*[@id='navbar-collapse']/ul[1]/li[2]/ul/li[1]/a")
       expect(page).to have_content 'Add a New Harmful Thought'
     else
@@ -197,14 +183,14 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'Add a New Harmful Thought'
+    click_on 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
     fill_in 'thought_content', :with => 'Testing add a new thought'
     select 'Magnifying or Minimizing', :from => 'thought_pattern_id'
@@ -224,14 +210,14 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'Add a New Harmful Thought'
+    click_on 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
 
     click_on 'Cancel'
@@ -245,14 +231,14 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'Thoughts'
+    click_on 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
     expect(page).to have_content 'Example thought 1'
   end
@@ -264,29 +250,29 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link '#1 Identifying'
+    click_on '#1 Identifying'
     expect(page).to have_content 'You are what you think...'
     click_on 'Skip'
     expect(page).to have_content 'Now, your turn...'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
-    click_link '#2 Patterns'
+    click_on 'THINK'
+    click_on 'THINK Home'
+    click_on '#2 Patterns'
     expect(page).to have_content 'Thinking Patterns'
     click_on 'Skip'
     expect(page).to have_content "Let's start by figuring out which thought patterns the harmful thoughts you
     identified might match."
 
-    click_link 'THINK'
-    click_link 'THINK Home'
-    click_link '#3 Reshape'
+    click_on 'THINK'
+    click_on 'THINK Home'
+    click_on '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
     click_on 'Skip'
 
@@ -305,33 +291,33 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link('THINK Home')
+    click_on 'THINK'
+    click_on('THINK Home')
     expect(page).to have_content 'Add a New Harmful Thought'
 
     within("#navbar-collapse") do
-      click_link 'THINK'
-      click_link '#1 Identifying'
+      click_on 'THINK'
+      click_on '#1 Identifying'
     end
     expect(page).to have_content 'You are what you think...'
 
-    click_link 'THINK'
-    click_link '#2 Patterns'
+    click_on 'THINK'
+    click_on '#2 Patterns'
     expect(page).to have_content 'Thinking Patterns'
 
-    click_link 'THINK'
-    click_link '#3 Reshape'
+    click_on 'THINK'
+    click_on '#3 Reshape'
     expect(page).to have_content 'Challenging Harmful Thoughts'
 
-    click_link 'THINK'
-    click_link 'Add a New Harmful Thought'
+    click_on 'THINK'
+    click_on 'Add a New Harmful Thought'
     expect(page).to have_content 'Add a New Harmful Thought'
 
-    click_link 'THINK'
-    click_link 'Thoughts'
+    click_on 'THINK'
+    click_on 'Thoughts'
     expect(page).to have_content 'Harmful Thoughts'
   end
 
@@ -343,11 +329,11 @@ describe "Think", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'THINK'
-    click_link 'THINK Home'
+    click_on 'THINK'
+    click_on 'THINK Home'
     expect(page).to have_content 'Add a New Harmful Thought'
 
     if page.has_text?('Click a bubble for more info')

@@ -24,13 +24,13 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
 
-      click_link 'Compose'
+      click_on 'Compose'
       expect(page).to have_content 'To Your Coach'
 
       within ("#new_message") do
@@ -38,7 +38,7 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'message_body', :with => 'This is a test message to my coach. Hello, Coach! How are you??'
       end
 
-      click_button 'Send'
+      click_on 'Send'
       expect(page).to have_content 'Message saved'
     end
 
@@ -49,15 +49,15 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
-      click_link 'Sent'
+      click_on 'Sent'
       expect(page).to have_content 'To: Coach'
 
-      click_link 'I need some help with Planning an Activity'
+      click_on 'I need some help with Planning an Activity'
       expect(page).to have_content 'I forgot where this is.'
     end
 
@@ -68,10 +68,10 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
 
       if page.has_text?('GO TO INTRO')
@@ -97,7 +97,7 @@ require_relative '../../../spec/configure_cloud'
         expect(page).to have_content 'Inbox'
       end
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
 
       if page.has_text?('All links')
@@ -107,7 +107,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#1 Identifying'
         expect(page).to have_content 'You are what you think...'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -116,7 +116,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#2 Patterns'
         expect(page).to have_content 'Thinking Patterns'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -125,7 +125,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#3 Reshape'
         expect(page).to have_content 'Challenging Harmful Thoughts'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -134,7 +134,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Add a New Thought'
         expect(page).to have_content 'Add a New Harmful Thought'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -143,7 +143,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Thoughts'
         expect(page).to have_content 'Harmful Thoughts'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -152,7 +152,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Thought Distortions'
         expect(page).to have_content 'Click a bubble for more info'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -161,7 +161,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Tracking Your Mood and Emotions'
         expect(page).to have_content 'Rate your Mood'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -170,7 +170,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Tracking Your Mood'
         expect(page).to have_content 'Rate your Mood'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -179,7 +179,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'View Your Recent Emotions'
         expect(page).to have_content 'Your Recent Emotions'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -188,7 +188,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#1 Awareness'
         expect(page).to have_content 'You are what you do'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -197,7 +197,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#2 Planning'
         expect(page).to have_content 'The last few times you were here...'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -206,7 +206,7 @@ require_relative '../../../spec/configure_cloud'
         click_on '#3 Reviewing'
         expect(page).to have_content 'Welcome back!'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -215,7 +215,7 @@ require_relative '../../../spec/configure_cloud'
         click_on 'Your Activities'
         expect(page).to have_content 'Activities Overview'
 
-        click_link 'MESSAGES'
+        click_on 'MESSAGES'
         expect(page).to have_content 'Inbox'
 
         click_on 'All links'
@@ -236,10 +236,10 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'GO TO INTRO'
       expect(page).to have_content 'Introduction to ThinkFeelDo'
@@ -261,10 +261,10 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'GO TO INTRO'
       expect(page).to have_content 'Introduction to ThinkFeelDo'
@@ -280,10 +280,10 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'Compose'
       expect(page).to have_content 'To Your Coach'
@@ -298,10 +298,10 @@ require_relative '../../../spec/configure_cloud'
         fill_in 'participant_email', :with => ENV['Participant_Email']
         fill_in 'participant_password', :with => ENV['Participant_Password']
       end
-      click_button 'Sign in'
+      click_on 'Sign in'
       expect(page).to have_content 'Signed in successfully'
 
-      click_link 'MESSAGES'
+      click_on 'MESSAGES'
       expect(page).to have_content 'Inbox'
       click_on 'Compose'
       expect(page).to have_content 'To Your Coach'

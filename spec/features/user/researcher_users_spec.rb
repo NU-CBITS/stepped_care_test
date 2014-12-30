@@ -25,7 +25,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -46,7 +46,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -78,7 +78,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     
     expect(page).to have_content 'CSV Reports'
@@ -100,7 +100,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -122,7 +122,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -136,7 +136,11 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
     expect(page).to have_content 'Email: ' + ENV['Researcher_Email']
-    expect(page).to have_content 'Roles: Clinician and Researcher'
+    if page.has_text?("Roles: Researcher and Clinician")
+      expect(page).to_not have_content 'Roles: Clinician and Researcher'
+    else
+      expect(page).to have_content 'Roles: Clinician and Researcher'
+    end
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_clinician'
@@ -155,7 +159,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -176,7 +180,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -198,7 +202,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -212,7 +216,11 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
     expect(page).to have_content 'Email: ' + ENV['Clinician_Email']
-    expect(page).to have_content 'Roles: Content Author and Clinician'
+    if page.has_text?("Roles: Content Author and Clinician")
+      expect(page).to_not have_content 'Roles: Clinician and Content Author'
+    else
+      expect(page).to have_content 'Roles: Clinician and Content Author'
+    end
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_content_author'
@@ -231,7 +239,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -252,7 +260,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -274,7 +282,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'
@@ -288,7 +296,11 @@ describe "Research, Users", :type => :feature, :sauce => false do
     expect(page).to have_content 'User was successfully updated.'
     expect(page).to have_content 'Super User: No'
     expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
-    expect(page).to have_content 'Roles: Clinician and Content Author'
+    if page.has_text?("Roles: Content Author and Clinician")
+      expect(page).to_not have_content 'Roles: Clinician and Content Author'
+    else
+      expect(page).to have_content 'Roles: Clinician and Content Author'
+    end
     click_on 'Edit'
     expect(page).to have_content 'Editing User'
     uncheck 'user_user_roles_clinician'
@@ -307,7 +319,7 @@ describe "Research, Users", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Users'

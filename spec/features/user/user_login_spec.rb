@@ -24,7 +24,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
   end
 
@@ -35,7 +35,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => 'asdf@test.com'
       fill_in 'user_password', :with => 'asdf'
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Invalid email address or password'
   end
 
@@ -74,7 +74,7 @@ describe "Login", :type => :feature, :sauce => false do
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
     end
-    click_button 'Send me reset password instructions'
+    click_on 'Send me reset password instructions'
     expect(page).to have_content 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end
 
@@ -85,7 +85,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['Clinician_Email']
       fill_in 'user_password', :with => ENV['Clinician_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to_not have_content 'Users'
     click_on 'Arms'
@@ -93,8 +93,8 @@ describe "Login", :type => :feature, :sauce => false do
     click_on 'Arm 1'
     expect(page).to have_content 'Title: Arm 1'
     expect(page).to_not have_content 'Manage Content'
-    click_on 'Access to Everything'
-    expect(page).to have_content 'Title: Access to Everything'
+    click_on 'fake'
+    expect(page).to have_content 'Title: fake'
     expect(page).to have_content 'Patients'
     expect(page).to have_content 'Messaging'
     expect(page).to_not have_content 'Manage Tasks'
@@ -107,7 +107,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['Researcher_Email']
       fill_in 'user_password', :with => ENV['Researcher_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
@@ -127,7 +127,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['Content_Author_Email']
       fill_in 'user_password', :with => ENV['Content_Author_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
@@ -142,7 +142,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'Arms'
     expect(page).to have_content 'Groups'

@@ -24,10 +24,12 @@ describe "Participant Bugs", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-
-    page.find('#navbar-collapse').find(:xpath, "(//a[@href='/participants/public_slideshows/8/slides/7'])[1]").click
+    click_on 'SUPPORT'
+    click_on 'SUPPORT Home'
+    expect(page).to have_content 'Frequently Asked Questions'
+    click_on 'Replay Intro'
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'
     expect(page).to have_content 'How to Maximize Your Benefit from ThinkFeelDo'
@@ -41,7 +43,7 @@ describe "Participant Bugs", :type => :feature, :sauce => false do
     expect(page).to have_content 'What Might Get in the Way?'
     click_on 'Continue'
     expect(page).to have_content 'Get Started'
-    click_on 'Done'
-    expect(page).to have_content 'Signed in as'
+    click_on 'Continue'
+    expect(page).to have_content 'Additional Resources'
   end
 end

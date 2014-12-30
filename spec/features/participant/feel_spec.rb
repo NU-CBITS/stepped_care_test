@@ -24,14 +24,14 @@ describe "Feel", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'FEEL'
-    click_link 'FEEL Home'
+    click_on 'FEEL'
+    click_on 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
 
-    click_link 'Tracking Your Mood and Emotions'
+    click_on 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
     select '6', :from => 'mood[rating]'
     click_on 'Continue'
@@ -60,11 +60,11 @@ describe "Feel", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'FEEL'
-    click_link 'FEEL Home'
+    click_on 'FEEL'
+    click_on 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
 
     click_on 'View Your Recent Emotions'
@@ -80,19 +80,19 @@ describe "Feel", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
-    click_link 'FEEL'
-    click_link 'Tracking Your Mood and Emotions'
+    click_on 'FEEL'
+    click_on 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
 
-    click_link 'FEEL'
+    click_on 'FEEL'
     click_on 'View Your Recent Emotions'
     expect(page).to have_content 'Your Recent Emotions'
 
-    click_link 'FEEL'
-    click_link 'FEEL Home'
+    click_on 'FEEL'
+    click_on 'FEEL Home'
     expect(page).to have_content 'Tracking Your Mood and Emotions'
   end
 end

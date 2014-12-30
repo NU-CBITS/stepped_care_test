@@ -24,8 +24,22 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+  end
+
+  #Testing the Sign Out functionality
+  it "- sign out" do
+    visit ENV['Base_URL']+ '/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_on 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+
+    find(:xpath, 'html/body/div[1]/div[1]/div/nav/div/div[2]/ul[2]/li/a').click
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 
   #Testing a failed login
@@ -35,7 +49,7 @@ describe "Login", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => 'asdf@test.com'
       fill_in 'participant_password', :with => 'asdf'
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Invalid email address or password'
   end
 
@@ -85,7 +99,7 @@ describe "Login", :type => :feature, :sauce => false do
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
     end
-    click_button 'Send me reset password instructions'
+    click_on 'Send me reset password instructions'
     expect(page).to have_content 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end
 end

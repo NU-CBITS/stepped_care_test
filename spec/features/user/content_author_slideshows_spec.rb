@@ -24,7 +24,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
@@ -48,7 +48,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
@@ -84,7 +84,7 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
       fill_in 'user_email', :with => ENV['User_Email']
       fill_in 'user_password', :with => ENV['User_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'

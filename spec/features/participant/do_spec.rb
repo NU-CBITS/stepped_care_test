@@ -29,7 +29,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -107,7 +107,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -132,7 +132,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -176,7 +176,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -223,7 +223,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -247,7 +247,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -269,7 +269,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -304,7 +304,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
@@ -344,7 +344,7 @@ describe "Do", :type => :feature, :sauce => false do
       fill_in 'participant_email', :with => ENV['Participant_Email']
       fill_in 'participant_password', :with => ENV['Participant_Password']
     end
-    click_button 'Sign in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
     click_on 'DO'
