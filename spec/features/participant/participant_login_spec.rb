@@ -53,6 +53,21 @@ describe "Login", :type => :feature, :sauce => false do
     expect(page).to have_content 'Invalid email address or password'
   end
 
+#Testing Brand Link functionality
+  it "- brand link redirect" do
+    visit ENV['Base_URL']+ '/participants/sign_in'
+    within("#new_participant") do
+      fill_in 'participant_email', :with => ENV['Participant_Email']
+      fill_in 'participant_password', :with => ENV['Participant_Password']
+    end
+    click_on 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    visit ENV['Base_URL']+ '/navigator/contexts/LEARN'
+    expect(page).to have_content 'Lessons'
+    find(:css, '.navbar-brand').click
+    expect(page).to have_content 'Home'
+  end
+
   #Testing a login for a participant who's end date has passed
   it "- after end date" do
     visit ENV['Base_URL']+ '/participants/sign_in'

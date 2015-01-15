@@ -50,6 +50,25 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
+    expect(page).to have_content 'General Patient Info'
+  end
+
+  #Testing visibility of Mood/Emotions viz
+  it "- managing PHQ9" do
+    visit ENV['Base_URL']+ '/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_on 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
+    click_on 'Patients'
+    expect(page).to have_content 'Patient Dashboard'
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
   end
 
@@ -69,7 +88,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
+    expect(page).to have_content 'General Patient Info'
     click_on 'Manage'
     expect(page).to have_content 'PHQ assessments for '
     click_on 'New Phq assessment'
@@ -89,7 +108,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Phq assessment was successfully destroyed.'
     click_on 'Patient dashboard'
-    expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
+    expect(page).to have_content 'General Patient Info'
   end
 
   #Testing viewing activities viz in patient report
@@ -108,7 +127,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
+    expect(page).to have_content 'General Patient Info'
     click_on 'Activities visualization'
     expect(page).to have_content 'Activities Overview'
     page.find("#nav_main li:nth-child(2) a").click
@@ -137,7 +156,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
     click_on 'Patients'
     expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
+    expect(page).to have_content 'General Patient Info'
     click_on 'Thoughts visualization'
     page.find("#ThoughtVizContainer")
   end

@@ -25,9 +25,9 @@ describe "Learn", :type => :feature, :sauce => false do
     end
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-
     click_on 'LEARN'
-    expect(page).to have_content 'You have read'
+    expect(page).to have_content 'Lessons'
+    click_on 'Week 1'
     click_on 'Think, Feel, Do Your Way Out of Depression'
     expect(page).to have_content 'Welcome to ThinkFeelDo!'
     click_on 'Continue'
@@ -49,6 +49,16 @@ describe "Learn", :type => :feature, :sauce => false do
     click_on 'Continue'
     expect(page).to have_content 'Wrapping Up'
     click_on 'Continue'
-    expect(page).to have_content 'You have read'
+    expect(page).to have_content 'Lessons'
+  end
+
+  it "- print a read lesson" do
+    expect(page).to have_content 'Week 1'
+    click_on 'Week 1'
+    find(:xpath, '//*[@id="collapse1"]/div/span[1]/p/span/a').click
+    expect(page).to have_content 'Print'
+    expect(page).to have_content 'Return to Lessons'
+    click_on 'Return to Lessons'
+    expect(page).to have_content 'Week 1'
   end
 end

@@ -127,7 +127,7 @@ describe "Content Author, Lesson Modules", :type => :feature, :sauce => false do
     click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[44]/td[5]/a[2]').click
+    find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[44]/td[4]/a[2]').click
     page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Lesson deleted'
     expect(page).to_not have_content 'Test lesson'

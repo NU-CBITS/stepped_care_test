@@ -33,6 +33,7 @@ describe "Feel", :type => :feature, :sauce => false do
 
     click_on 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
+    select 'negative', :from => 'emotional_rating_is_positive'
     select '6', :from => 'mood[rating]'
     click_on 'Continue'
 
@@ -40,11 +41,13 @@ describe "Feel", :type => :feature, :sauce => false do
     expect(page).to have_content 'You just rated your mood as a 6 (Good)'
     expect(page).to have_content 'Rate your Emotions'
     select 'anxious', :from => 'emotional_rating_emotion_id'
+    select 'negative', :from => 'emotional_rating_is_positive'
     select '4', :from => 'emotional_rating[rating]'
 
     click_on 'Add Emotion'
     fill_in 'emotional_rating_name', :with => 'crazy'
-    find(:xpath, "/html/body/div[1]/div[1]/div/div[2]/div[3]/div/form/div[4]/div/select/option[4]").click
+    find(:xpath, '/html/body/div[1]/div[1]/div/div[3]/div[3]/div/form/div[4]/select/option[1]').click
+    find(:xpath, 'html/body/div[1]/div[1]/div/div[3]/div[3]/div/form/div[5]/div/select/option[4]').click
     click_on 'Continue'
 
     expect(page).to have_content 'Emotional Rating saved'
