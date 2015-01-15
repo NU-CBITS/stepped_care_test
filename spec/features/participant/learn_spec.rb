@@ -14,10 +14,6 @@ describe "Learn", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-  it "- read Lesson 1" do
     visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -27,6 +23,10 @@ describe "Learn", :type => :feature, :sauce => false do
     expect(page).to have_content 'Signed in successfully'
     click_on 'LEARN'
     expect(page).to have_content 'Lessons'
+  end
+
+#tests
+  it "- read Lesson 1" do
     click_on 'Week 1'
     click_on 'Think, Feel, Do Your Way Out of Depression'
     expect(page).to have_content 'Welcome to ThinkFeelDo!'
@@ -53,7 +53,6 @@ describe "Learn", :type => :feature, :sauce => false do
   end
 
   it "- print a read lesson" do
-    expect(page).to have_content 'Week 1'
     click_on 'Week 1'
     find(:xpath, '//*[@id="collapse1"]/div/span[1]/p/span/a').click
     expect(page).to have_content 'Print'

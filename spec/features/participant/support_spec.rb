@@ -13,11 +13,6 @@ describe "Support", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-  #Testing Replay Intro button functionality
-  it "- replay intro" do
     visit ENV['Base_URL']+ '/participants/sign_in'
     within("#new_participant") do
       fill_in 'participant_email', :with => ENV['Participant_Email']
@@ -28,6 +23,11 @@ describe "Support", :type => :feature, :sauce => false do
     click_on 'SUPPORT'
     click_on 'SUPPORT Home'
     expect(page).to have_content 'Frequently Asked Questions'
+  end
+
+#tests
+  #Testing Replay Intro button functionality
+  it "- replay intro" do
     click_on 'Replay Intro'
     expect(page).to have_content 'Welcome to ThinkFeelDo'
     click_on 'Continue'
