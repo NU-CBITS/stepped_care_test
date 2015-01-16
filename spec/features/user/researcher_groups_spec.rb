@@ -13,12 +13,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-#Testing creating a group
-  it "- create a group" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -29,6 +23,12 @@ describe "Research, Groups", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
+  end
+
+#tests
+
+#Testing creating a group
+  it "- create a group" do
     click_on 'New'
     expect(page).to have_content 'New Group'
     fill_in 'group_title', :with => 'Testing Group'
@@ -40,16 +40,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing updating a group
   it "- update a group" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
     click_on 'Edit'
@@ -68,16 +58,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing adding/removing a moderator from a group
   it "- update moderator" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
     click_on 'fake'
     expect(page).to have_content 'Title: fake'
     click_on 'Edit'
@@ -92,16 +72,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing destroying a group
   it "- destroy a group" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
     click_on 'Testing Group'
     expect(page).to have_content 'Title: Testing Group'
     click_on 'Destroy'
@@ -112,16 +82,6 @@ describe "Research, Groups", :type => :feature, :sauce => false do
 
   #Testing managing tasks
   it "- manage tasks within a group" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
     click_on 'fun'
     expect(page).to have_content 'Title: fun'
     click_on 'Manage Tasks'

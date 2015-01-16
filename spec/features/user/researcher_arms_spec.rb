@@ -13,12 +13,6 @@ describe "Research, Arms", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-  #Testing creating an arm
-  it "- create an arm" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -29,6 +23,12 @@ describe "Research, Arms", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
+  end
+
+#tests
+
+  #Testing creating an arm
+  it "- create an arm" do
     click_on 'New'
     expect(page).to have_content 'New Arm'
     fill_in 'arm_title', :with => 'Test Arm'
@@ -38,16 +38,6 @@ describe "Research, Arms", :type => :feature, :sauce => false do
 
   #Testing updating an arm
   it "- update an arm" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
     expect(page).to have_content 'Title: Arm 1'
     click_on 'Edit'
@@ -66,16 +56,6 @@ describe "Research, Arms", :type => :feature, :sauce => false do
 
   #Testing destroying an arm
   it "- destroys an arm" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
     click_on 'Test Arm'
     expect(page).to have_content 'Title: Test Arm'
     click_on 'Destroy'

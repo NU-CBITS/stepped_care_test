@@ -13,12 +13,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-  #Testing creating a module
-  it "- new module" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -33,6 +27,12 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
     click_on 'Manage Content'
     click_on 'Content Modules'
     expect(page).to have_content 'Listing Content Modules'
+  end
+
+#tests
+
+  #Testing creating a module
+  it "- new module" do
     click_on 'New'
     expect(page).to have_content 'New Content Module'
     fill_in 'content_module_title', :with => 'Test content module'
@@ -45,20 +45,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing updating a module
   it "- edit module" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Listing Content Modules'
     if page.has_text?("#1 Awareness")
       click_on '#1 Awareness'
       click_on 'Edit'
@@ -110,20 +96,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing destroying a module
   it "- destroy module" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Listing Content Modules'
     if page.has_text?("Test content module")
       click_on 'Test content module'
       click_on 'Destroy'
@@ -151,20 +123,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing creating a provider
   it "- create a provider" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Listing Content Modules'
     click_on 'New Provider'
     expect(page).to have_content 'New Content Provider'
     select 'LEARN: Testing adding/updating slides/lessons', :from => 'content_provider_bit_core_content_module_id'
@@ -185,20 +143,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing updating a provider
   it "- updating a provider" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Listing Content Modules'
     if page.has_text?('Testing adding/updating slides/lessons')
       click_on 'Testing adding/updating slides/lessons'
       expect(page).to have_content 'New Provider'
@@ -262,20 +206,6 @@ describe "Content Author, Modules", :type => :feature, :sauce => false do
 
   #Testing destroying a provider
   it "- destroying a provider" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Listing Content Modules'
     if page.has_text?('Testing adding/updating slides/lessons')
       click_on 'Testing adding/updating slides/lessons'
       expect(page).to have_content 'Edit'

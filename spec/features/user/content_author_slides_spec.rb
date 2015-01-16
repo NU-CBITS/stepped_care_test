@@ -13,11 +13,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-  #testing adding a slide to a lesson
-  it "- adding a slide to a lesson" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -30,6 +25,11 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
     click_on 'Arm 1'
     expect(page).to have_content 'Title: Arm 1'
     click_on 'Manage Content'
+  end
+
+#tests
+  #testing adding a slide to a lesson
+  it "- adding a slide to a lesson" do
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -47,18 +47,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a slide in a lesson
   it "- updating a slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -77,17 +65,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a slide in a lesson
   it "- viewing a slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -100,18 +77,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a slide in a lesson
   it "- destroying a slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -124,18 +89,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a video slide to a lesson
   it "- adding a video slide to a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -153,18 +106,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a video slide in a lesson
   it "- updating a video slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -184,18 +125,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a video slide in a lesson
   it "- viewing a video slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -206,18 +135,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a video slide in a lesson
   it "- destroying a video slide in a lesson" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Lesson Modules'
     expect(page).to have_content 'Listing Lesson Modules'
     click_on 'Testing adding/updating slides/lessons'
@@ -230,18 +147,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a slide to a slideshow
   it "- adding a slide to a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -258,18 +163,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a slide in a slideshow
   it "- updating a slide in a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -289,18 +182,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a slide to a slideshow
   it "- viewing a slide in a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -315,18 +196,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a slide in a slideshow
   it "- destroying a slide in a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -339,18 +208,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing adding a video slide to a slideshow
   it "- adding a video slide to a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -368,18 +225,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing updating a video slide in a slideshow
   it "- updating a video slide in a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -399,18 +244,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing viewing a video slide in a slideshow
   it "- viewing a video slide in a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'
@@ -422,18 +255,6 @@ describe "Content Author, Slides", :type => :feature, :sauce => false do
 
   #testing destroying a video slide to a slideshow
   it "- destroying a video slide to a slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
     click_on 'Slideshows'
     expect(page).to have_content 'Listing Slideshows'
     click_on 'Home Introduction'

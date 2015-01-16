@@ -13,12 +13,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-#Testing creating a participant
-  it "- create a participant" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -29,6 +23,12 @@ describe "Research, Participants", :type => :feature, :sauce => false do
     expect(page).to have_content 'CSV Reports'
     click_on 'Participants'
     expect(page).to have_content 'Listing Participants'
+  end
+
+#tests
+
+#Testing creating a participant
+  it "- create a participant" do
     click_on 'New'
     expect(page).to have_content 'New Participant'
     fill_in 'participant_study_id', :with => 'Tests'
@@ -45,16 +45,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing updating a participant
   it "- updating a participant" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Participants'
-    expect(page).to have_content 'Listing Participants'
     click_on 'fake'
     expect(page).to have_content 'Study Id: fake'
     click_on 'Edit'
@@ -83,16 +73,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing assigning a coach
   it "- assign a coach" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Participants'
-    expect(page).to have_content 'Listing Participants'
     click_on 'Tests'
     expect(page).to have_content 'Study Id: Tests'
     click_on 'Assign Coach'
@@ -106,16 +86,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing creating a group membership
   it "- create a group membership" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Participants'
-    expect(page).to have_content 'Listing Participants'
     click_on 'Tests'
     expect(page).to have_content 'Study Id: Tests'
     click_on 'Assign New Group'
@@ -135,16 +105,6 @@ describe "Research, Participants", :type => :feature, :sauce => false do
 
   #Testing destroying a participant
   it "- destroy a participant" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    expect(page).to have_content 'CSV Reports'
-    click_on 'Participants'
-    expect(page).to have_content 'Listing Participants'
     click_on 'Tests'
     expect(page).to have_content 'Study Id: Tests'
     click_on 'Destroy'

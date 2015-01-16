@@ -13,11 +13,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-  #Testing bug where viewing a video slide in a lesson throws an error
-  it "- viewing a video slide in a lesson" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -25,6 +20,11 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
     end
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
+  end
+
+#tests
+  #Testing bug where viewing a video slide in a lesson throws an error
+  it "- viewing a video slide in a lesson" do
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
@@ -39,13 +39,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive error message when trying to edit a provider
   it "- editing a provider" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'
     click_on 'Arm 1'
@@ -85,13 +78,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when trying to access a specific group on Researcher Dashboard
   it "- error message when accesing a group" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
     click_on 'Groups'
     expect(page).to have_content 'Listing Groups'
     click_on 'fun'
@@ -102,12 +88,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when trying to access specific user on Researcher Dashboard
   it "- update a content author" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
     click_on 'Users'
     expect(page).to have_content 'Listing Users'
     click_on ENV['Content_Author_Email']
@@ -116,13 +96,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where you receive an error message when creating a membership
   it "- create a group membership" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
     expect(page).to have_content 'CSV Reports'
     click_on 'Participants'
     expect(page).to have_content 'Listing Participants'
@@ -151,13 +124,6 @@ describe "User Dashboard Bugs", :type => :feature, :sauce => false do
 
   #Testing bug where a clinician user cannot access their group
   it "- clinician authorization" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['Clinician_Email']
-      fill_in 'user_password', :with => ENV['Clinician_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
     expect(page).to_not have_content 'Users'
     click_on 'Arms'
     expect(page).to have_content 'Listing Arms'

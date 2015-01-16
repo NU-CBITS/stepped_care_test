@@ -13,80 +13,41 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
+    visit ENV['Base_URL']+ '/users/sign_in'
+    within("#new_user") do
+      fill_in 'user_email', :with => ENV['User_Email']
+      fill_in 'user_password', :with => ENV['User_Password']
+    end
+    click_on 'Sign in'
+    expect(page).to have_content 'Signed in successfully'
+    click_on 'Groups'
+    expect(page).to have_content 'Listing Groups'
+    click_on 'fake'
+    expect(page).to have_content 'Participant Info'
+    click_on 'Patients'
+    expect(page).to have_content 'Patient Dashboard'
   end
 
 #tests
   #Testing view patient dashboard
   it "- view patients dashboard" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     page.find("#patients")[:class].include?("table table hover")
   end
 
   #Testing specific patient report
   it "- view patient report" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'General Patient Info'
   end
 
   #Testing visibility of Mood/Emotions viz
   it "- managing PHQ9" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
   end
 
   #Testing managing PHQ9 in patient report
   it "- managing PHQ9" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'General Patient Info'
     click_on 'Manage'
@@ -113,19 +74,6 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing viewing activities viz in patient report
   it "- view activities viz" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'General Patient Info'
     click_on 'Activities visualization'
@@ -142,19 +90,6 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
 
   #Testing viewing thoughts viz in patient report
   it "- view thoughts viz" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'General Patient Info'
     click_on 'Thoughts visualization'

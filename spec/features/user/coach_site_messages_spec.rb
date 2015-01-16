@@ -13,12 +13,6 @@ describe "Coach, Site Messages", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-#Testing new site messages
-  it "- new site message" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -34,6 +28,12 @@ describe "Coach, Site Messages", :type => :feature, :sauce => false do
     click_on 'Site Messaging'
     expect(page).to have_content 'Listing Site Messages'
     expect(page).to have_content 'The first message'
+  end
+
+#tests
+
+#Testing new site messages
+  it "- new site message" do
     click_on 'New'
     expect(page).to have_content 'New site message'
     expect(page).to have_content 'stepped_care-no-reply@northwestern.edu'
@@ -49,21 +49,6 @@ describe "Coach, Site Messages", :type => :feature, :sauce => false do
 
 #Testing site messages show
   it "- show site message" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-    click_on 'Messaging'
-    click_on 'Site Messaging'
-    expect(page).to have_content 'Listing Site Messages'
-    expect(page).to have_content 'The first message'
     first(:link, 'Show').click
     expect(page).to have_content 'Participant: ChrisBrennerTest'
     expect(page).to have_content 'Subject: The first message'

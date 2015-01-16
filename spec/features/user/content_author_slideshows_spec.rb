@@ -13,12 +13,6 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   before(:each) do
     Capybara.default_driver = :selenium
-  end
-
-#tests
-
-  #Testing creating a slideshow
-  it "- new slideshow" do
     visit ENV['Base_URL']+ '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => ENV['User_Email']
@@ -32,6 +26,12 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
     expect(page).to have_content 'Title: Arm 1'
     click_on 'Manage Content'
     click_on 'Slideshows'
+  end
+
+#tests
+
+  #Testing creating a slideshow
+  it "- new slideshow" do
     expect(page).to have_content 'Listing Slideshows'
     click_on 'New'
     expect(page).to have_content 'New Slideshow'
@@ -43,20 +43,6 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   #Testing updating a slideshow
   it "- update slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Slideshows'
-    expect(page).to have_content 'Listing Slideshows'
     click_on 'Testing adding/updating slides/lessons'
     expect(page).to have_content 'Slideshow'
     expect(page).to have_content 'Testing adding/updating slides/lessons'
@@ -79,20 +65,6 @@ describe "Content Author, Slideshows", :type => :feature, :sauce => false do
 
   #Testing destroying a slideshow
   it "- destroy slideshow" do
-    visit ENV['Base_URL']+ '/users/sign_in'
-    within("#new_user") do
-      fill_in 'user_email', :with => ENV['User_Email']
-      fill_in 'user_password', :with => ENV['User_Password']
-    end
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-    click_on 'Manage Content'
-    click_on 'Slideshows'
-    expect(page).to have_content 'Listing Slideshows'
     click_on 'Test slideshow'
     click_on 'Delete'
     page.accept_alert 'Are you sure?'
