@@ -41,7 +41,7 @@ describe "Coach, Patients", :type => :feature, :sauce => false do
   end
 
   #Testing visibility of Mood/Emotions viz
-  it "- managing PHQ9" do
+  it "- Mood/Emotions Viz" do
     find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
     expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
   end

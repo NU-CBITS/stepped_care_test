@@ -27,7 +27,7 @@ describe "Learn", :type => :feature, :sauce => false do
 
 #tests
   it "- read Lesson 1" do
-    click_on 'Week 1'
+    find(:xpath, '//*[@id="heading1"]/a/h3').click
     click_on 'Think, Feel, Do Your Way Out of Depression'
     expect(page).to have_content 'Welcome to ThinkFeelDo!'
     click_on 'Continue'
@@ -53,7 +53,7 @@ describe "Learn", :type => :feature, :sauce => false do
   end
 
   it "- print a read lesson" do
-    click_on 'Week 1'
+    find(:xpath, '//*[@id="heading1"]/a/h3').click
     find(:xpath, '//*[@id="collapse1"]/div/span[1]/p/span/a').click
     expect(page).to have_content 'Print'
     expect(page).to have_content 'Return to Lessons'

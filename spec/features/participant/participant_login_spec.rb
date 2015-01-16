@@ -37,8 +37,7 @@ describe "Login", :type => :feature, :sauce => false do
     end
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
-
-    find(:xpath, 'html/body/div[1]/div[1]/div/nav/div/div[2]/ul[2]/li/a').click
+    find(:xpath, '//*[@id="navbar-collapse"]/ul[2]/li/a').click
     expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 
