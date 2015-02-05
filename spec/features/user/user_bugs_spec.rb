@@ -11,6 +11,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -36,6 +37,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -72,8 +74,8 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
 
         click_on 'Edit'
         expect(page).to have_content 'Editing Content Provider'
-      else
 
+      else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
         click_on 'Testing adding/updating slides/lessons'
         expect(page).to have_content 'New Provider'
@@ -96,6 +98,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -116,6 +119,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -133,6 +137,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -179,6 +184,7 @@ describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['Clinician_Email']
       fill_in 'user_password', with: ENV['Clinician_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 

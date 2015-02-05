@@ -12,6 +12,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Participant_Email']
       fill_in 'participant_password', with: ENV['Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
   end
@@ -23,6 +24,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Participant_Email']
       fill_in 'participant_password', with: ENV['Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -37,6 +39,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: 'asdf@test.com'
       fill_in 'participant_password', with: 'asdf'
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Invalid email address or password'
   end
@@ -48,6 +51,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Participant_Email']
       fill_in 'participant_password', with: ENV['Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -64,6 +68,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Old_Participant_Email']
       fill_in 'participant_password', with: ENV['Old_Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
@@ -111,6 +116,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
     within('#new_participant') do
       fill_in 'participant_email', with: ENV['Participant_Email']
     end
+
     click_on 'Send me reset password instructions'
     expect(page).to have_content 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end

@@ -10,6 +10,7 @@ describe 'Feel', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Participant_Email']
       fill_in 'participant_password', with: ENV['Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -23,6 +24,7 @@ describe 'Feel', type: :feature, sauce: sauce_labs do
   it '- tracking your mood and emotions' do
     click_on 'Tracking Your Mood and Emotions'
     expect(page).to have_content 'Rate your Mood'
+
     select '6', from: 'mood[rating]'
     click_on 'Continue'
     expect(page).to have_content 'Mood saved'

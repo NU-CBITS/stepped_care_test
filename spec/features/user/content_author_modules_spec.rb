@@ -10,6 +10,7 @@ describe 'Content Author, Modules', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -77,6 +78,7 @@ describe 'Content Author, Modules', type: :feature, sauce: sauce_labs do
         expect(page).to have_content 'Content module was successfully updated.'
 
         expect(page).to have_content 'Tool: DO'
+
       else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
         click_on '#1 Awareness'
@@ -108,6 +110,7 @@ describe 'Content Author, Modules', type: :feature, sauce: sauce_labs do
       expect(page).to have_content 'Content module along with any associated tasks were successfully destroyed.'
 
       expect(page).to_not have_content 'Test content module'
+
     else
       find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[3]').click
       if page.has_text?('Test content module')
@@ -117,6 +120,7 @@ describe 'Content Author, Modules', type: :feature, sauce: sauce_labs do
         expect(page).to have_content 'Content module along with any associated tasks were successfully destroyed.'
 
         expect(page).to_not have_content 'Test content module'
+
       else
         find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
         click_on 'Test content module'

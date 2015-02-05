@@ -12,6 +12,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
   end
@@ -23,6 +24,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: 'asdf@test.com'
       fill_in 'user_password', with: 'asdf'
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Invalid email address or password'
   end
@@ -70,6 +72,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
     within('#new_user') do
       fill_in 'user_email', with: ENV['User_Email']
     end
+
     click_on 'Send me reset password instructions'
     expect(page).to have_content 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end
@@ -81,6 +84,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['Clinician_Email']
       fill_in 'user_password', with: ENV['Clinician_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -111,6 +115,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['Researcher_Email']
       fill_in 'user_password', with: ENV['Researcher_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -137,6 +142,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['Content_Author_Email']
       fill_in 'user_password', with: ENV['Content_Author_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -154,6 +160,7 @@ describe 'Login', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: ENV['User_Email']
       fill_in 'user_password', with: ENV['User_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 

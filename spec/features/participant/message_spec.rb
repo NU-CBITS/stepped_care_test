@@ -9,6 +9,7 @@ describe 'Messages', type: :feature, sauce: sauce_labs do
       fill_in 'participant_email', with: ENV['Participant_Email']
       fill_in 'participant_password', with: ENV['Participant_Password']
     end
+
     click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
 
@@ -25,6 +26,7 @@ describe 'Messages', type: :feature, sauce: sauce_labs do
       fill_in 'message_subject', with: 'New message'
       fill_in 'message_body', with: 'This is a test message to my coach. Hello, Coach! How are you??'
     end
+
     click_on 'Send'
     expect(page).to have_content 'Message saved'
   end
@@ -213,6 +215,7 @@ describe 'Messages', type: :feature, sauce: sauce_labs do
     within('#new_message') do
       fill_in 'message_body', with: 'Got it. Thanks!'
     end
+
     click_on 'Send'
     expect(page).to have_content 'Message saved'
   end
