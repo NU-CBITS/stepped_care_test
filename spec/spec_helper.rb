@@ -10,7 +10,7 @@ require 'sauce_whisk'
 Capybara.default_wait_time = 10
 
 def sauce_labs
-  false
+  ENV['Sauce'] || false
 end
 
 def test_driver
