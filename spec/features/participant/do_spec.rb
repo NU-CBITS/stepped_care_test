@@ -1,47 +1,21 @@
-# filename: do_spec.rb
+# filename: do1_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
-describe 'Do', type: :feature, sauce: sauce_labs do
-  before(:each) do
-    visit ENV['Base_URL'] + '/participants/sign_in'
-    within('#new_participant') do
-      fill_in 'participant_email', with: ENV['Participant_Email']
-      fill_in 'participant_password', with: ENV['Participant_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'DO'
-    click_on 'DO Home'
-    expect(page).to have_content 'Plan a New Activity'
+describe 'Active participant in group 1 signs in, navigates to DO tool,',
+         type: :feature, sauce: sauce_labs do
+  before do
+    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+    visit "#{ENV['Base_URL']}/navigator/contexts/DO"
   end
 
-  # define methods for this spec file
-  def choose_rating(element_id, value)
-    find("##{ element_id } select").find(:xpath, "option[#{(value + 1)}]").select_option
-  end
-
-  # tests
-  # Testing the #1 Awareness portion of the DO tool
-  it '- awareness' do
+  it 'completes Awareness' do
     click_on '#1 Awareness'
-    expect(page).to have_content 'You are what you do'
-
-    click_on 'Continue'
-    expect(page).to have_content "OK, let's talk about yesterday."
-
-    if page.has_text?('Last Recorded Awake Period:')
-      click_on 'Complete'
-    else
-      yesterday = Date.today.prev_day
-      select yesterday.strftime('%a') + ' 7 AM', from: 'awake_period_start_time'
-      select yesterday.strftime('%a') + ' 10 PM', from: 'awake_period_end_time'
-      click_on 'Create'
-      expect(page).to have_content 'Awake Period saved'
-    end
+    click_on 'Next'
+    select "#{Date.today.prev_day.strftime('%a')} 7 AM",
+           from: 'awake_period_start_time'
+    select "#{Date.today.prev_day.strftime('%a')} 10 PM",
+           from: 'awake_period_end_time'
+    click_on 'Create'
+    expect(page).to have_content 'Awake Period saved'
 
     fill_in 'activity_type_0', with: 'Get ready for work'
     choose_rating('pleasure_0', 6)
@@ -72,173 +46,207 @@ describe 'Do', type: :feature, sauce: sauce_labs do
     fill_in 'activity_type_14', with: 'Get ready for bed'
     choose_rating('pleasure_14', 2)
     choose_rating('accomplishment_14', 3)
-    click_on 'Continue'
-    expect(page).to have_content 'Activity saved'
-
-    click_on 'Continue'
-    expect(page).to have_content 'Things you found fun.'
-
-    click_on 'Continue'
-    expect(page).to have_content "Things that make you feel like you've accomplished something."
-
-    click_on 'Continue'
-    expect(page).to have_content 'Plan a New Activity'
+    click_on 'Next'
+    within('#recent_activities') do
+      expect(page).to have_css('tr', count: '17')
+    end
+    click_on 'Next'
+    within('#fun_activities') do
+      expect(page).to have_css('tr', count: '4')
+    end
+    click_on 'Next'
+    within('#accomplished_activities') do
+      expect(page).to have_css('tr', count: '5')
+    end
+    click_on 'Next'
+    find('h1', text: 'Do Landing')
   end
 
-  # Testing that previously entered and completed wake period is not available
-  it '- awareness, already entered wake period' do
+  it 'cannot complete Awareness for a time period already completed' do
     click_on '#1 Awareness'
-    expect(page).to have_content 'You are what you do'
+    click_on 'Next'
+    within('#awake_period_start_time') do
+      expect(page).to_not have_content "#{Date.today.prev_day.strftime('%a')}" \
+                                       ' 7 AM'
+    end
 
-    click_on 'Continue'
-    expect(page).to have_content "OK, let's talk about yesterday."
-
-    yesterday = Date.today.prev_day
-    expect { select yesterday.strftime('%a') + ' 7 AM', from: 'awake_period_start_time' }.to raise_error
-
-    expect { select yesterday.strftime('%a') + ' 10 PM', from: 'awake_period_end_time' }.to raise_error
-  end
-
-  # Testing the #2-Planning of the DO tool
-  # this test passes because I do not select a time in the "future_time_picker_0" - this is likely going to be updated
-  # I will update this test when that is completed
-  it '- planning' do
-    click_on '#2 Planning'
-    expect(page).to have_content 'The last few times you were here...'
-
-    click_on 'Continue'
-    expect(page).to have_content 'We want you to plan one fun thing'
-
-    fill_in 'activity_activity_type_new_title', with: 'New planned activity'
-    today = Date.today
-    tomorrow = today + 1
-    fill_in 'future_date_picker_0', with: tomorrow.strftime('%d %b, %Y')
-    choose_rating('pleasure_0', 6)
-    choose_rating('accomplishment_0', 3)
-    click_on 'Continue'
-    expect(page).to have_content 'Activity saved'
-
-    expect(page).to have_content 'Now, plan something that gives you a sense of accomplishment.'
-
-    fill_in 'activity_activity_type_new_title', with: 'Another planned activity'
-    today = Date.today
-    tomorrow = today + 1
-    fill_in 'future_date_picker_0', with: tomorrow.strftime('%d %b, %Y')
-    choose_rating('pleasure_0', 4)
-    choose_rating('accomplishment_0', 8)
-    click_on 'Continue'
-    expect(page).to have_content 'Activity saved'
-
-    expect(page).to have_content 'Your Planned Activities'
-
-    click_on 'Continue'
-    expect(page).to have_content 'Try to stick with your plans'
-
-    click_on 'Continue'
-    expect(page).to have_content 'Upcoming Activities'
-  end
-
-  # Testing the #3-Reviewing section of the DO tool
-  it '- reviewing' do
-    click_on '#3 Reviewing'
-    expect(page).to have_content 'Welcome back!'
-
-    click_on 'Continue'
-    expect(page).to have_content "Let's do this..."
-
-    click_on 'Continue'
-    if page.has_text?('You said you were going to')
-      find(:xpath, '(/html/body/div[1]/div[1]/div/div[3]/form[1]/div[2]/label[1])').click
-      select '7', from: 'activity[actual_pleasure_intensity]'
-      select '5', from: 'activity[actual_accomplishment_intensity]'
-      click_on 'Continue'
-      expect(page).to have_content 'Activity saved'
-
-      if page.has_text?('You said you were going to')
-        find(:xpath, '(/html/body/div[1]/div[1]/div/div[3]/form[2]/div[2]/label[2])').click
-        fill_in 'activity[noncompliance_reason]', with: "I didn't have time"
-        click_on 'Continue'
-      else
-        expect(page).to have_content 'Activity saved'
-
-        expect(page).to have_content 'Good Work!'
-
-        click_on 'Continue'
-        expect(page).to have_content 'Plan a New Activity'
-      end
-
-    else
-      expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
-
-      click_on 'Continue'
-      expect(page).to have_content 'Good Work!'
-
-      click_on 'Continue'
-      expect(page).to have_content 'Plan a New Activity'
+    within('#awake_period_end_time') do
+      expect(page).to_not have_content "#{Date.today.prev_day.strftime('%a')}" \
+                                       ' 10 PM'
     end
   end
 
-  # Testing Plan a New Activity portion of the DO tool
-  it '- plan a new activity' do
-    click_on 'Plan a New Activity'
-    expect(page).to have_content "But you don't have to start from scratch,"
+  it 'completes Awareness for different time on same day that overlaps days' do
+    click_on '#1 Awareness'
+    click_on 'Next'
+    select "#{Date.today.prev_day.strftime('%a')} 11 PM",
+           from: 'awake_period_start_time'
+    select "#{Date.today.strftime('%a')} 1 AM", from: 'awake_period_end_time'
+    click_on 'Create'
+    expect(page).to have_content 'Awake Period saved'
 
+    fill_in 'activity_type_0', with: 'Sleep'
+    choose_rating('pleasure_0', 6)
+    choose_rating('accomplishment_0', 1)
+    click_on 'copy_1'
+    click_on 'Next'
+    find('#recent_activities')
+    click_on 'Next'
+    find('#fun_activities')
+    click_on 'Next'
+    find('#accomplished_activities')
+    click_on 'Next'
+    find('h1', text: 'Do Landing')
+  end
+
+  it 'completes Planning' do
+    click_on '#2 Planning'
+    click_on 'Next'
     fill_in 'activity_activity_type_new_title', with: 'New planned activity'
-    today = Date.today
-    tomorrow = today + 1
-    fill_in 'future_date_picker_0', with: tomorrow.strftime('%d %b, %Y')
+    find('.fa.fa-calendar').click
+    pick_tomorrow
+
+    choose_rating('pleasure_0', 6)
+    choose_rating('accomplishment_0', 3)
+    click_on 'Next'
+    expect(page).to have_content 'Activity saved'
+
+    fill_in 'activity_activity_type_new_title', with: 'Another planned activity'
+    find('.fa.fa-calendar').click
+    pick_tomorrow
+
+    choose_rating('pleasure_0', 4)
+    choose_rating('accomplishment_0', 8)
+    click_on 'Next'
+    find('h1', text: 'OK...')
+    click_on 'Next'
+    within('#previous_activities') do
+      expect(page).to have_css('tr', count: '6')
+    end
+
+    click_on 'Next'
+    find('h1', text: 'Do Landing')
+  end
+
+  it 'completes Reviewing' do
+    click_on '#3 Doing'
+    click_on 'Next'
+    expect(page).to have_content "Let's do this..."
+
+    click_on 'Next'
+    find('.btn.btn-success').click
+    select '7', from: 'activity[actual_pleasure_intensity]'
+    select '5', from: 'activity[actual_accomplishment_intensity]'
+    click_on 'Next'
+    expect(page).to have_content 'Activity saved'
+
+    if page.has_text?('You said you were going to')
+      find('.btn.btn-danger').click
+      fill_in 'activity[noncompliance_reason]', with: "I didn't have time"
+      click_on 'Next'
+      expect(page).to have_content 'Activity saved'
+    end
+  end
+
+  it 'completes Plan a New Activity' do
+    click_on 'Add a New Activity'
+    fill_in 'activity_activity_type_new_title', with: 'New planned activity'
+    find('.fa.fa-calendar').click
+    pick_tomorrow
+
     choose_rating('pleasure_0', 4)
     choose_rating('accomplishment_0', 3)
     click_on 'Next'
     expect(page).to have_content 'Activity saved'
   end
 
-  # Testing Your Activities portion of the DO tool
-  it '- your activities' do
+  it 'uses Your Activities viz' do
     click_on 'Your Activities'
-    expect(page).to have_content 'Activities Overview'
+    expect(page).to have_content 'Daily Averages for ' \
+                                 "#{Date.today.strftime('%b %d, %Y')}"
 
-    expect(page).to have_content 'Over the past week'
+    click_on 'Daily Summaries'
+    expect(page).to have_content 'Average Accomplishment Discrepancy'
 
-    page.find('#nav_main li:nth-child(2) a').click
-    expect(page).to have_content '3 day view'
+    click_on 'Previous Day'
+    expect(page).to have_content 'Daily Averages for ' \
+                                 "#{Date.today.prev_day.strftime('%b %d, %Y')}"
 
-    page.find('#nav_main li:nth-child(3) a').click
-    expect(page).to have_content 'Completion score'
+    endtime = Time.now + (60 * 60)
+    within('.panel.panel-default',
+           text: "#{Time.now.strftime('%-l %P')} - " \
+           "#{endtime.strftime('%-l %P')}: Parkour") do
+      click_on "#{Time.now.strftime('%-l %P')} - " \
+               "#{endtime.strftime('%-l %P')}: Parkour"
+      expect(page).to have_content 'Predicted  Average Importance: 4 Really ' \
+                                   'fun: 9'
+
+      within('.panel-collapse.collapse.in') do
+        click_on 'Edit'
+        expect(page).to have_css('#activity_actual_accomplishment_intensity')
+      end
+    end
+
+    click_on 'Next Day'
+    expect(page).to have_content 'Daily Averages for ' \
+                                 "#{Date.today.strftime('%b %d, %Y')}"
+
+    click_on 'Visualize'
+    click_on 'Last 3 Days'
+    if page.has_text?('Notice! No activities were completed during this ' \
+                      '3-day period.')
+      expect(page).to_not have_content Date.today.strftime('%A, %m/%d')
+
+    else
+      expect(page).to have_content Date.today.strftime('%A, %m/%d')
+
+      click_on 'Day'
+      expect(page).to have_css('#datepicker')
+    end
   end
 
-  # Testing the navbar functionality specifically surrounding the DO tool
-  it '- navbar functionality' do
-    visit ENV['Base_URL']
-    click_on 'DO'
-    click_on '#1 Awareness'
-    expect(page).to have_content 'You are what you do'
+  it 'visits View Planned Activities' do
+    click_on 'View Planned Activities'
+    find('.text-capitalize', text: 'View Planned Activities')
+    expect(page).to have_content 'Speech'
+  end
+
+  it 'uses navbar functionality for all of DO' do
+    visit "#{ENV['Base_URL']}/navigator/modules/339588004"
+    expect(page).to have_content 'This is just the beginning...'
 
     click_on 'DO'
     click_on '#2 Planning'
     expect(page).to have_content 'The last few times you were here...'
 
     click_on 'DO'
-    click_on '#3 Reviewing'
+    click_on '#1 Awareness'
+    expect(page).to have_content 'This is just the beginning...'
+
+    click_on 'DO'
+    click_on '#3 Doing'
     expect(page).to have_content 'Welcome back!'
 
     click_on 'DO'
-    click_on 'Plan a New Activity'
+    click_on 'Add a New Activity'
     expect(page).to have_content "But you don't have to start from scratch,"
 
     click_on 'DO'
     click_on 'Your Activities'
-    expect(page).to have_content 'Activities Overview'
+    expect(page).to have_content 'Today'
+
+    click_on 'DO'
+    click_on 'View Planned Activities'
+    expect(page).to have_content 'Speech'
 
     click_on 'DO'
     click_on 'DO Home'
-    expect(page).to have_content 'Plan a New Activity'
+    expect(page).to have_content 'Add a New Activity'
   end
 
-  # Testing the skip functionality in the slideshow portions of the first three parts of the DO tool
-  it '- skip functionality' do
+  it 'uses skip functionality in all of DO slideshows' do
     click_on '#1 Awareness'
-    expect(page).to have_content 'You are what you do'
+    expect(page).to have_content 'This is just the beginning...'
 
     click_on 'Skip'
     expect(page).to have_content "OK, let's talk about yesterday."
@@ -251,7 +259,7 @@ describe 'Do', type: :feature, sauce: sauce_labs do
     expect(page).to have_content 'We want you to plan one fun thing'
 
     click_on 'DO'
-    click_on '#3 Reviewing'
+    click_on '#3 Doing'
     expect(page).to have_content 'Welcome back!'
 
     click_on 'Skip'
@@ -259,21 +267,50 @@ describe 'Do', type: :feature, sauce: sauce_labs do
       expect(page).to have_content 'You said you were going to'
 
     else
-      expect(page).to have_content "It doesn't look like there are any activities for you to review at this time"
+      expect(page).to have_content "It doesn't look like there are any " \
+                                   'activities for you to review at this time'
     end
   end
 
-  # Testing the DO tool visualization
-  it '- visualization' do
-    if page.has_text?('Recent Past Activities')
-      click_on 'Edit'
-      expect(page).to have_content 'You said you were going to'
+  it 'sees Upcoming Activities on DO > Landing' do
+    expect(page).to have_content 'Activities in your near future'
+  end
+end
 
-    elsif page.has_text?('Upcoming Activities')
-      expect(page).to have_content 'Activities in your near future'
+describe 'Active participant in group 3 signs in, navigates to DO tool,',
+         type: :feature, sauce: sauce_labs do
+  before do
+    sign_in_pt(ENV['Alt_Participant_Email'], ENV['Alt_Participant_Password'])
+    visit "#{ENV['Base_URL']}/navigator/contexts/DO"
+  end
 
-    else
-      expect { expect(page).to have_content 'Recent Past Activities' }.to raise_error
-    end
+  it 'completes Awareness w/ already entered but not completed awake period' do
+    click_on '#1 Awareness'
+    click_on 'Next'
+    click_on 'Complete'
+    fill_in 'activity_type_0', with: 'Get ready for work'
+    choose_rating('pleasure_0', 6)
+    choose_rating('accomplishment_0', 7)
+    fill_in 'activity_type_1', with: 'Travel to work'
+    choose_rating('pleasure_1', 2)
+    choose_rating('accomplishment_1', 3)
+    fill_in 'activity_type_2', with: 'Work'
+    choose_rating('pleasure_2', 8)
+    choose_rating('accomplishment_2', 9)
+    click_on 'Next'
+    find('#recent_activities')
+    click_on 'Next'
+    find('#fun_activities')
+    click_on 'Next'
+    find('#accomplished_activities')
+    click_on 'Next'
+    find('h1', text: 'Do Landing')
+  end
+
+  it 'visits Reviewing from viz at bottom of DO > Landing' do
+    expect(page).to have_content 'Recent Past Activities'
+
+    click_on 'Edit'
+    expect(page).to have_content 'You said you were going to'
   end
 end

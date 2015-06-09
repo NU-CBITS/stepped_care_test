@@ -1,60 +1,58 @@
 # filename: coach_site_messages_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
-describe 'Coach, Site Messages', type: :feature, sauce: sauce_labs do
-  before(:each) do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-
+describe 'Coach signs in, navigates to Site Messages tool,',
+         type: :feature, sauce: sauce_labs do
+  before do
+    sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+    click_on 'Arms'
+    find('h1', text: 'Arms')
+    click_on 'Arm 1'
+    click_on 'Group 1'
     click_on 'Messaging'
     click_on 'Site Messaging'
-    expect(page).to have_content 'Listing Site Messages'
-
-    expect(page).to have_content 'The first message'
   end
 
-  # tests
-  # Testing new site messages
-  it '- new site message' do
+  it 'creates and sends a new site message' do
     click_on 'New'
-    expect(page).to have_content 'New site message'
-
     expect(page).to have_content 'stepped_care-no-reply@northwestern.edu'
 
-    select 'ChrisBrennerTest', from: 'site_message_participant_id'
+    select 'TFD-1111', from: 'site_message_participant_id'
     fill_in 'site_message_subject', with: 'Testing site messaging'
-    fill_in 'site_message_body', with: 'This message is intended to test the functionality of site messaging.'
+    fill_in 'site_message_body',
+            with: 'This message is intended to test the functionality of ' \
+            'site messaging.'
     click_on 'Send'
-    expect(page).to have_content 'Site message was successfully created.'
+    expect(page).to have_content 'Site message was successfully created.' \
+                                 "\nParticipant: TFD-1111" \
+                                 "\nSubject: Testing site messaging" \
+                                 "\nBody: This message is intended to test " \
+                                 'the functionality of site messaging.'
 
-    expect(page).to have_content 'Participant: ChrisBrennerTest'
-
-    expect(page).to have_content 'Subject: Testing site messaging'
-
-    expect(page).to have_content 'Body: This message is intended to test the functionality of site messaging.'
+    click_on 'Back'
+    within('tr:nth-child(2)') do
+      expect(page).to have_content 'TFD-1111  Testing site messaging  ' \
+                                   'This message is intended to test the ' \
+                                   'functionality of site messaging. ' \
+                                   "#{Date.today.strftime('%b %d %Y')}"
+    end
   end
 
-  # Testing site messages show
-  it '- show site message' do
-    first(:link, 'Show').click
-    expect(page).to have_content 'Participant: ChrisBrennerTest'
+  it 'reviews a previously sent site message' do
+    within('tr', text: 'message subject') do
+      click_on 'Show'
+    end
 
-    expect(page).to have_content 'Subject: The first message'
+    expect(page).to have_content 'Participant: TFD-1111' \
+                                 "\nSubject: message subject" \
+                                 "\nBody: message body"
+  end
 
-    expect(page).to have_content 'Body: This is a site message for testing purposes.'
+  it 'uses breadcrumbs to return to home' do
+    click_on 'Group'
+    within('.breadcrumb') do
+      click_on 'Home'
+    end
+
+    expect(page).to have_content 'Arms'
   end
 end

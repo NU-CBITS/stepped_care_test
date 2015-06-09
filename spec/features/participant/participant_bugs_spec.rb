@@ -1,46 +1,85 @@
 # filename: participant_bugs_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
 describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
-  # tests
-  # Testing bug that redirects participant to user login upon completion of the replay introduction feature
-  it '- redirect error at completion of Replay Intro' do
-    visit ENV['Base_URL'] + '/participants/sign_in'
-    within('#new_participant') do
-      fill_in 'participant_email', with: ENV['Participant_Email']
-      fill_in 'participant_password', with: ENV['Participant_Password']
+  describe 'Participant 1 signs in, navigates to the DO tool,' do
+    before do
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/DO"
     end
 
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    it 'visits Your Activities, selects Previous Day w/out exception' do
+      click_on '#1 Awareness'
+      click_on 'Next'
+      select "#{Date.today.strftime('%a')} 2 AM",
+             from: 'awake_period_start_time'
+      select "#{Date.today.strftime('%a')} 3 AM", from: 'awake_period_end_time'
+      click_on 'Create'
+      expect(page).to have_content 'Awake Period saved'
 
-    click_on 'SUPPORT'
-    click_on 'SUPPORT Home'
-    expect(page).to have_content 'Frequently Asked Questions'
+      fill_in 'activity_type_0', with: 'Sleep'
+      choose_rating('pleasure_0', 9)
+      choose_rating('accomplishment_0', 3)
+      click_on 'Next'
+      expect(page).to have_content 'Activity saved'
 
-    click_on 'Replay Intro'
-    expect(page).to have_content 'Welcome to ThinkFeelDo'
+      expect(page).to have_content 'Take a look - does this all seem right? ' \
+                                   'Recently, you...'
 
-    click_on 'Continue'
-    expect(page).to have_content 'How to Maximize Your Benefit from ThinkFeelDo'
+      click_on 'Next'
+      expect(page).to have_content 'Things you found fun.'
 
-    click_on 'Continue'
-    expect(page).to have_content 'What Should I Do When I Log in?'
+      click_on 'Next'
+      expect(page).to have_content "Things that make you feel like you've " \
+                                   'accomplished something.'
 
-    click_on 'Continue'
-    expect(page).to have_content "How Do I Know What's New on the Site?"
+      click_on 'Next'
+      expect(page).to have_content 'Add a New Activity'
 
-    click_on 'Continue'
-    expect(page).to have_content 'What Should I Expect?'
+      click_on 'Your Activities'
+      expect(page).to have_content 'Today'
 
-    click_on 'Continue'
-    expect(page).to have_content 'What Might Get in the Way?'
+      click_on 'Previous Day'
+      expect(page)
+        .to have_content 'Daily Averages for ' \
+                         "#{Date.today.prev_day.strftime('%b %d, %Y')}"
+    end
+  end
 
-    click_on 'Continue'
-    expect(page).to have_content 'Get Started'
-    click_on 'Continue'
-    expect(page).to have_content 'Additional Resources'
+  describe 'Participant 2 signs in,' do
+    before do
+      sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])
+    end
+
+    it 'navigates to a module from the dropdown, completes the module, the ' \
+       'module appears complete on landing page' do
+      within('.dropdown-toggle', text: 'FEEL') do
+        expect(page).to have_content 'New!'
+      end
+
+      find('.dropdown-toggle', text: 'FEEL').click
+      within('.dropdown-menu') do
+        click_on 'Tracking Your Mood & Emotions'
+      end
+
+      select '6', from: 'mood[rating]'
+      click_on 'Next'
+      expect(page).to have_content 'You just rated your mood as a 6 (Good)'
+
+      select 'anxious', from: 'emotional_rating_emotion_id'
+      select 'negative', from: 'emotional_rating_is_positive'
+      select '4', from: 'emotional_rating[rating]'
+
+      click_on 'Next'
+      expect(page).to have_content 'Emotional Rating saved'
+
+      visit "#{ENV['Base_URL']}/navigator/contexts/FEEL"
+
+      click_on 'Your Recent Moods & Emotions'
+      expect(page).to have_content 'Positive and Negative Emotions'
+
+      within('.dropdown-toggle', text: 'FEEL') do
+        expect(page).to_not have_content 'New!'
+      end
+    end
   end
 end

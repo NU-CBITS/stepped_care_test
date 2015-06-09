@@ -1,210 +1,83 @@
 # filename: user_bugs_spec.rb
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
 
-describe 'User Dashboard Bugs', type: :feature, sauce: sauce_labs do
-  # tests
-  # Testing bug where viewing a video slide in a lesson throws an error
-  it '- viewing a video slide in a lesson' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
+describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
+  describe 'Researcher signs in,' do
+    before do
+      sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
     end
 
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    it 'creates a participant, assigns a group membership, sees correct ' \
+       'calculation of end date' do
+      click_on 'Participants'
+      click_on 'New'
+      fill_in 'participant_study_id', with: 'Tests'
+      fill_in 'participant_email', with: 'test@test.com'
+      fill_in 'participant_phone_number', with: ENV['Participant_Phone_Number']
+      select 'Email', from: 'participant_contact_preference'
+      click_on 'Create'
+      expect(page).to have_content 'Participant was successfully created.'
 
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
+      click_on 'Assign New Group'
+      select 'Group 1', from: 'membership_group_id'
+      fill_in 'membership_start_date',
+              with: Date.today.prev_day.strftime('%Y-%m-%d')
+      next_year = Date.today + 365
+      fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
+      weeks_later = Date.today + 20 * 7
+      expect(page).to have_content 'Standard number of weeks: 20, Projected ' \
+                                   'End Date from today: ' \
+                                   "#{weeks_later.strftime('%m/%d/%Y')}"
 
-    click_on 'Arm 1'
-    click_on 'Manage Content'
-    click_on 'Lesson Modules'
-    expect(page).to have_content 'Listing Lesson Modules'
+      click_on 'Assign'
+      expect(page).to have_content 'Group was successfully assigned'
 
-    click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test video slide 1'
-
-    click_on 'Test video slide 1'
-    expect(page).to have_content 'This slide was added for automated testing purposes'
+      expect(page).to have_content "Membership Status: Active\nCurrent " \
+                                   'Group: Group 1'
+    end
   end
 
-  # Testing bug where you receive error message when trying to edit a provider
-  it '- editing a provider' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
+  describe 'Clinician signs in,' do
+    before do
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
     end
 
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    it 'navigates to Patient Dashboard, see consistent # of Logins in ' \
+       'listing page and Patient Report' do
+      click_on 'Arms'
+      find('h1', text: 'Arms')
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Patient Dashboard'
+      within('#patients') do
+        within('table#patients tr', text: 'TFD-1111') do
+          if page.has_text?('Never Logged In')
+            expect(page).to have_content 'TFD-1111 1 1'
 
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
+            expect(page).to have_content '0'
 
-    click_on 'Arm 1'
-    click_on 'Manage Content'
-    click_on 'Content Modules'
-    expect(page).to have_content 'Content Modules'
+          else
+            expect(page).to have_content 'TFD-1111 2 1'
 
-    if page.has_text?('Testing adding/updating slides/lessons')
-      click_on 'Testing adding/updating slides/lessons'
-      expect(page).to have_content 'New Provider'
+            expect(page).to have_content '37'
+          end
+        end
+      end
 
-      click_on 'slideshow provider'
-      expect(page).to have_content 'Content Provider'
+      select_patient('TFD-1111')
+      within('.panel.panel-default', text: 'Login Info') do
+        if page.has_text?('Never Logged In')
+          expect(page).to have_content "Last Logged In: Never Logged In\n" \
+                                       "Logins Today: 0\nLogins in the last " \
+                                       "seven days: 0\nTotal Logins: 0"
 
-      expect(page).to have_content 'slideshow provider'
+        else
+          expect(page).to have_content 'Last Logged In: ' \
+                                       "#{Time.now.strftime('%b %d %Y %H')}"
 
-      click_on 'Edit'
-      expect(page).to have_content 'Editing Content Provider'
-
-    else
-      find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[3]').click
-      if page.has_text?('Testing adding/updating slides/lessons')
-        click_on 'Testing adding/updating slides/lessons'
-        expect(page).to have_content 'New Provider'
-
-        click_on 'slideshow provider'
-        expect(page).to have_content 'Content Provider'
-
-        expect(page).to have_content 'slideshow provider'
-
-        click_on 'Edit'
-        expect(page).to have_content 'Editing Content Provider'
-
-      else
-        find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/div[2]/div[2]/div/ul/li[4]').click
-        click_on 'Testing adding/updating slides/lessons'
-        expect(page).to have_content 'New Provider'
-
-        click_on 'slideshow provider'
-        expect(page).to have_content 'Content Provider'
-
-        expect(page).to have_content 'slideshow provider'
-
-        click_on 'Edit'
-        expect(page).to have_content 'Editing Content Provider'
+          expect(page).to have_content "Logins Today: 37\nLogins during this " \
+                                       "treatment week: 37\nTotal Logins: 37"
+        end
       end
     end
-  end
-
-  # Testing bug where you receive an error message when trying to access a specific group on Researcher Dashboard
-  it '- error message when accesing a group' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-
-    click_on 'fun'
-    expect(page).to have_content 'Title: fun'
-
-    click_on 'Edit'
-    expect(page).to have_content 'Editing Group'
-  end
-
-  # Testing bug where you receive an error message when trying to access specific user on Researcher Dashboard
-  it '- update a content author' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'Users'
-    expect(page).to have_content 'Listing Users'
-
-    click_on ENV['Content_Author_Email']
-    expect(page).to have_content 'Email: ' + ENV['Content_Author_Email']
-  end
-
-  # Testing bug where you receive an error message when creating a membership
-  it '- create a group membership' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    expect(page).to have_content 'CSV Reports'
-
-    click_on 'Participants'
-    expect(page).to have_content 'Listing Participants'
-
-    click_on 'fake'
-    expect(page).to have_content 'Study Id: fake'
-
-    click_on 'Assign New Group'
-    expect(page).to have_content 'Assigning New Group to Participant'
-
-    select 'fake', from: 'membership_group_id'
-    yesterday = Date.today.prev_day
-    fill_in 'membership_start_date', with: yesterday.strftime('%Y-%m-%d')
-    today = Date.today
-    next_year = today + 365
-    fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
-    click_on 'Assign'
-    expect(page).to have_content 'Group was successfully assigned'
-
-    expect(page).to have_content 'Study Id: fake'
-
-    expect(page).to have_content 'Group: fake'
-
-    expect(page).to have_content 'Membership Status: Active'
-
-    find(:xpath, 'html/body/div[1]/div[3]/ul/a').click
-    expect(page).to have_content 'Membership'
-
-    expect(page).to have_content 'Start Date: ' + yesterday.strftime('%Y-%m-%d')
-
-    click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
-    expect(page).to have_content 'Group was successfully removed.'
-  end
-
-  # Testing bug where a clinician user cannot access their group
-  it '- clinician authorization' do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['Clinician_Email']
-      fill_in 'user_password', with: ENV['Clinician_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    expect(page).to_not have_content 'Users'
-
-    click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-
-    click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-
-    expect(page).to_not have_content 'Manage Content'
-
-    click_on 'fake'
-    expect(page).to have_content 'Title: fake'
-
-    expect(page).to have_content 'Patients'
-
-    expect(page).to have_content 'Messaging'
-
-    expect(page).to_not have_content 'Manage Tasks'
   end
 end

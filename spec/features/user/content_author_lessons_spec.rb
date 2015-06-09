@@ -1,99 +1,79 @@
 # filename: content_author_lessons_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
-describe 'Content Author, Lesson Modules', type: :feature, sauce: sauce_labs do
-  before(:each) do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
+describe 'Content Author signs in , navigates to Lesson Modules tool,',
+         type: :feature, sauce: sauce_labs do
+  before do
+    sign_in_user(ENV['Content_Author_Email'], ENV['Content_Author_Password'])
     click_on 'Arms'
-    expect(page).to have_content 'Listing Arms'
-
+    find('h1', text: 'Arms')
     click_on 'Arm 1'
-    expect(page).to have_content 'Title: Arm 1'
-
     click_on 'Manage Content'
     click_on 'Lesson Modules'
-    expect(page).to have_content 'Listing Lesson Modules'
   end
 
-  # tests
-  # Testing creating a lesson
-  it '- new lesson' do
+  it 'creates a new lesson' do
     click_on 'New'
     fill_in 'lesson_title', with: 'Test lesson'
-    fill_in 'lesson_position', with: '45'
+    fill_in 'lesson_position', with: '19'
     click_on 'Create'
     expect(page).to have_content 'Successfully created lesson'
-
-    expect(page).to have_content 'Test lesson'
-
-    expect(page).to have_content 'Add Video Slide'
   end
 
-  # Testing updating a lesson
-  it '- updating lesson' do
-    click_on 'Testing adding/updating slides/lessons'
-    expect(page).to have_content 'Test video slide 1'
+  it 'updates title of a lesson' do
+    click_on 'Do - Awareness Introduction'
+    expect(page).to have_content 'This is just the beginning...'
 
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[1]/a[2]').click
-    fill_in 'lesson_title', with: 'Testing adding/updating slides/lessons 123'
+    page.all(:link, 'Edit')[0].click
+    fill_in 'lesson_title', with: 'Do - Awareness Introduction 123'
     click_on 'Update'
     expect(page).to have_content 'Successfully updated lesson'
 
-    expect(page).to have_content 'Testing adding/updating slides/lessons 123'
+    expect(page).to have_content 'Do - Awareness Introduction 123'
 
-    expect(page).to have_content 'Add Video Slide'
-
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[1]/a[2]').click
-    fill_in 'lesson_title', with: 'Testing adding/updating slides/lessons'
+    page.all(:link, 'Edit')[0].click
+    fill_in 'lesson_title', with: 'Do - Awareness Introduction'
     click_on 'Update'
     expect(page).to have_content 'Successfully updated lesson'
 
-    expect(page).to have_content 'Testing adding/updating slides/lessons'
-
-    expect(page).to have_content 'Add Video Slide'
+    expect(page).to have_content 'Do - Awareness Introduction'
   end
 
-  # Testing drag and drop lesson sorting
-  it '- drag and drop sorting' do
-    source = page.find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[42]/td[1]/span/i')
-    target = page.find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[40]/td[1]/span/i')
-    source.drag_to(target)
-    within('tr:nth-child(40)') do
-      find('#lesson-1032687475>td>a>p')
+  # this example is commented out as it fails most runs
+  # drag_to doesn't play nice with sortable list
+  #
+  # it 'updates position of lessons by using drag and drop sorting' do
+  #   lesson_value = find('tr:nth-child(11)').text
+  #   lesson = page.all('.fa.fa-sort.fa-lg')
+  #   lesson[11].drag_to(lesson[3])
+
+  #   within('tr:nth-child(3)') do
+  #     expect(page).to have_content lesson_value
+  #   end
+  # end
+
+  it 'destroys lesson' do
+    within('tr', text: 'Test lesson') do
+      find('.btn.btn-danger').click
     end
 
-    within('tr:nth-child(41)') do
-      find('#lesson-1032687501>td>a>p')
-    end
-
-    source = page.find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[40]/td[1]/span/i')
-    target = page.find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[43]/td[1]/span/i')
-    source.drag_to(target)
-    within('tr:nth-child(40)') do
-      find('#lesson-1032687501>td>a>p')
-    end
-
-    within('tr:nth-child(42)') do
-      find('#lesson-1032687475>td>a>p')
-    end
-  end
-
-  # Testing destroying  a lesson
-  it '- destroy lesson' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/table/tbody/tr[44]/td[4]/a[2]').click
     page.accept_alert 'Are you sure?'
-    expect(page).to have_content 'Lesson deleted'
-
     expect(page).to_not have_content 'Test lesson'
+  end
+
+  it 'uses breadcrumbs to return home' do
+    expect(page).to have_content 'New'
+    click_on 'Arm'
+    within('.breadcrumb') do
+      click_on 'Arms'
+    end
+
+    expect(page).to have_content 'Arm 2'
+
+    within('.breadcrumb') do
+      click_on 'Home'
+    end
+
+    expect(page).to have_content "Arms\nNavigate to groups and participants " \
+                                 'through arms.'
   end
 end

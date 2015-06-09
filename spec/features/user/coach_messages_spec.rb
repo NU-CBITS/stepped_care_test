@@ -1,113 +1,77 @@
 # filename: coach_messages_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
-describe 'Coach, Messages', type: :feature, sauce: sauce_labs do
-  before(:each) do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
-    end
-
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-
+describe 'Coach signs in and navigates to messages tool for Group 1',
+         type: :feature, sauce: sauce_labs do
+  before do
+    sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+    click_on 'Arms'
+    find('h1', text: 'Arms')
+    click_on 'Arm 1'
+    click_on 'Group 1'
     click_on 'Messaging'
     click_on 'Messages'
-    expect(page).to have_content 'Inbox'
-
-    expect(page).to have_content 'Sent'
-
-    expect(page).to have_content 'Compose'
   end
 
-  # tests
-  # Testing inbox
-  it '- inbox' do
-    expect(page).to have_content 'This message is a test to my coach'
+  it 'reads a received message' do
+    click_on 'I like this app'
+    expect(page).to have_content 'From TFD-1111'
 
-    click_on 'This message is a test to my coach'
-    expect(page).to have_content 'This message is for testing the inbox functionality on the coach dashboard.'
+    expect(page).to have_content 'This app is really helpful!'
   end
 
-  # Testing reply
-  it '- reply' do
-    expect(page).to have_content 'This message is a test to my coach'
+  it 'replies to a message' do
+    click_on 'I like this app'
+    click_on 'Reply to this message'
+    expect(page).to have_content 'Add a link'
 
-    click_on 'This message is a test to my coach'
-    expect(page).to have_content 'This message is for testing the inbox functionality on the coach dashboard.'
-
-    click_on 'Reply'
-    expect(page).to have_content 'To You'
-
-    fill_in 'message_body', with: 'This message is to test the reply functionality'
+    fill_in 'message[body]',
+            with: 'This message is to test the reply functionality'
     click_on 'Send'
     expect(page).to have_content 'Message saved'
 
-    expect(page).to have_content 'Inbox'
-
-    expect(page).to have_content 'Sent'
-
-    expect(page).to have_content 'Compose'
-
-    expect(page).to have_content 'This message is a test to my coach'
+    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+    visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
+    expect(page).to have_content 'Reply: I like this app'
   end
 
-  # Testing sent box
-  it '- sent box' do
-    expect(page).to have_content 'This message is a test to my coach'
+  it 'reads a sent message' do
+    click_on 'Sent'
+    click_on 'Try out the LEARN tool'
+    expect(page).to have_content 'I think you will find it helpful.'
+  end
+
+  it 'composes a message' do
+    click_on 'Compose'
+    select 'TFD-1111', from: 'message_recipient_id'
+    fill_in 'message_subject', with: 'Testing compose functionality'
+    select 'Intro', from: 'coach-message-link-selection'
+    fill_in 'message_body',
+            with: 'This message is to test the compose functionality.'
+    click_on 'Send'
+    expect(page).to have_content 'Message saved'
+
+    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+    visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
+    expect(page).to have_content 'Testing compose functionality'
+  end
+
+  it 'searches for a specific participants messages' do
+    select 'TFD-1111', from: 'search'
+    click_on 'Search'
+    expect(page).to have_content 'I like this app'
 
     click_on 'Sent'
-    expect(page).to have_content 'Testing sent message'
+    expect(page).to have_content 'Try out the LEARN tool'
 
-    click_on 'Testing sent message'
-    expect(page).to have_content 'From You'
-
-    expect(page).to have_content 'This message is to a participant for testing the sent box functionality.'
-
-    click_on 'Messages'
-    expect(page).to have_content 'Inbox'
-
-    expect(page).to have_content 'Sent'
-
-    expect(page).to have_content 'Compose'
-
-    expect(page).to have_content 'This message is a test to my coach'
+    expect(page).to_not have_content 'Check out the Introduction slideshow'
   end
 
-  # Testing compose
-  it '- compose' do
-    click_on 'Compose'
-    expect(page).to have_content 'Compose Message'
+  it 'uses breadcrumbs to return to home' do
+    click_on 'Group'
+    within('.breadcrumb') do
+      click_on 'Home'
+    end
 
-    select 'ChrisBrennerTest', from: 'message_recipient_id'
-    fill_in 'message_subject', with: 'Testing compose functionality'
-    select 'Introduction to ThinkFeelDo', from: 'coach-message-link-selection'
-    fill_in 'message_body', with: 'This message is to test the compose functionality.'
-    click_on 'Send'
-    expect(page).to have_content 'Message saved'
-
-    expect(page).to have_content 'Inbox'
-
-    expect(page).to have_content 'Sent'
-
-    expect(page).to have_content 'Compose'
-
-    expect(page).to have_content 'This message is a test to my coach'
-  end
-
-  # Testing search functionality
-  it '- search' do
-    select 'ChrisBrennerTest', from: 'search'
-    click_on 'Search'
-    expect(page).to have_content 'This message is a test to my coach'
+    expect(page).to have_content 'Arms'
   end
 end

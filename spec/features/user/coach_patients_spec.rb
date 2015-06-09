@@ -1,102 +1,566 @@
 # filename: coach_patients_spec.rb
 
-require_relative '../../../spec/spec_helper'
-require_relative '../../../spec/configure_cloud'
-
-describe 'Coach, Patients', type: :feature, sauce: sauce_labs do
-  before(:each) do
-    visit ENV['Base_URL'] + '/users/sign_in'
-    within('#new_user') do
-      fill_in 'user_email', with: ENV['User_Email']
-      fill_in 'user_password', with: ENV['User_Password']
+describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
+  describe 'navigates to Patient Dashboard of active patient in Group 1,' do
+    before do
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+      click_on 'Arms'
+      find('h1', text: 'Arms')
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Patient Dashboard'
     end
 
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-
-    click_on 'Groups'
-    expect(page).to have_content 'Listing Groups'
-
-    click_on 'fake'
-    expect(page).to have_content 'Participant Info'
-
-    click_on 'Patients'
-    expect(page).to have_content 'Patient Dashboard'
-  end
-
-  # tests
-  # Testing view patient dashboard
-  it '- view patients dashboard' do
-    page.find('#patients')[:class].include?('table table hover')
-  end
-
-  # Testing specific patient report
-  it '- view patient report' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'General Patient Info'
-  end
-
-  # Testing visibility of Mood/Emotions viz
-  it '- Mood/Emotions Viz' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'Patient Mood Ratings and PHQ9 Assessment Scores'
-  end
-
-  # Testing managing PHQ9 in patient report
-  it '- managing PHQ9' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'General Patient Info'
-
-    click_on 'Manage'
-    expect(page).to have_content 'PHQ assessments for '
-
-    click_on 'New Phq assessment'
-    expect(page).to have_content 'New PHQ assessment for '
-
-    fill_in 'phq_assessment_q1', with: '2'
-    fill_in 'phq_assessment_q2', with: '2'
-    fill_in 'phq_assessment_q3', with: '2'
-    fill_in 'phq_assessment_q4', with: '2'
-    fill_in 'phq_assessment_q5', with: '2'
-    fill_in 'phq_assessment_q6', with: '2'
-    fill_in 'phq_assessment_q7', with: '2'
-    fill_in 'phq_assessment_q8', with: '2'
-    fill_in 'phq_assessment_q9', with: '2'
-    click_on 'Create Phq assessment'
-    expect(page).to have_content 'Phq assessment was successfully created.'
-
-    click_on 'Delete'
-    page.accept_alert 'Are you sure?'
-    expect(page).to have_content 'Phq assessment was successfully destroyed.'
-
-    click_on 'Patient dashboard'
-    expect(page).to have_content 'General Patient Info'
-  end
-
-  # Testing viewing activities viz in patient report
-  it '- view activities viz' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'General Patient Info'
-    click_on 'Activities visualization'
-    expect(page).to have_content 'Activities Overview'
-
-    page.find('#nav_main li:nth-child(2) a').click
-    expect(page).to have_content '3 day view'
-
-    page.find('#nav_main li:nth-child(3) a').click
-    expect(page).to have_content 'Average Pleasure Discrepency:'
-
-    page.find('#nav_main li:nth-child(1) a').click
-    within '#summary' do
-      expect(page).to have_content 'Most Recent Activities'
+    it 'views a list of active participants assigned to the coach' do
+      within('#patients') do
+        expect(page).to have_content 'TFD-1111'
+      end
     end
-  end
 
-  # Testing viewing thoughts viz in patient report
-  it '- view thoughts viz' do
-    find(:xpath, 'html/body/div[1]/div/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/a').click
-    expect(page).to have_content 'General Patient Info'
-    click_on 'Thoughts visualization'
-    page.find('#ThoughtVizContainer')
+    it 'sees consistent # of Logins' do
+      within('#patients') do
+        within('table#patients tr', text: 'TFD-1111') do
+          if page.has_text?('Never Logged In')
+            expect(page).to have_content 'TFD-1111 1 1'
+
+            expect(page).to have_content '0'
+
+          else
+            expect(page).to have_content 'TFD-1111 2 1'
+
+            expect(page).to have_content '37'
+          end
+        end
+      end
+    end
+
+    it 'checks details for stepping' do
+      within('#patients') do
+        within('tr', text: 'TFD-PHQ') do
+          date1 = Date.today - 7
+          expect(page).to have_content "17 on #{date1.strftime('%m/%d/%Y')}"
+
+          expect(page).to have_css('.label.label-danger', text: 'YES')
+
+          click_on 'Details'
+        end
+      end
+
+      startdate = Date.today - 28
+      within('.modal-content') do
+        expect(page).to have_content 'Week 5 - Started on ' \
+                                     "#{startdate.strftime('%m/%d/%Y')}\n" \
+                                     'Suggestion: Step to t-CBT'
+        date1 = Date.today - 7
+        date2 = Date.today - 9
+        date3 = Date.today - 3
+        expect(page)
+          .to have_css('.danger.suffix_row',
+                       text: "4 (#{date2.strftime('%m/%d/%Y')} - " \
+                             "#{date3.strftime('%m/%d/%Y')}) " \
+                             "#{date1.strftime('%m/%d/%Y')} 17")
+
+        date4 = Date.today - 2
+        date5 = Date.today + 4
+        within('.danger.suffix_row.copied_row',
+               text: "5 (#{date4.strftime('%m/%d/%Y')} - " \
+                     "#{date5.strftime('%m/%d/%Y')})") do
+          expect(page).to have_css('.fa.fa-copy')
+        end
+
+        within('tr', text: 'PHQ-9 Score >= 17 for two consecutive weeks') do
+          expect(page)
+            .to have_css('.label.label-danger.label-adj_danger', text: 'True')
+        end
+      end
+    end
+
+    it 'steps a participant' do
+      within('#patients') do
+        within('table#patients tr', text: 'TFD-PHQ') do
+          click_on 'Step'
+        end
+      end
+
+      page.accept_alert "You can't undo this! Please make sure you really " \
+                        'want to STEP this participant before confirming. ' \
+                        'Otherwise click CANCEL.'
+      within('#patients') do
+        expect(page).to_not have_css('tr', text: 'TFD-PHQ')
+      end
+
+      within('#stepped-patients') do
+        expect(page).to have_css('tr', text: 'TFD-PHQ')
+
+        within('tr', text: 'TFD-PHQ') do
+          expect(page)
+            .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
+        end
+      end
+    end
+
+    it 'views a list of inactive participants assigned to the coach' do
+      find('.btn.btn-default', text: 'Inactive Patients').click
+      expect(page).to have_content 'Completer'
+    end
+
+    it 'selects Withdraw to end active status of participant and is still' \
+       'able to see patient specific data' do
+      within('#patients', text: 'TFD-1111') do
+        within('table#patients tr', text: 'TFD-Withdraw') do
+          click_on 'Terminate Access'
+        end
+      end
+
+      page.accept_alert 'Are you sure you would like to terminate access to ' \
+                        'this membership? This option should also be used ' \
+                        'before changing membership of the patient to a ' \
+                        'different group or to completely revoke access to ' \
+                        'this membership. You will not be able to undo this.'
+      expect(page).to_not have_content 'TFD-Withdraw'
+
+      click_on 'Inactive Patients'
+      expect(page).to have_content 'TFD-Withdraw'
+
+      within('#patients', text: 'TFD-Withdraw') do
+        within('table#patients tr', text: 'TFD-Withdraw') do
+          expect(page)
+            .to have_content 'Withdrawn ' \
+                             "#{Date.today.prev_day.strftime('%m/%d/%Y')}"
+          click_on 'TFD-Withdraw'
+        end
+      end
+
+      expect(page).to have_css('h1', text: 'Participant TFD-Withdraw')
+    end
+
+    it 'views General Patient Info' do
+      select_patient('TFD-1111')
+      within('.panel.panel-default', text: 'General Patient Info') do
+        weeks_later = Date.today + 20 * 7
+        expect(page).to have_content 'Started on: ' \
+                                     "#{Date.today.strftime('%m/%d/%Y')}" \
+                                     "\n20 weeks from the start date is: " \
+                                     "#{weeks_later.strftime('%m/%d/%Y')}" \
+                                     "\nStatus: Active Currently in week 1"
+
+        if page.has_text? 'week: 0'
+          expect(page).to have_content 'Lessons read this week: 0'
+
+        else
+          expect(page).to have_content 'Lessons read this week: 1'
+        end
+      end
+    end
+
+    it 'views Login Info' do
+      select_patient('TFD-1111')
+      within('.panel.panel-default', text: 'Login Info') do
+        if page.has_text?('Never Logged In')
+          expect(page).to have_content "Last Logged In: Never Logged In\n" \
+                                       "Logins Today: 0\nLogins in the last " \
+                                       "seven days: 0\nTotal Logins: 0"
+
+        else
+          expect(page).to have_content 'Last Logged In: ' \
+                                       "#{Time.now.strftime('%b %d %Y %H')}"
+
+          expect(page).to have_content "Logins Today: 37\nLogins during this " \
+                                       "treatment week: 37\nTotal Logins: 37"
+        end
+      end
+    end
+
+    it 'uses the table of contents in the patient report' do
+      select_patient('TFD-1111')
+      within('.list-group') do
+        find('a', text: 'Mood and Emotions Visualizations').click
+        find('a', text: 'PHQ9').click
+        page.all('a', text: 'Mood')[1].click
+        find('a', text: 'Feelings').click
+        find('a', text: 'Logins').click
+        find('a', text: 'Lessons').click
+        find('a', text: 'Audio Access').click
+        find('a', text: 'Activities - Future').click
+        find('a', text: 'Activities - Past').click
+        page.all('a', text: 'Thoughts')[1].click
+        find('a', text: 'Messages').click
+        find('a', text: 'Tasks').click
+      end
+
+      within('.list-group') do
+        find('a', text: 'Activities visualization').click
+      end
+
+      expect(page).to have_content 'Daily Averages'
+
+      click_on 'Patient Dashboard'
+      expect(page).to have_content 'General Patient Info'
+
+      within('.list-group') do
+        find('a', text: 'Thoughts visualization').click
+      end
+
+      expect(page).to have_css('#ThoughtVizContainer')
+
+      click_on 'Patient Dashboard'
+      expect(page).to have_content 'General Patient Info'
+    end
+
+    it 'views Mood/Emotions viz' do
+      select_patient('TFD-1111')
+      within('#viz-container') do
+        expect(page).to have_content 'Mood'
+
+        expect(page).to have_content 'Positive and Negative Emotions'
+
+        one_week_ago = Date.today - 6
+        one_month_ago = Date.today - 27
+        expect(page).to have_content "#{one_week_ago.strftime('%m/%d/%Y')} " \
+                                     "- #{Date.today.strftime('%m/%d/%Y')}"
+
+        within('.btn-group') do
+          find('.btn.btn-default', text: '28 day').click
+        end
+
+        expect(page).to have_content "#{one_month_ago.strftime('%m/%d/%Y')} " \
+                                     "- #{Date.today.strftime('%m/%d/%Y')}"
+
+        within('.btn-group') do
+          find('.btn.btn-default', text: '7 Day').click
+        end
+
+        click_on 'Previous Period'
+        one_week_ago_1 = Date.today - 7
+        two_weeks_ago = Date.today - 13
+        expect(page).to have_content "#{two_weeks_ago.strftime('%m/%d/%Y')} " \
+                                     "- #{one_week_ago_1.strftime('%m/%d/%Y')}"
+      end
+    end
+
+    it 'views PHQ9' do
+      within('#stepped-patients') do
+        click_on 'TFD-PHQ'
+      end
+
+      within('#phq9-container') do
+        within('tr:nth-child(2)') do
+          three_weeks_ago = Date.today - 21
+          expect(page)
+            .to have_content 'Released ' \
+                             "#{three_weeks_ago.strftime('%Y-%m-%d')}" \
+                             ' Created ' \
+                             "#{three_weeks_ago.strftime('%Y-%m-%d')}" \
+                             ' 9 * 1 2  1 2 1 1 1  '
+        end
+      end
+    end
+
+    it 'creates a new PHQ9 assessment' do
+      within('#stepped-patients') do
+        click_on 'TFD-PHQ'
+      end
+
+      click_on 'Manage'
+      expect(page).to have_css('h2', text: 'PHQ assessments for TFD-PHQ')
+
+      click_on 'New Phq assessment'
+      fill_in 'phq_assessment_q1', with: '2'
+      fill_in 'phq_assessment_q2', with: '2'
+      fill_in 'phq_assessment_q3', with: '2'
+      fill_in 'phq_assessment_q4', with: '2'
+      fill_in 'phq_assessment_q5', with: '2'
+      fill_in 'phq_assessment_q6', with: '2'
+      fill_in 'phq_assessment_q7', with: '2'
+      fill_in 'phq_assessment_q8', with: '2'
+      fill_in 'phq_assessment_q9', with: '2'
+      click_on 'Create Phq assessment'
+      expect(page).to have_content 'Phq assessment was successfully created.'
+
+      within('tr', text: "#{Date.today.strftime('%Y-%m-%d')}") do
+        expect(page).to have_content '2 2 2 2 2 2 2 2 2 Edit Delete'
+
+        expect(page).to have_css('.fa.fa-flag', count: '9')
+      end
+    end
+
+    it 'manages an existing PHQ9 assessment' do
+      within('#stepped-patients') do
+        click_on 'TFD-PHQ'
+      end
+
+      click_on 'Manage'
+      expect(page).to have_css('h2', text: 'PHQ assessments for TFD-PHQ')
+
+      three_weeks_ago = Date.today - 21
+      within('tr', text: "#{three_weeks_ago.strftime('%Y-%m-%d')}") do
+        click_on 'Edit'
+      end
+
+      fill_in 'phq_assessment_q3', with: '2'
+      fill_in 'phq_assessment_q9', with: '2'
+      click_on 'Update Phq assessment'
+      expect(page).to have_content 'Phq assessment was successfully updated.'
+
+      within('tr', text: "#{three_weeks_ago.strftime('%Y-%m-%d')}") do
+        expect(page).to have_content '1 2 2 1 2 1 1 1 2 Edit Delete'
+
+        expect(page).to have_css('.fa.fa-flag', count: '2')
+      end
+    end
+
+    it 'deletes an existing PHQ9 assessment' do
+      within('#stepped-patients') do
+        click_on 'TFD-PHQ'
+      end
+
+      click_on 'Manage'
+      expect(page).to have_css('h2', text: 'PHQ assessments for TFD-PHQ')
+
+      four_weeks_ago = Date.today - 28
+      within('tr', text: "#{four_weeks_ago.strftime('%Y-%m-%d')}") do
+        click_on 'Delete'
+      end
+
+      page.accept_alert 'Are you sure?'
+      expect(page).to have_content 'Phq assessment was successfully destroyed.'
+
+      expect(page)
+        .to_not have_css('tr', text: "#{four_weeks_ago.strftime('%Y-%m-%d')}")
+    end
+
+    it 'views Mood' do
+      select_patient('TFD-1111')
+      within('#mood-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          four_wks_ago = Date.today - 28
+          expect(page).to have_content "9 #{four_wks_ago.strftime('%b %d %Y')}"
+        end
+      end
+    end
+
+    it 'views Feelings' do
+      select_patient('TFD-1111')
+      within('#feelings-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          expect(page).to have_content 'longing 2 ' \
+                                       "#{Date.today.strftime('%b %d %Y')}"
+        end
+      end
+    end
+
+    it 'views Logins' do
+      select_patient('TFD-1111')
+      within('#logins-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          unless page.has_text?('No data available in table')
+            expect(page).to have_content Date.today.strftime('%b %d %Y')
+          end
+        end
+      end
+    end
+
+    it 'views Lessons' do
+      select_patient('TFD-1111')
+      within('#lessons-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          unless page.has_text?('No data available in table')
+            expect(page).to have_content 'Do - Awareness Introduction' \
+                                         " #{Date.today.strftime('%m/%d/%Y')}"
+
+            expect(page).to have_content 'less than a minute'
+          end
+        end
+      end
+    end
+
+    it 'views Audio Access' do
+      select_patient('TFD-1111')
+      within('#media-access-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          expect(page).to have_content 'Audio! ' \
+                                       "#{Date.today.strftime('%m/%d/%Y')}" \
+                                       " #{Date.today.strftime('%b %d %Y')}"
+          if page.has_text?('Not Completed')
+            expect(page).to have_content 'Not Completed'
+
+          else
+            expect(page).to have_content '2 minutes'
+          end
+        end
+      end
+    end
+
+    it 'views Activities viz' do
+      select_patient('TFD-1111')
+      within('h3', text: 'Activities visualization') do
+        click_on 'Activities visualization'
+      end
+
+      expect(page).to have_content 'Daily Averages for ' \
+                                   "#{Date.today.strftime('%b %d, %Y')}"
+
+      click_on 'Daily Summaries'
+      expect(page).to have_content 'Average Accomplishment Discrepancy'
+
+      click_on 'Previous Day'
+      expect(page)
+        .to have_content 'Daily Averages for ' \
+                         "#{Date.today.prev_day.strftime('%b %d, %Y')}"
+
+      endtime = Time.now + (60 * 60)
+      within('.panel.panel-default',
+             text: "#{Time.now.strftime('%-l %P')} - " \
+                   "#{endtime.strftime('%-l %P')}: Parkour") do
+        click_on "#{Time.now.strftime('%-l %P')} - " \
+                 "#{endtime.strftime('%-l %P')}: Parkour"
+        within('.panel-collapse.collapse.in') do
+          expect(page).to have_content 'Predicted'
+
+          click_on 'Edit'
+          expect(page).to have_css('#activity_actual_accomplishment_intensity')
+        end
+      end
+
+      click_on 'Next Day'
+      expect(page).to have_content 'Daily Averages for ' \
+                                   "#{Date.today.strftime('%b %d, %Y')}"
+
+      click_on 'Visualize'
+      click_on 'Last 3 Days'
+      if page.has_text? 'Notice! No activities were completed during this ' \
+                        '3-day period.'
+        expect(page).to_not have_content Date.today.strftime('%A, %m/%d')
+
+      else
+        expect(page).to have_content Date.today.strftime('%A, %m/%d')
+      end
+
+      click_on 'Day'
+      expect(page).to have_css('#datepicker')
+    end
+
+    it 'views Activities - Future' do
+      select_patient('TFD-1111')
+      within('#activities-future-container') do
+        find('.sorting', text: 'Activity').click
+        within('tr:nth-child(2)') do
+          two_days = Date.today + 2
+          expect(page).to have_content 'Going to school  2 6 Scheduled for ' \
+                                       "#{two_days.strftime('%b %d %Y')}"
+        end
+      end
+    end
+
+    it 'views Activities - Past' do
+      select_patient('TFD-1111')
+      within('#activities-past-container') do
+        find('.sorting', text: 'Status').double_click
+        within('tr', text: 'Parkour') do
+          if page.has_text? 'Planned'
+            expect(page)
+              .to have_content '9 4 Not Rated Not Rated  Scheduled for ' \
+                              "#{Date.today.prev_day.strftime('%b %d %Y')}"
+          else
+            expect(page)
+              .to have_content 'Reviewed & Completed 9 4 7 5 Scheduled for ' \
+                              "#{Date.today.prev_day.strftime('%b %d %Y')}"
+          end
+        end
+
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          if table_row[1].has_text? 'Reviewed and did not complete'
+            click_on 'Noncompliance'
+            within('.popover.fade.right.in') do
+              expect(page).to have_content "Why was this not completed?\nI " \
+                                           "didn't have time"
+            end
+          end
+        end
+      end
+    end
+
+    it 'views Thoughts viz' do
+      select_patient('TFD-1111')
+      within('h3', text: 'Thoughts visualization') do
+        click_on 'Thoughts visualization'
+      end
+
+      find('#ThoughtVizContainer')
+      if page.has_text? 'Click a bubble for more info'
+        find('.thoughtviz_text.viz-clickable',
+             text: 'Magnification or Catastro...').click
+        expect(page).to have_content 'Testing add a new thought'
+
+        click_on 'Close'
+        expect(page).to have_content 'Click a bubble for more info'
+      end
+    end
+
+    it 'views Thoughts' do
+      select_patient('TFD-1111')
+      within('#thoughts-container') do
+        within('tr:nth-child(3)') do
+          if page.has_text?('I am a magnet')
+            expect(page).to have_content 'I am a magnet for birds Labeling ' \
+                                         'and Mislabeling  It was nature ' \
+                                         'Birds have no idea what they are ' \
+                                         'doing ' \
+                                         "#{Date.today.strftime('%b %d %Y')}"
+
+          else
+            expect(page).to have_content 'Testing negative thought ' \
+                                         'Magnification or Catastrophizing ' \
+                                         'Example challenge Example ' \
+                                         'act-as-if ' \
+                                         "#{Date.today.strftime('%b %d %Y')}"
+          end
+        end
+      end
+    end
+
+    it 'views Messages' do
+      select_patient('TFD-1111')
+      within('#messages-container') do
+        table_row = page.all('tr:nth-child(1)')
+        within table_row[1] do
+          if page.has_text? 'I like'
+            expect(page).to have_content 'I like this app ' \
+                                         "#{Date.today.strftime('%m/%d/%Y')}"
+          else
+            expect(page).to have_content 'Reply: Try out the LEARN tool ' \
+                                         "#{Date.today.strftime('%m/%d/%Y')}"
+          end
+        end
+      end
+    end
+
+    it 'views Tasks' do
+      select_patient('TFD-1111')
+      within('#tasks-container') do
+        within('tr', text: 'Do - Planning Introduction') do
+          tomorrow = Date.today + 1
+          expect(page).to have_content "#{tomorrow.strftime('%m/%d/%Y')}" \
+                             ' Incomplete'
+        end
+      end
+    end
+
+    it 'uses breadcrumbs to return to home' do
+      click_on 'Group'
+      expect(page).to have_content 'Title: Group 1'
+
+      within('.breadcrumb') do
+        click_on 'Home'
+      end
+
+      expect(page).to have_content 'Arms'
+    end
   end
 end
