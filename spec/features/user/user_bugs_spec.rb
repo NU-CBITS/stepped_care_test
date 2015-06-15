@@ -49,34 +49,22 @@ describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
       click_on 'Group 1'
       click_on 'Patient Dashboard'
       within('#patients') do
-        within('table#patients tr', text: 'TFD-1111') do
-          if page.has_text?('Never Logged In')
-            expect(page).to have_content 'TFD-1111 1 1'
+        within('table#patients tr', text: 'participant61') do
+          expect(page).to have_content 'participant61 0 6'
 
-            expect(page).to have_content '0'
-
-          else
-            expect(page).to have_content 'TFD-1111 2 1'
-
-            expect(page).to have_content '37'
-          end
+          date1 = Date.today - 4
+          expect(page).to have_content "11 #{date1.strftime('%b %d %Y')}"
         end
       end
 
-      select_patient('TFD-1111')
+      select_patient('participant61')
       within('.panel.panel-default', text: 'Login Info') do
-        if page.has_text?('Never Logged In')
-          expect(page).to have_content "Last Logged In: Never Logged In\n" \
-                                       "Logins Today: 0\nLogins in the last " \
-                                       "seven days: 0\nTotal Logins: 0"
+        date1 = Date.today - 4
+        expect(page).to have_content 'Last Logged In: ' \
+                                     "#{date1.strftime('%b %d %Y')}"
 
-        else
-          expect(page).to have_content 'Last Logged In: ' \
-                                       "#{Time.now.strftime('%b %d %Y %H')}"
-
-          expect(page).to have_content "Logins Today: 37\nLogins during this " \
-                                       "treatment week: 37\nTotal Logins: 37"
-        end
+        expect(page).to have_content "Logins Today: 0\nLogins during this " \
+                                     "treatment week: 0\nTotal Logins: 11"
       end
     end
   end
