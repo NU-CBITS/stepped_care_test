@@ -102,19 +102,19 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
   it 'completes Planning' do
     click_on '#2 Planning'
     click_on 'Next'
+    find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'New planned activity'
     find('.fa.fa-calendar').click
     pick_tomorrow
-
     choose_rating('pleasure_0', 6)
     choose_rating('accomplishment_0', 3)
     click_on 'Next'
     expect(page).to have_content 'Activity saved'
 
+    find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'Another planned activity'
     find('.fa.fa-calendar').click
     pick_tomorrow
-
     choose_rating('pleasure_0', 4)
     choose_rating('accomplishment_0', 8)
     click_on 'Next'
@@ -150,10 +150,10 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
 
   it 'completes Plan a New Activity' do
     click_on 'Add a New Activity'
+    find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'New planned activity'
     find('.fa.fa-calendar').click
     pick_tomorrow
-
     choose_rating('pleasure_0', 4)
     choose_rating('accomplishment_0', 3)
     click_on 'Next'
