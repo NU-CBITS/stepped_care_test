@@ -1,7 +1,7 @@
 # filename: participant_bugs_spec.rb
 
 describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
-  describe 'Participant 1 signs in, navigates to the DO tool,' do
+  describe 'Participant 1 signs in,' do
     before do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
