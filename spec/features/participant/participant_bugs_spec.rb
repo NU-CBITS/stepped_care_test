@@ -4,10 +4,10 @@ describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
   describe 'Participant 1 signs in, navigates to the DO tool,' do
     before do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-      visit "#{ENV['Base_URL']}/navigator/contexts/DO"
     end
 
     it 'visits Your Activities, selects Previous Day w/out exception' do
+      visit "#{ENV['Base_URL']}/navigator/contexts/DO"
       click_on '#1 Awareness'
       click_on 'Next'
       select "#{Date.today.strftime('%a')} 2 AM",
@@ -42,6 +42,27 @@ describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
       expect(page)
         .to have_content 'Daily Averages for ' \
                          "#{Date.today.prev_day.strftime('%b %d, %Y')}"
+    end
+
+    it 'visits Your Recent Moods & Emotions, ' \
+       'is able to switch view back to 7 Day' do
+      visit "#{ENV['Base_URL']}/navigator/contexts/FEEL"
+      click_on 'Your Recent Moods & Emotions'
+      one_week_ago = Date.today - 6
+      one_month_ago = Date.today - 27
+      expect(page).to have_content "#{one_week_ago.strftime('%m/%d/%Y')} - " \
+                                   "#{Date.today.strftime('%m/%d/%Y')}"
+
+      find('.btn.btn-default', text: '28 day').click
+      expect(page).to have_content "#{one_month_ago.strftime('%m/%d/%Y')} - " \
+                                   "#{Date.today.strftime('%m/%d/%Y')}"
+
+      find('.btn.btn-default', text: '7 Day').click
+      click_on 'Previous Period'
+      one_week_ago_1 = Date.today - 7
+      two_weeks_ago = Date.today - 13
+      expect(page).to have_content "#{two_weeks_ago.strftime('%m/%d/%Y')} - " \
+                                   "#{one_week_ago_1.strftime('%m/%d/%Y')}"
     end
   end
 
