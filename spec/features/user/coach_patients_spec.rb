@@ -138,10 +138,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
                                      "#{weeks_later.strftime('%m/%d/%Y')}" \
                                      "\nStatus: Active Currently in week 1"
 
-        if page.has_text? 'week: 0'
-          expect(page).to have_content 'Lessons read this week: 0'
-
-        else
+        unless page.has_text? 'week: 0'
           expect(page).to have_content 'Lessons read this week: 1'
         end
       end
@@ -489,7 +486,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'views Thoughts' do
       select_patient('TFD-1111')
       within('#thoughts-container') do
-        within('tr', text: 'Testing negative thought')
+        within('tr', text: 'Testing negative thought') do
           expect(page).to have_content 'Testing negative thought ' \
                                        'Magnification or Catastrophizing ' \
                                        'Example challenge Example ' \
