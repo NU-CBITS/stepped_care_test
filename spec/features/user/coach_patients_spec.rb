@@ -89,6 +89,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         within('tr', text: 'TFD-PHQ') do
           expect(page)
             .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
+          expect(page).to_not have_content 'Details'
         end
       end
     end
