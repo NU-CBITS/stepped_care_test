@@ -46,19 +46,17 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
                                      "#{startdate.strftime('%m/%d/%Y')}\n" \
                                      'Suggestion: Step to t-CBT'
         date1 = Date.today - 7
-        date2 = Date.today - 8
-        date3 = Date.today - 2
+        date2 = Date.today - 1
         expect(page)
           .to have_css('.danger.suffix_row',
-                       text: "4 (#{date2.strftime('%m/%d/%Y')} - " \
-                             "#{date3.strftime('%m/%d/%Y')}) " \
+                       text: "4 (#{date1.strftime('%m/%d/%Y')} - " \
+                             "#{date2.strftime('%m/%d/%Y')}) " \
                              "#{date1.strftime('%m/%d/%Y')} 17")
 
-        date4 = Date.today - 1
-        date5 = Date.today + 5
+        date3 = Date.today + 6
         within('.danger.suffix_row.copied_row',
-               text: "5 (#{date4.strftime('%m/%d/%Y')} - " \
-                     "#{date5.strftime('%m/%d/%Y')})") do
+               text: "5 (#{Date.today.strftime('%m/%d/%Y')} - " \
+                     "#{date3.strftime('%m/%d/%Y')})") do
           expect(page).to have_css('.fa.fa-copy')
         end
 
