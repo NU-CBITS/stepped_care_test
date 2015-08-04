@@ -525,4 +525,30 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       expect(page).to have_content 'Arms'
     end
   end
+
+  describe 'Patient signs in, reads a lesson, signs out,' do
+    before do
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      expect(page).to have_content 'HOME'
+      within '.navbar-collapse' do
+        click_on 'Sign Out'
+      end
+    end
+
+    it 'Coach signs in, navigates to Patient Dashboard, views ' \
+       "'Last Activity Detected At' and 'Duration of Last Session'" do
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+      click_on 'Arms'
+      find('h1', text: 'Arms')
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Patient Dashboard'
+      select_patient('TFD-1111')
+      expect(page).to have_content 'Last Activity Detected At: ' \
+                                   "#{Time.now.strftime('%A, %b %d %Y %H:%M')}"
+
+      expect(page).to have_content 'Duration of Last Session: ' \
+                                   'less than a minute'
+    end
+  end
 end
