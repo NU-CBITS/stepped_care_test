@@ -14,7 +14,7 @@ describe 'Coach signs in, navigates to Site Messages tool,',
 
   it 'creates and sends a new site message' do
     click_on 'New'
-    expect(page).to have_content 'stepped_care-no-reply@northwestern.edu'
+    expect(page).to have_content 'localhost'
 
     select 'TFD-1111', from: 'site_message_participant_id'
     fill_in 'site_message_subject', with: 'Testing site messaging'
