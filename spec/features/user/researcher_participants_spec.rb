@@ -66,7 +66,7 @@ describe 'Researcher signs in, navigates to Participants,',
     select 'Group 1', from: 'membership_group_id'
     fill_in 'membership_start_date', with: 'mm/dd/yyyy'
     next_year = Date.today + 365
-    fill_in 'membership_end_date', with: next_year.strftime('%m/%d/%Y')
+    fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
     click_on 'Assign'
     expect(page).to have_content "Start date can't be blank"
     expect(page).to have_content 'Memberships is invalid'
@@ -77,7 +77,7 @@ describe 'Researcher signs in, navigates to Participants,',
     click_on 'Assign New Group'
     select 'Group 1', from: 'membership_group_id'
     fill_in 'membership_start_date',
-            with: Date.today.prev_day.strftime('%m/%d/%Y')
+            with: Date.today.prev_day.strftime('%Y-%m-%d')
     fill_in 'membership_end_date', with: 'mm/dd/yyyy'
     click_on 'Assign'
     expect(page).to have_content "End date can't be blank"
@@ -89,9 +89,9 @@ describe 'Researcher signs in, navigates to Participants,',
     click_on 'Assign New Group'
     select 'Group 1', from: 'membership_group_id'
     fill_in 'membership_start_date',
-            with: Date.today.prev_day.strftime('%m/%d/%Y')
+            with: Date.today.prev_day.strftime('%Y-%m-%d')
     past_date = Date.today - 5
-    fill_in 'membership_end_date', with: past_date.strftime('%m/%d/%Y')
+    fill_in 'membership_end_date', with: past_date.strftime('%Y-%m-%d')
     click_on 'Assign'
     expect(page).to have_content 'End date must not be in the past'
     expect(page).to have_content 'Memberships is invalid'
@@ -102,9 +102,9 @@ describe 'Researcher signs in, navigates to Participants,',
     click_on 'Assign New Group'
     select 'Group 1', from: 'membership_group_id'
     fill_in 'membership_start_date',
-            with: Date.today.prev_day.strftime('%m/%d/%Y')
+            with: Date.today.prev_day.strftime('%Y-%m-%d')
     next_year = Date.today + 365
-    fill_in 'membership_end_date', with: next_year.strftime('%m/%d/%Y')
+    fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
     weeks_later = Date.today + 20 * 7
     expect(page).to have_content 'Standard number of weeks: 20, Projected End' \
                                  ' Date from today: ' \
