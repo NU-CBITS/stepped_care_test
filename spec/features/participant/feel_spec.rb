@@ -20,9 +20,18 @@ end
 
 describe 'Active participant in group 3 signs in, navigates to FEEL tool,',
          type: :feature, sauce: sauce_labs do
-  before do
-    sign_in_pt(ENV['Alt_Participant_Email'], ENV['Alt_Participant_Password'])
-    visit "#{ENV['Base_URL']}/navigator/contexts/FEEL"
+  if ENV['safari']
+    before(:all) do
+      sign_in_pt(ENV['Alt_Participant_Email'], ENV['Alt_Participant_Password'])
+    end
+    before do
+      visit "#{ENV['Base_URL']}/navigator/contexts/FEEL"
+    end
+  else
+    before do
+      sign_in_pt(ENV['Alt_Participant_Email'], ENV['Alt_Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/FEEL"
+    end
   end
 
   it 'completes Tracking Your Mood & Emotions' do

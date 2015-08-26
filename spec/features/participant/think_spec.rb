@@ -2,11 +2,17 @@
 
 describe 'Active participant signs in, navigates to THINK tool,',
          type: :feature, sauce: sauce_labs do
-  before do
-    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-
-    visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
-    expect(page).to have_content 'Add a New Thought'
+  if ENV['safari']
+    before do
+      visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
+      expect(page).to have_content 'Add a New Thought'
+    end
+  else
+    before do
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
+      expect(page).to have_content 'Add a New Thought'
+    end
   end
 
   it 'completes Identifying module' do
@@ -161,7 +167,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
   it 'uses the visualization' do
     find('.thoughtviz_text.viz-clickable',
          text: 'Magnification or Catastro...').click
-    expect(page).to have_content 'Click a bubble for more info'
+    expect(page).to have_content 'Thought Distortions'
 
     find('.thoughtviz_text.viz-clickable',
          text: 'Magnification or Catastro...').click

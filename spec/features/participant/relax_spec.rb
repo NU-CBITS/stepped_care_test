@@ -4,7 +4,6 @@ describe 'Active participant signs in, navigates to RELAX tool,',
          type: :feature, sauce: sauce_labs do
   before do
     sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-
     visit "#{ENV['Base_URL']}/navigator/contexts/RELAX"
     expect(page).to have_content 'RELAX Home'
   end

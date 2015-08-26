@@ -2,6 +2,11 @@
 
 def sign_in_pt(participant, password)
   visit "#{ENV['Base_URL']}/participants/sign_in"
+  if ENV['safari'] && page.has_css?('.navbar-collapse', text: 'Sign Out')
+    within('.navbar-collapse') do
+      click_on 'Sign Out'
+    end
+  end
   if page.has_css?('#new_participant')
     within('#new_participant') do
       fill_in 'participant_email', with: participant
