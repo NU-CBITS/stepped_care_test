@@ -8,6 +8,7 @@ def sign_in_pt(participant, password)
       fill_in 'participant_password', with: password
     end
     click_on 'Sign in'
+    expect(page).to have_content 'HOME'
   else
     puts 'LOGIN FAILED'
   end
@@ -21,6 +22,7 @@ def sign_in_user(user, password)
       fill_in 'user_password', with: password
     end
     click_on 'Sign in'
+    expect(page).to have_content 'Home'
   end
 end
 

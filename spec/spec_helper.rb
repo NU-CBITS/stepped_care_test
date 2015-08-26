@@ -14,6 +14,14 @@ def sauce_labs
   ENV['Sauce'] || false
 end
 
+def driver
+  if ENV['safari']
+    :safari
+  else
+    :firefox
+  end
+end
+
 def test_driver
   puts "Sauce Labs is set to #{sauce_labs}"
   puts "Auto screenshots is set to #{!sauce_labs}"
@@ -37,6 +45,9 @@ end
 Capybara.configure do |config|
   config.default_wait_time = 15
   config.default_driver = test_driver
+  config.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, browser: driver)
+  end
   config.save_and_open_page_path = 'screenshots/'
 end
 
