@@ -7,7 +7,17 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is not an authorized user, fails to sign in' do
-    sign_in_user('asdf@test.com', 'asdf')
+    if ENV['safari']
+      within('.navbar-collapse') do
+        click_on 'Sign Out'
+      end
+    end
+
+    within('#new_user') do
+      fill_in 'user_email', with: 'asdf@example.com'
+      fill_in 'user_password', with: 'asdf'
+    end
+
     expect(page).to have_content 'Invalid email address or password'
   end
 
@@ -65,6 +75,12 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it "is an authorized researcher, only sees what they're authorized to see" do
+    if ENV['safari']
+      within('.navbar-collapse') do
+        click_on 'Sign Out'
+      end
+    end
+
     sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
     expect(page).to have_content "Arms\nNavigate to groups and participants " \
                                  "through arms.\nGroups\nCreate, update, " \
@@ -90,6 +106,12 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it "is an authorized content author, only sees what they're authorized " \
      'to see' do
+    if ENV['safari']
+      within('.navbar-collapse') do
+        click_on 'Sign Out'
+      end
+    end
+
     sign_in_user(ENV['Content_Author_Email'], ENV['Content_Author_Password'])
     expect(page).to_not have_content "Groups\nCreate, update, delete, and " \
                                      'associate groups with arms along with ' \
@@ -109,6 +131,12 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is an authorized super user' do
+    if ENV['safari']
+      within('.navbar-collapse') do
+        click_on 'Sign Out'
+      end
+    end
+
     sign_in_user(ENV['User_Email'], ENV['User_Password'])
     expect(page).to have_content "Arms\nNavigate to groups and participants " \
                                  "through arms.\nGroups\nCreate, update, " \
@@ -132,7 +160,10 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is an authorized super user, uses brand link to return to home page' do
-    sign_in_user(ENV['User_Email'], ENV['User_Password'])
+    unless ENV['safari']
+      sign_in_user(ENV['User_Email'], ENV['User_Password'])
+    end
+
     click_on 'Arms'
     click_on 'Arm 1'
     click_on 'Manage Content'

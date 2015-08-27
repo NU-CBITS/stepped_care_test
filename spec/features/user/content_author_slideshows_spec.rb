@@ -3,11 +3,14 @@
 describe 'Content Author signs in, navigates to Slideshows tool,',
          type: :feature, sauce: sauce_labs do
   before do
-    sign_in_user(ENV['Content_Author_Email'], ENV['Content_Author_Password'])
-    click_on 'Arms'
-    find('h1', text: 'Arms')
+    unless ENV['safari']
+      sign_in_user(ENV['Content_Author_Email'], ENV['Content_Author_Password'])
+    end
+
+    visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
     click_on 'Arm 1'
     click_on 'Manage Content'
+    click_on 'Lesson Modules'
     click_on 'Slideshows'
   end
 

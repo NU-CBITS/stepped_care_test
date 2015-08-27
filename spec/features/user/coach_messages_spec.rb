@@ -6,26 +6,18 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
     before(:all) do
       sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
     end
+  end
 
-    before do
-      click_on 'Arms'
-      find('h1', text: 'Arms')
-      click_on 'Arm 1'
-      click_on 'Group 1'
-      click_on 'Messaging'
-      click_on 'Messages'
-    end
-
-  else
-    before do
+  before do
+    unless ENV['safari']
       sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
-      click_on 'Arms'
-      find('h1', text: 'Arms')
-      click_on 'Arm 1'
-      click_on 'Group 1'
-      click_on 'Messaging'
-      click_on 'Messages'
     end
+
+    visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
+    click_on 'Arm 1'
+    click_on 'Group 1'
+    click_on 'Messaging'
+    click_on 'Messages'
   end
 
   it 'reads a received message' do

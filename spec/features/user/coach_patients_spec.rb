@@ -8,7 +8,6 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       end
 
       visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
-      find('h1', text: 'Arms')
       click_on 'Arm 1'
       click_on 'Group 1'
       click_on 'Patient Dashboard'
@@ -541,8 +540,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'Coach signs in, navigates to Patient Dashboard, views ' \
        "'Last Activity Detected At' and 'Duration of Last Session'" do
       sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
-      click_on 'Arms'
-      find('h1', text: 'Arms')
+      visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
       click_on 'Arm 1'
       click_on 'Group 1'
       click_on 'Patient Dashboard'

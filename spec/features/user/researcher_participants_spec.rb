@@ -3,8 +3,11 @@
 describe 'Researcher signs in, navigates to Participants,',
          type: :feature, sauce: sauce_labs do
   before do
-    sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
-    click_on 'Participants'
+    unless ENV['safari']
+      sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
+    end
+
+    visit "#{ENV['Base_URL']}/think_feel_do_dashboard/participants"
   end
 
   it 'creates a participant' do

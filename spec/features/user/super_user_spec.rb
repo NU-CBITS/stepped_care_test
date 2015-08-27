@@ -1,8 +1,15 @@
 # filename: super_user_spec.rb
 
 describe 'Super User signs in,', type: :feature, sauce: sauce_labs do
-  before do
-    sign_in_user(ENV['User_Email'], ENV['User_Password'])
+  if ENV['safari']
+    before(:all) do
+      sign_in_user(ENV['User_Email'], ENV['User_Password'])
+    end
+
+  else
+    before do
+      sign_in_user(ENV['User_Email'], ENV['User_Password'])
+    end
   end
 
   it 'creates an arm' do

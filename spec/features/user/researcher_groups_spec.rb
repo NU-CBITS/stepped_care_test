@@ -2,9 +2,18 @@
 
 describe 'Researcher signs in, navigates to Groups,',
          type: :feature, sauce: sauce_labs do
+  if ENV['safari']
+    before(:all) do
+      sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
+    end
+  end
+
   before do
-    sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
-    click_on 'Groups'
+    unless ENV['safari']
+      sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
+    end
+
+    visit "#{ENV['Base_URL']}/think_feel_do_dashboard/groups"
   end
 
   it 'creates a group' do
