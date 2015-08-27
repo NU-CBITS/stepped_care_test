@@ -37,6 +37,9 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     choose_rating('accomplishment_2', 8)
     click_on 'copy_3'
     click_on 'copy_4'
+    if ENV['chrome']
+      page.execute_script('window.scrollTo(0,10000)')
+    end
     click_on 'copy_5'
     click_on 'copy_6'
     click_on 'copy_7'
@@ -193,6 +196,14 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
       within('.collapse.in') do
         click_on 'Edit'
         expect(page).to have_css('#activity_actual_accomplishment_intensity')
+      end
+    end
+
+    if ENV['chrome']
+      counter = 0
+      while page.has_no_css?('element_id') && counter < 15
+        page.execute_script('window.scrollTo(0,100000)')
+        counter += 1
       end
     end
 

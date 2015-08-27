@@ -17,6 +17,8 @@ end
 def driver
   if ENV['safari']
     :safari
+  elsif ENV['chrome']
+    :chrome
   else
     :firefox
   end
