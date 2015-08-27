@@ -35,17 +35,15 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     fill_in 'activity_type_2', with: 'Work'
     choose_rating('pleasure_2', 5)
     choose_rating('accomplishment_2', 8)
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'copy_3'
     click_on 'copy_4'
-
-    if ENV['chrome']
-      page.execute_script('window.scrollTo(0,10000)')
-    end
-
     click_on 'copy_5'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'copy_6'
     click_on 'copy_7'
     click_on 'copy_8'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'copy_9'
     fill_in 'activity_type_10', with: 'Travel from work'
     choose_rating('pleasure_10', 5)
@@ -56,6 +54,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     fill_in 'activity_type_12', with: 'Watch TV'
     choose_rating('pleasure_12', 9)
     choose_rating('accomplishment_12', 3)
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'copy_13'
     fill_in 'activity_type_14', with: 'Get ready for bed'
     choose_rating('pleasure_14', 2)
@@ -65,6 +64,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
       expect(page).to have_css('tr', count: '17')
     end
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     within('#fun_activities') do
       expect(page).to have_css('tr', count: '4')
@@ -106,6 +106,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     choose_rating('pleasure_0', 6)
     choose_rating('accomplishment_0', 1)
     click_on 'copy_1'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     find('#recent_activities')
     click_on 'Next'
@@ -121,6 +122,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     click_on 'Next'
     find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'New planned activity'
+    page.execute_script('window.scrollTo(0,5000)')
     find('.fa.fa-calendar').click
     pick_tomorrow
     choose_rating('pleasure_0', 6)
@@ -128,6 +130,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     click_on 'Next'
     expect(page).to have_content 'Activity saved'
 
+    page.execute_script('window.scrollTo(0,5000)')
     find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'Another planned activity'
     find('.fa.fa-calendar').click
@@ -169,6 +172,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     click_on 'Add a New Activity'
     find('#new_activity_radio').click
     fill_in 'activity_activity_type_new_title', with: 'New planned activity'
+    page.execute_script('window.scrollTo(0,5000)')
     find('.fa.fa-calendar').click
     pick_tomorrow
     choose_rating('pleasure_0', 4)
@@ -189,6 +193,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     expect(page).to have_content 'Daily Averages for ' \
                                  "#{Date.today.prev_day.strftime('%b %d, %Y')}"
 
+    page.execute_script('window.scrollTo(0,5000)')
     endtime = Time.now + (60 * 60)
     within('.panel.panel-default',
            text: "#{Time.now.strftime('%-l %P')} - " \

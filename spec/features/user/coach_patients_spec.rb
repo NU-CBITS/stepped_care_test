@@ -72,7 +72,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'steps a participant' do
       within('#patients') do
         within('table#patients tr', text: 'TFD-PHQ') do
-          if ENV['safari']
+          unless driver == :firefox
             page.driver.execute_script('window.confirm = function() {return true}')
           end
 
@@ -80,7 +80,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         end
       end
 
-      unless ENV['safari']
+      if driver == :firefox
         page.accept_alert "You can't undo this! Please make sure you really " \
                         'want to STEP this participant before confirming. ' \
                         'Otherwise click CANCEL.'
@@ -110,7 +110,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
        'able to see patient specific data' do
       within('#patients', text: 'TFD-1111') do
         within('table#patients tr', text: 'TFD-Withdraw') do
-          if ENV['safari']
+          unless driver == :firefox
             page.driver.execute_script('window.confirm = function() {return true}')
           end
 
@@ -118,7 +118,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         end
       end
 
-      unless ENV['safari']
+      if driver == :firefox
         page.accept_alert 'Are you sure you would like to terminate access ' \
                           'to this membership? This option should also be used ' \
                           'before changing membership of the patient to a ' \

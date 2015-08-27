@@ -66,6 +66,7 @@ def reshape(challenge, action)
 
   expect(page).to have_content 'Because what you THINK, FEEL, Do'
 
+  page.execute_script('window.scrollTo(0,5000)')
   click_on 'Next'
   expect(page).to have_content 'What could you do to ACT AS IF you believe ' \
                                'this?'

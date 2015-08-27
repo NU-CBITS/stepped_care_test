@@ -13,6 +13,7 @@ describe 'Active participant in group 1 signs in, navigates to FEEL tool,',
     click_on 'Next'
     expect(page).to have_content 'Mood saved'
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Feeling Tracker Landing'
   end
@@ -69,6 +70,7 @@ describe 'Active participant in group 3 signs in, navigates to FEEL tool,',
     expect(page).to have_content "#{two_weeks_ago.strftime('%m/%d/%Y')} - " \
                                  "#{one_week_ago_1.strftime('%m/%d/%Y')}"
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Feeling Tracker Landing'
   end
@@ -81,6 +83,7 @@ describe 'Active participant in group 3 signs in, navigates to FEEL tool,',
 
     expect(page).to have_css('.bar.negative', count: 1)
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Feeling Tracker Landing'
   end

@@ -13,6 +13,9 @@ describe 'Active participant signs in, navigates to THINK tool,',
 
   it 'completes Identifying module' do
     click_on '#1 Identifying'
+    expect(page).to have_content 'You are what you think'
+
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Helpful thoughts are...'
 
@@ -81,6 +84,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
     click_on 'Next'
     expect(page).to have_content 'Challenging a thought means'
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     reshape('Example challenge', 'Example act-as-if')
 
@@ -95,9 +99,11 @@ describe 'Active participant signs in, navigates to THINK tool,',
     select 'Magnification or Catastrophizing', from: 'thought_pattern_id'
     fill_in 'thought_challenging_thought', with: 'Testing challenge thought'
     fill_in 'thought_act_as_if', with: 'Testing act-as-if action'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Thought saved'
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     expect(page).to have_content 'Add a New Thought'
   end
