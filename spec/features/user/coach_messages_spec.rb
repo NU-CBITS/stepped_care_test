@@ -2,14 +2,30 @@
 
 describe 'Coach signs in and navigates to messages tool for Group 1',
          type: :feature, sauce: sauce_labs do
-  before do
-    sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
-    click_on 'Arms'
-    find('h1', text: 'Arms')
-    click_on 'Arm 1'
-    click_on 'Group 1'
-    click_on 'Messaging'
-    click_on 'Messages'
+  if ENV['safari']
+    before(:all) do
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+    end
+
+    before do
+      click_on 'Arms'
+      find('h1', text: 'Arms')
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Messaging'
+      click_on 'Messages'
+    end
+
+  else
+    before do
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+      click_on 'Arms'
+      find('h1', text: 'Arms')
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Messaging'
+      click_on 'Messages'
+    end
   end
 
   it 'reads a received message' do

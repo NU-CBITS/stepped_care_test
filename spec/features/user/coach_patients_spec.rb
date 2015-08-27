@@ -3,8 +3,11 @@
 describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
   describe 'navigates to Patient Dashboard of active patient in Group 1,' do
     before do
-      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
-      click_on 'Arms'
+      unless ENV['safari']
+        sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+      end
+
+      visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
       find('h1', text: 'Arms')
       click_on 'Arm 1'
       click_on 'Group 1'

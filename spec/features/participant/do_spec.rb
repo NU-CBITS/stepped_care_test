@@ -6,16 +6,14 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     before(:all) do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
+  end
 
-    before do
-      visit "#{ENV['Base_URL']}/navigator/contexts/DO"
-    end
-
-  else
-    before do
+  before do
+    unless ENV['safari']
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-      visit "#{ENV['Base_URL']}/navigator/contexts/DO"
     end
+
+    visit "#{ENV['Base_URL']}/navigator/contexts/DO"
   end
 
   it 'completes Awareness' do

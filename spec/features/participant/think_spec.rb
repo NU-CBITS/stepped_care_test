@@ -2,18 +2,13 @@
 
 describe 'Active participant signs in, navigates to THINK tool,',
          type: :feature, sauce: sauce_labs do
-  if ENV['safari']
-    before do
-      visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
-      expect(page).to have_content 'Add a New Thought'
+  before do
+    unless ENV['safari']
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
 
-  else
-    before do
-      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-      visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
-      expect(page).to have_content 'Add a New Thought'
-    end
+    visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
+    expect(page).to have_content 'Add a New Thought'
   end
 
   it 'completes Identifying module' do
