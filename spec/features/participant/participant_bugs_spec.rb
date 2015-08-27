@@ -71,6 +71,7 @@ describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
       before(:all) do
         sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])
       end
+
     else
       before do
         sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])

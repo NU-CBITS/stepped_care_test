@@ -78,6 +78,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
         click_on 'Sign Out'
       end
     end
+
     visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
     expect(page).to have_content 'You need to sign in or sign up before ' \
                                  'continuing'
@@ -89,6 +90,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
         click_on 'Sign Out'
       end
     end
+
     visit ENV['Base_URL']
     click_on 'Introduction to ThinkFeelDo'
     click_on 'Done'
@@ -102,6 +104,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
         click_on 'Sign Out'
       end
     end
+
     visit ENV['Base_URL']
     click_on 'Forgot your password?'
     find('h2', text: 'Forgot your password?')

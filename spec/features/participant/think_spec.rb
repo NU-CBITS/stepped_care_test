@@ -7,6 +7,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
       visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
       expect(page).to have_content 'Add a New Thought'
     end
+
   else
     before do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])

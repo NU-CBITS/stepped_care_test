@@ -6,9 +6,11 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     before(:all) do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
+
     before do
       visit "#{ENV['Base_URL']}/navigator/contexts/DO"
     end
+
   else
     before do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
@@ -37,9 +39,11 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     choose_rating('accomplishment_2', 8)
     click_on 'copy_3'
     click_on 'copy_4'
+
     if ENV['chrome']
       page.execute_script('window.scrollTo(0,10000)')
     end
+
     click_on 'copy_5'
     click_on 'copy_6'
     click_on 'copy_7'
@@ -62,14 +66,17 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     within('#recent_activities') do
       expect(page).to have_css('tr', count: '17')
     end
+
     click_on 'Next'
     within('#fun_activities') do
       expect(page).to have_css('tr', count: '4')
     end
+
     click_on 'Next'
     within('#accomplished_activities') do
       expect(page).to have_css('tr', count: '5')
     end
+
     click_on 'Next'
     find('h1', text: 'Do Landing')
   end

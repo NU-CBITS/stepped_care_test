@@ -6,9 +6,11 @@ describe 'Active participant in group 1 signs in, navigates to MESSAGES,',
     before(:all) do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
+
     before do
       visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
     end
+
   else
     before do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
