@@ -10,7 +10,6 @@ describe 'Content Author signs in, navigates to Slideshows tool,',
     visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
     click_on 'Arm 1'
     click_on 'Manage Content'
-    click_on 'Lesson Modules'
     click_on 'Slideshows'
   end
 
@@ -41,8 +40,8 @@ describe 'Content Author signs in, navigates to Slideshows tool,',
 
   it 'destroys slideshow' do
     click_on 'Test slideshow'
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Delete'
-    page.accept_alert 'Are you sure?'
     expect(page).to_not have_content 'Test slideshow'
   end
 

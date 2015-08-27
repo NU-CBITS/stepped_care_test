@@ -45,8 +45,8 @@ describe 'Researcher signs in, navigates to Groups,',
     click_on 'Testing Group'
     expect(page).to have_content 'Title: Testing Group'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Group was successfully destroyed.'
 
     expect(page).to_not have_content 'Testing Group'
@@ -62,10 +62,10 @@ describe 'Researcher signs in, navigates to Groups,',
     expect(page).to have_content 'Task assigned.'
 
     within('tr', text: 'LEARN: Do - Planning Slideshow 3 of 4') do
+      page.driver.execute_script('window.confirm = function() {return true}')
       click_on 'Unassign'
     end
 
-    page.accept_alert 'Are you sure?'
     within '#tasks' do
       expect(page).to_not have_content 'LEARN: Do - Planning Slideshow 3 of 4'
     end

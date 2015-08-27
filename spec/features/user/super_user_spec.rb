@@ -6,6 +6,10 @@ describe 'Super User signs in,', type: :feature, sauce: sauce_labs do
       sign_in_user(ENV['User_Email'], ENV['User_Password'])
     end
 
+    before do
+      visit "#{ENV['Base_URL']}/think_feel_do_dashboard"
+    end
+
   else
     before do
       sign_in_user(ENV['User_Email'], ENV['User_Password'])
@@ -43,8 +47,8 @@ describe 'Super User signs in,', type: :feature, sauce: sauce_labs do
     click_on 'Test Arm'
     expect(page).to have_content 'Title: Test Arm'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'You do not have privileges to delete an ' \
                                  'arm. Please contact the site administrator ' \
                                  'to remove this arm.'
@@ -85,10 +89,12 @@ describe 'Super User signs in,', type: :feature, sauce: sauce_labs do
     click_on 'superuser@test.com'
     expect(page).to have_content 'Email: superuser@test.com'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'User was successfully destroyed.'
 
     expect(page).to_not have_content 'superuser@test.com'
+
+    sign_out
   end
 end

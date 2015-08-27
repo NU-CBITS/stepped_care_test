@@ -171,5 +171,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
 
     click_on 'Close'
     expect(page).to have_content 'Click a bubble for more info'
+
+    sign_out
   end
 end

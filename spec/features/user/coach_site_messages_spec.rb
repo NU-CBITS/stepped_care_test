@@ -56,5 +56,7 @@ describe 'Coach signs in, navigates to Site Messages tool,',
     end
 
     expect(page).to have_content 'Arms'
+
+    sign_out
   end
 end

@@ -8,9 +8,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it 'is not an authorized user, fails to sign in' do
     if ENV['safari']
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     within('#new_user') do
@@ -76,9 +74,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it "is an authorized researcher, only sees what they're authorized to see" do
     if ENV['safari']
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     sign_in_user(ENV['Researcher_Email'], ENV['Researcher_Password'])
@@ -107,9 +103,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   it "is an authorized content author, only sees what they're authorized " \
      'to see' do
     if ENV['safari']
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     sign_in_user(ENV['Content_Author_Email'], ENV['Content_Author_Password'])
@@ -132,9 +126,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it 'is an authorized super user' do
     if ENV['safari']
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     sign_in_user(ENV['User_Email'], ENV['User_Password'])

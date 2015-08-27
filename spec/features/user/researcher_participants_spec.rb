@@ -133,8 +133,8 @@ describe 'Researcher signs in, navigates to Participants,',
 
   it 'destroys a participant' do
     click_on 'Tests'
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Participant was successfully destroyed.'
 
     expect(page).to_not have_content 'Tests'

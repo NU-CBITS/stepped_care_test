@@ -44,8 +44,8 @@ describe 'Research signs in, navigates to Users,',
 
   it 'destroys a researcher' do
     click_on 'researcher@test.com'
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'User was successfully destroyed.'
 
     expect(page).to_not have_content 'researcher@test.com'
@@ -88,8 +88,8 @@ describe 'Research signs in, navigates to Users,',
     click_on 'clinician@test.com'
     expect(page).to have_content 'Email: clinician@test.com'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'User was successfully destroyed.'
 
     expect(page).to_not have_content 'clinician@test.com'
@@ -133,8 +133,8 @@ describe 'Research signs in, navigates to Users,',
     click_on 'contentauthor@test.com'
     expect(page).to have_content 'Email: contentauthor@test.com'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'User was successfully destroyed.'
 
     expect(page).to_not have_content 'contentauthor@test.com'
@@ -156,5 +156,7 @@ describe 'Research signs in, navigates to Users,',
     end
 
     expect(page).to have_content 'Arms'
+
+    sign_out
   end
 end

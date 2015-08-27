@@ -51,8 +51,8 @@ describe 'Content Author signs in, navigates to Arm 1,',
 
     it 'destroys a slide' do
       find('small', text: 'Testing adding/updating slides/lessons')
+      page.driver.execute_script('window.confirm = function() {return true}')
       page.all('.btn.btn-danger', text: 'Remove')[4].click
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test slide 2'
     end
 
@@ -88,8 +88,8 @@ describe 'Content Author signs in, navigates to Arm 1,',
 
     it 'destroys a video slide' do
       find('small', text: 'Testing adding/updating slides/lessons')
+      page.driver.execute_script('window.confirm = function() {return true}')
       page.all('.btn.btn-danger', text: 'Remove')[4].click
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test video slide 2'
     end
 
@@ -120,8 +120,8 @@ describe 'Content Author signs in, navigates to Arm 1,',
 
     it 'deletes an audio slide' do
       find('small', text: 'Testing adding/updating slides/lessons')
+      page.driver.execute_script('window.confirm = function() {return true}')
       page.all('.btn.btn-danger', text: 'Remove')[4].click
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test audio slide'
     end
   end
@@ -174,10 +174,10 @@ describe 'Content Author signs in, navigates to Arm 1,',
     it 'destroys a slide' do
       find('small', text: 'Testing adding/updating slides/lessons')
       within('li:nth-child(5)') do
+        page.driver.execute_script('window.confirm = function() {return true}')
         click_on 'Remove'
       end
 
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test slide 2'
     end
 
@@ -212,10 +212,10 @@ describe 'Content Author signs in, navigates to Arm 1,',
     it 'destroys a video slideo' do
       find('small', text: 'Testing adding/updating slides/lessons')
       within('li:nth-child(5)') do
+        page.driver.execute_script('window.confirm = function() {return true}')
         click_on 'Remove'
       end
 
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test video slide 2'
     end
 
@@ -244,10 +244,10 @@ describe 'Content Author signs in, navigates to Arm 1,',
     it 'deletes an audio slide' do
       find('small', text: 'Testing adding/updating slides/lessons')
       within('li:nth-child(5)') do
+        page.driver.execute_script('window.confirm = function() {return true}')
         click_on 'Remove'
       end
 
-      page.accept_alert 'Are you sure?'
       expect(page).to_not have_content 'Test audio slide'
     end
 

@@ -72,13 +72,20 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'steps a participant' do
       within('#patients') do
         within('table#patients tr', text: 'TFD-PHQ') do
+          if ENV['safari']
+            page.driver.execute_script('window.confirm = function() {return true}')
+          end
+
           click_on 'Step'
         end
       end
 
-      page.accept_alert "You can't undo this! Please make sure you really " \
+      unless ENV['safari']
+        page.accept_alert "You can't undo this! Please make sure you really " \
                         'want to STEP this participant before confirming. ' \
                         'Otherwise click CANCEL.'
+      end
+
       within('#patients') do
         expect(page).to_not have_css('tr', text: 'TFD-PHQ')
       end
@@ -103,15 +110,22 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
        'able to see patient specific data' do
       within('#patients', text: 'TFD-1111') do
         within('table#patients tr', text: 'TFD-Withdraw') do
+          if ENV['safari']
+            page.driver.execute_script('window.confirm = function() {return true}')
+          end
+
           click_on 'Terminate Access'
         end
       end
 
-      page.accept_alert 'Are you sure you would like to terminate access to ' \
-                        'this membership? This option should also be used ' \
-                        'before changing membership of the patient to a ' \
-                        'different group or to completely revoke access to ' \
-                        'this membership. You will not be able to undo this.'
+      unless ENV['safari']
+        page.accept_alert 'Are you sure you would like to terminate access ' \
+                          'to this membership? This option should also be used ' \
+                          'before changing membership of the patient to a ' \
+                          'different group or to completely revoke access to ' \
+                          'this membership. You will not be able to undo this.'
+      end
+
       expect(page).to_not have_content 'TFD-Withdraw'
 
       click_on 'Inactive Patients'
@@ -305,10 +319,10 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
       four_weeks_ago = Date.today - 28
       within('tr', text: "#{four_weeks_ago.strftime('%Y-%m-%d')}") do
+        page.driver.execute_script('window.confirm = function() {return true}')
         click_on 'Delete'
       end
 
-      page.accept_alert 'Are you sure?'
       expect(page).to have_content 'Phq assessment was successfully destroyed.'
 
       expect(page)
@@ -439,7 +453,8 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'views Activities - Past' do
       select_patient('TFD-1111')
       within('#activities-past-container') do
-        find('.sorting', text: 'Status').double_click
+        find('.sorting', text: 'Status').click
+        find('.sorting_asc', text: 'Status').click
         within('tr', text: 'Parkour') do
           if page.has_text? 'Planned'
             expect(page)
@@ -528,28 +543,30 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     end
   end
 
-  describe 'Patient signs in, reads a lesson, signs out,' do
-    before do
-      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-      expect(page).to have_content 'HOME'
-      within '.navbar-collapse' do
-        click_on 'Sign Out'
+  unless ENV['safari']
+    describe 'Patient signs in, reads a lesson, signs out,' do
+      before do
+        sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+        expect(page).to have_content 'HOME'
+        within '.navbar-collapse' do
+          click_on 'Sign Out'
+        end
       end
-    end
 
-    it 'Coach signs in, navigates to Patient Dashboard, views ' \
-       "'Last Activity Detected At' and 'Duration of Last Session'" do
-      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
-      visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
-      click_on 'Arm 1'
-      click_on 'Group 1'
-      click_on 'Patient Dashboard'
-      select_patient('TFD-1111')
-      expect(page).to have_content 'Last Activity Detected At: ' \
-                                   "#{Time.now.strftime('%A, %b %d %Y %H:%M')}"
+      it 'Coach signs in, navigates to Patient Dashboard, views ' \
+         "'Last Activity Detected At' and 'Duration of Last Session'" do
+        sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+        visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
+        click_on 'Arm 1'
+        click_on 'Group 1'
+        click_on 'Patient Dashboard'
+        select_patient('TFD-1111')
+        expect(page).to have_content 'Last Activity Detected At: ' \
+                                     "#{Time.now.strftime('%A, %b %d %Y %H:%M')}"
 
-      expect(page).to have_content 'Duration of Last Session: ' \
-                                   'less than a minute'
+        expect(page).to have_content 'Duration of Last Session: ' \
+                                     'less than a minute'
+      end
     end
   end
 end

@@ -10,7 +10,7 @@ describe 'Content Author signs in, visits Content Modules tool,',
     visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
     click_on 'Arm 1'
     click_on 'Manage Content'
-    click_on 'Lesson Modules'
+    click_on 'Content Modules'
   end
 
   it 'creates a new module' do
@@ -49,8 +49,8 @@ describe 'Content Author signs in, visits Content Modules tool,',
     end
 
     click_on 'Test content module'
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Content module along with any associated ' \
                                  'tasks were successfully destroyed.'
 
@@ -123,8 +123,8 @@ describe 'Content Author signs in, visits Content Modules tool,',
     click_on '4 slideshow provider'
     expect(page).to have_content 'Slideshow: Home Intro'
 
+    page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Destroy'
-    page.accept_alert 'Are you sure?'
     expect(page).to have_content 'Content Providers'
   end
 

@@ -26,10 +26,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
     end
 
-    within '.navbar-collapse' do
-      click_on 'Sign Out'
-    end
-
+    sign_out
     expect(page).to have_content 'You need to sign in or sign up before ' \
                                  'continuing.'
   end
@@ -56,9 +53,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
   it 'was an active participant who has withdrawn' do
     visit "#{ENV['Base_URL']}/participants/sign_in"
     if ENV['safari']
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     within('#new_participant') do
@@ -74,9 +69,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it 'tries to visit a specific page, is redirected to log in page' do
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     visit "#{ENV['Base_URL']}/navigator/contexts/THINK"
@@ -86,9 +79,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it 'views the intro slideshow' do
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     visit ENV['Base_URL']
@@ -100,9 +91,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it 'is an active participant, uses the forgot password functionality' do
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
-      within('.navbar-collapse') do
-        click_on 'Sign Out'
-      end
+      sign_out
     end
 
     visit ENV['Base_URL']

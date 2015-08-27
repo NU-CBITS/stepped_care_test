@@ -3,9 +3,7 @@
 def sign_in_pt(participant, password)
   visit "#{ENV['Base_URL']}/participants/sign_in"
   if ENV['safari'] && page.has_css?('.navbar-collapse', text: 'Sign Out')
-    within('.navbar-collapse') do
-      click_on 'Sign Out'
-    end
+    sign_out
   end
   if page.has_css?('#new_participant')
     within('#new_participant') do
@@ -21,6 +19,10 @@ end
 
 def sign_in_user(user, password)
   visit "#{ENV['Base_URL']}/users/sign_in"
+  if ENV['safari'] && page.has_css?('.navbar-collapse', text: 'Sign Out')
+    sign_out
+    visit "#{ENV['Base_URL']}/users/sign_in"
+  end
   if page.has_css?('#new_user')
     within('#new_user') do
       fill_in 'user_email', with: user
@@ -29,6 +31,14 @@ def sign_in_user(user, password)
     click_on 'Sign in'
     expect(page).to have_content 'Home'
   end
+end
+
+def sign_out
+  within('.navbar-collapse') do
+    click_on 'Sign Out'
+  end
+
+  expect(page).to have_content 'Forgot your password?'
 end
 
 def choose_rating(element_id, value)

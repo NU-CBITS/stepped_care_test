@@ -27,6 +27,12 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
     expect(page).to have_content 'This app is really helpful!'
   end
 
+  it 'reads a sent message' do
+    click_on 'Sent'
+    click_on 'Try out the LEARN tool'
+    expect(page).to have_content 'I think you will find it helpful.'
+  end
+
   it 'replies to a message' do
     click_on 'I like this app'
     click_on 'Reply to this message'
@@ -37,15 +43,11 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
     click_on 'Send'
     expect(page).to have_content 'Message saved'
 
-    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-    visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
-    expect(page).to have_content 'Reply: I like this app'
-  end
-
-  it 'reads a sent message' do
-    click_on 'Sent'
-    click_on 'Try out the LEARN tool'
-    expect(page).to have_content 'I think you will find it helpful.'
+    unless ENV['safari']
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
+      expect(page).to have_content 'Reply: I like this app'
+    end
   end
 
   it 'composes a message' do
@@ -57,10 +59,11 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
             with: 'This message is to test the compose functionality.'
     click_on 'Send'
     expect(page).to have_content 'Message saved'
-
-    sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
-    visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
-    expect(page).to have_content 'Testing compose functionality'
+    unless ENV['safari']
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"
+      expect(page).to have_content 'Testing compose functionality'
+    end
   end
 
   it 'searches for a specific participants messages' do
