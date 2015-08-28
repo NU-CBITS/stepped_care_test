@@ -77,6 +77,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it "is an authorized researcher, only sees what they're authorized to see" do
+    visit "#{ENV['Base_URL']}/users/sign_in"
     if ENV['safari']
       sign_out
     end
@@ -106,6 +107,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
 
   it "is an authorized content author, only sees what they're authorized " \
      'to see' do
+    visit "#{ENV['Base_URL']}/users/sign_in"
     if ENV['safari']
       sign_out
     end
@@ -129,6 +131,7 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is an authorized super user' do
+    visit "#{ENV['Base_URL']}/users/sign_in"
     if ENV['safari']
       sign_out
     end
@@ -156,7 +159,9 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is an authorized super user, uses brand link to return to home page' do
-    unless ENV['safari']
+    if ENV['safari']
+      visit "#{ENV['Base_URL']}/users/sign_in"
+    else
       sign_in_user(ENV['User_Email'], ENV['User_Password'])
     end
 

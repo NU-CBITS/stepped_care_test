@@ -509,7 +509,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       select_patient('TFD-1111')
       expect(page).to have_content 'General Patient Info'
 
-      page.execute_script('window.scrollTo(0,5000)')
+      page.execute_script('window.scrollTo(0,10000)')
       within('h3', text: 'Thoughts visualization') do
         click_on 'Thoughts visualization'
       end

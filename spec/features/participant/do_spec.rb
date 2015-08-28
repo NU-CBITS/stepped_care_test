@@ -186,9 +186,11 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     expect(page).to have_content 'Daily Averages for ' \
                                  "#{Date.today.strftime('%b %d, %Y')}"
 
-    click_on 'Daily Summaries'
     expect(page).to have_content 'Average Accomplishment Discrepancy'
+    click_on 'Daily Summaries'
+    expect(page).to_not have_content 'Average Accomplishment Discrepancy'
 
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Previous Day'
     expect(page).to have_content 'Daily Averages for ' \
                                  "#{Date.today.prev_day.strftime('%b %d, %Y')}"
@@ -209,14 +211,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
       end
     end
 
-    if ENV['chrome']
-      counter = 0
-      while page.has_no_css?('element_id') && counter < 15
-        page.execute_script('window.scrollTo(0,100000)')
-        counter += 1
-      end
-    end
-
+    page.execute_script('window.scrollTo(0,100000)')
     click_on 'Next Day'
     expect(page).to have_content 'Daily Averages for ' \
                                  "#{Date.today.strftime('%b %d, %Y')}"

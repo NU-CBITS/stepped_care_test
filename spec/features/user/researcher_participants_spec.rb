@@ -26,6 +26,7 @@ describe 'Researcher signs in, navigates to Participants,',
   end
 
   it 'updates a participant' do
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'TFD-1111'
     click_on 'Edit'
     fill_in 'participant_study_id', with: 'Updated TFD-1111'
