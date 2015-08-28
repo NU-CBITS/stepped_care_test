@@ -43,6 +43,7 @@ describe 'Content Author signs in, visits Content Modules tool,',
 
   it 'destroys a module' do
     unless page.has_text? 'Test content module'
+      page.execute_script('window.scrollTo(0,5000)')
       within('.pagination') do
         click_on '2'
       end
@@ -58,6 +59,8 @@ describe 'Content Author signs in, visits Content Modules tool,',
   end
 
   it 'creates a provider' do
+    find('h1', text: 'Listing Content Modules')
+    page.execute_script('window.scrollTo(0,5000)')
     unless page.has_text? 'Home Introduction'
       within('.pagination') do
         click_on '2'
@@ -77,6 +80,7 @@ describe 'Content Author signs in, visits Content Modules tool,',
     fill_in 'content_provider_position', with: '4'
     check 'content_provider_show_next_nav'
     check 'content_provider_is_skippable_after_first_viewing'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Create'
     expect(page).to have_content 'ContentProvider was successfully created.'
     expect(page).to have_content "Tool: LEARN\nModule: Home Introduction" \
@@ -85,6 +89,8 @@ describe 'Content Author signs in, visits Content Modules tool,',
   end
 
   it 'updates a provider' do
+    find('h1', text: 'Listing Content Modules')
+    page.execute_script('window.scrollTo(0,5000)')
     unless page.has_text? 'Home Introduction'
       within('.pagination') do
         click_on '2'
@@ -97,6 +103,7 @@ describe 'Content Author signs in, visits Content Modules tool,',
 
     click_on 'Edit'
     fill_in 'content_provider[position]', with: '10'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Update'
     expect(page).to have_content 'ContentProvider was successfully updated.'
 
@@ -104,6 +111,7 @@ describe 'Content Author signs in, visits Content Modules tool,',
 
     click_on 'Edit'
     fill_in 'content_provider[position]', with: '1'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Update'
     expect(page).to have_content 'ContentProvider was successfully updated.'
 
@@ -113,6 +121,8 @@ describe 'Content Author signs in, visits Content Modules tool,',
   end
 
   it 'destroys a provider' do
+    find('h1', text: 'Listing Content Modules')
+    page.execute_script('window.scrollTo(0,5000)')
     unless page.has_text? 'Home Introduction'
       within('.pagination') do
         click_on '2'

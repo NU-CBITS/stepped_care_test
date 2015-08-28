@@ -40,6 +40,7 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
 
     fill_in 'message[body]',
             with: 'This message is to test the reply functionality'
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Send'
     expect(page).to have_content 'Message saved'
 

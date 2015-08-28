@@ -61,6 +61,7 @@ describe 'Researcher signs in, navigates to Groups,',
     click_on 'Assign'
     expect(page).to have_content 'Task assigned.'
 
+    page.execute_script('window.scrollTo(0,5000)')
     within('tr', text: 'LEARN: Do - Planning Slideshow 3 of 4') do
       page.driver.execute_script('window.confirm = function() {return true}')
       click_on 'Unassign'

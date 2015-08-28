@@ -60,11 +60,13 @@ describe 'Content Author signs in , navigates to Lesson Modules tool,',
   # end
 
   it 'destroys lesson' do
+    find('h1', text: 'Listing Lesson Modules')
+    page.execute_script('window.scrollTo(0,5000)')
     within('tr', text: 'Test lesson') do
+      page.driver.execute_script('window.confirm = function() {return true}')
       find('.btn.btn-danger').click
     end
 
-    page.accept_alert 'Are you sure?'
     expect(page).to_not have_content 'Test lesson'
   end
 

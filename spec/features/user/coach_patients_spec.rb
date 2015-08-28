@@ -197,6 +197,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       click_on 'Patient Dashboard'
       expect(page).to have_content 'General Patient Info'
 
+      page.execute_script('window.scrollTo(0,5000)')
       within('.list-group') do
         find('a', text: 'Thoughts visualization').click
       end
@@ -219,6 +220,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         expect(page).to have_content "#{one_week_ago.strftime('%m/%d/%Y')} " \
                                      "- #{Date.today.strftime('%m/%d/%Y')}"
 
+        page.execute_script('window.scrollTo(0,5000)')
         within('.btn-group') do
           find('.btn.btn-default', text: '28 day').click
         end
@@ -230,6 +232,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
           find('.btn.btn-default', text: '7 Day').click
         end
 
+        page.execute_script('window.scrollTo(0,5000)')
         click_on 'Previous Period'
         one_week_ago_1 = Date.today - 7
         two_weeks_ago = Date.today - 13
@@ -261,6 +264,10 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         click_on 'TFD-PHQ'
       end
 
+      within('.list-group') do
+        find('a', text: 'PHQ9').click
+      end
+
       click_on 'Manage'
       expect(page).to have_css('h2', text: 'PHQ assessments for TFD-PHQ')
 
@@ -274,6 +281,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       fill_in 'phq_assessment_q7', with: '2'
       fill_in 'phq_assessment_q8', with: '2'
       fill_in 'phq_assessment_q9', with: '2'
+      page.execute_script('window.scrollTo(0,5000)')
       click_on 'Create Phq assessment'
       expect(page).to have_content 'Phq assessment was successfully created.'
 
@@ -289,6 +297,10 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         click_on 'TFD-PHQ'
       end
 
+      within('.list-group') do
+        find('a', text: 'PHQ9').click
+      end
+
       click_on 'Manage'
       expect(page).to have_css('h2', text: 'PHQ assessments for TFD-PHQ')
 
@@ -299,6 +311,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
       fill_in 'phq_assessment_q3', with: '2'
       fill_in 'phq_assessment_q9', with: '2'
+      page.execute_script('window.scrollTo(0,5000)')
       click_on 'Update Phq assessment'
       expect(page).to have_content 'Phq assessment was successfully updated.'
 
@@ -312,6 +325,10 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'deletes an existing PHQ9 assessment' do
       within('#stepped-patients') do
         click_on 'TFD-PHQ'
+      end
+
+      within('.list-group') do
+        find('a', text: 'PHQ9').click
       end
 
       click_on 'Manage'
@@ -397,6 +414,9 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
     it 'views Activities viz' do
       select_patient('TFD-1111')
+      expect(page).to have_content 'General Patient Info'
+
+      page.execute_script('window.scrollTo(0,5000)')
       within('h3', text: 'Activities visualization') do
         click_on 'Activities visualization'
       end
@@ -412,6 +432,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         .to have_content 'Daily Averages for ' \
                          "#{Date.today.prev_day.strftime('%b %d, %Y')}"
 
+      page.execute_script('window.scrollTo(0,5000)')
       endtime = Time.now + (60 * 60)
       within('.panel.panel-default',
              text: "#{Time.now.strftime('%-l %P')} - " \
@@ -426,6 +447,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         end
       end
 
+      page.execute_script('window.scrollTo(0,5000)')
       click_on 'Next Day'
       expect(page).to have_content 'Daily Averages for ' \
                                    "#{Date.today.strftime('%b %d, %Y')}"
@@ -452,6 +474,9 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
     it 'views Activities - Past' do
       select_patient('TFD-1111')
+      expect(page).to have_content 'General Patient Info'
+
+      page.execute_script('window.scrollTo(0,5000)')
       within('#activities-past-container') do
         find('.sorting', text: 'Status').click
         find('.sorting_asc', text: 'Status').click
@@ -482,6 +507,9 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
     it 'views Thoughts viz' do
       select_patient('TFD-1111')
+      expect(page).to have_content 'General Patient Info'
+
+      page.execute_script('window.scrollTo(0,5000)')
       within('h3', text: 'Thoughts visualization') do
         click_on 'Thoughts visualization'
       end

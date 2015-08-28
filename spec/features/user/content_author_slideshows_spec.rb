@@ -23,12 +23,16 @@ describe 'Content Author signs in, navigates to Slideshows tool,',
   end
 
   it 'updates slideshow' do
+    find('h1', text: 'Listing Slideshows')
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Home Intro'
     page.all('a', text: 'Edit')[0].click
     fill_in 'slideshow_title', with: 'Home Introduction 123'
     click_on 'Update'
     expect(page).to have_content 'Successfully updated slideshow'
 
+    find('h1', text: 'Listing Slideshows')
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Home Introduction 123'
     page.all('a', text: 'Edit')[0].click
     fill_in 'slideshow_title', with: 'Home Introduction'
@@ -39,6 +43,8 @@ describe 'Content Author signs in, navigates to Slideshows tool,',
   end
 
   it 'destroys slideshow' do
+    find('h1', text: 'Listing Slideshows')
+    page.execute_script('window.scrollTo(0,5000)')
     click_on 'Test slideshow'
     page.driver.execute_script('window.confirm = function() {return true}')
     click_on 'Delete'

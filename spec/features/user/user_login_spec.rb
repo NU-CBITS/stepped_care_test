@@ -7,6 +7,8 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is not an authorized user, fails to sign in' do
+    visit "#{ENV['Base_URL']}/users/sign_in"
+
     if ENV['safari']
       sign_out
     end
@@ -15,6 +17,8 @@ describe 'Visitor to the site,', type: :feature, sauce: sauce_labs do
       fill_in 'user_email', with: 'asdf@example.com'
       fill_in 'user_password', with: 'asdf'
     end
+
+    click_on 'Sign in'
 
     expect(page).to have_content 'Invalid email address or password'
   end

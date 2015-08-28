@@ -31,8 +31,10 @@ describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
       click_on 'Assign'
       expect(page).to have_content 'Group was successfully assigned'
 
-      expect(page).to have_content "Membership Status: Active\nCurrent " \
-                                   'Group: Group 1'
+      if driver != :chrome
+        expect(page).to have_content "Membership Status: Active\nCurrent " \
+                                     'Group: Group 1'
+      end
     end
   end
 
