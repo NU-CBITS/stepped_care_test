@@ -21,7 +21,6 @@ def sign_in_user(user, password)
   visit "#{ENV['Base_URL']}/users/sign_in"
   if ENV['safari'] && page.has_css?('.navbar-collapse', text: 'Sign Out')
     sign_out
-    visit "#{ENV['Base_URL']}/users/sign_in"
   end
   if page.has_css?('#new_user')
     within('#new_user') do
