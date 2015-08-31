@@ -52,25 +52,15 @@ describe 'Active participant signs in, navigates to THINK tool,',
     expect(page).to have_content "Let's start by"
 
     thought_value = find('.panel-body.adjusted-list-group-item').text
-
     select 'Personalization', from: 'thought_pattern_id'
-
     thought_value = compare_thought(thought_value)
-
     select 'Magnification or Catastrophizing', from: 'thought_pattern_id'
-
     thought_value = compare_thought(thought_value)
-
     select 'Magnification or Catastrophizing', from: 'thought_pattern_id'
-
     thought_value = compare_thought(thought_value)
-
     select 'Magnification or Catastrophizing', from: 'thought_pattern_id'
-
     compare_thought(thought_value)
-
     select 'Personalization', from: 'thought_pattern_id'
-
     click_on 'Next'
     expect(page).to have_content 'Thought saved'
   end
@@ -87,9 +77,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
     page.execute_script('window.scrollTo(0,5000)')
     click_on 'Next'
     reshape('Example challenge', 'Example act-as-if')
-
     reshape('Example challenge', 'Example act-as-if')
-
     reshape('Example challenge', 'Example act-as-if')
   end
 

@@ -68,15 +68,8 @@ describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
   end
 
   describe 'Participant 2 signs in,' do
-    if ENV['safari']
-      before(:all) do
-        sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])
-      end
-
-    else
-      before do
-        sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])
-      end
+    before do
+      sign_in_pt(ENV['Participant_2_Email'], ENV['Participant_2_Password'])
     end
 
     it 'navigates to a module from the dropdown, completes the module, the ' \

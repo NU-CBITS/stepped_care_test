@@ -60,6 +60,7 @@ describe 'Coach signs in and navigates to messages tool for Group 1',
             with: 'This message is to test the compose functionality.'
     click_on 'Send'
     expect(page).to have_content 'Message saved'
+
     unless ENV['safari']
       sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
       visit "#{ENV['Base_URL']}/navigator/contexts/MESSAGES"

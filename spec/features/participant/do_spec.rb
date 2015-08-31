@@ -187,6 +187,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
                                  "#{Date.today.strftime('%b %d, %Y')}"
 
     expect(page).to have_content 'Average Accomplishment Discrepancy'
+
     click_on 'Daily Summaries'
     expect(page).to_not have_content 'Average Accomplishment Discrepancy'
 

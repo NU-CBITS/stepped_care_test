@@ -97,7 +97,6 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
     visit ENV['Base_URL']
     click_on 'Forgot your password?'
     find('h2', text: 'Forgot your password?')
-
     within('#new_participant') do
       fill_in 'participant_email', with: ENV['Participant_Email']
     end
