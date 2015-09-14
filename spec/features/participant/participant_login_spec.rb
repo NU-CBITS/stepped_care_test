@@ -68,6 +68,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'tries to visit a specific page, is redirected to log in page' do
+    visit "#{ENV['Base_URL']}"
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
       sign_out
     end
@@ -78,6 +79,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'views the intro slideshow' do
+    visit "#{ENV['Base_URL']}"
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
       sign_out
     end
@@ -90,6 +92,7 @@ describe 'A visitor to the site,', type: :feature, sauce: sauce_labs do
   end
 
   it 'is an active participant, uses the forgot password functionality' do
+    visit "#{ENV['Base_URL']}"
     if page.has_css?('.navbar-collapse', text: 'Sign Out')
       sign_out
     end

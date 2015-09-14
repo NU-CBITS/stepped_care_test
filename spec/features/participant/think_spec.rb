@@ -92,7 +92,7 @@ describe 'Active participant signs in, navigates to THINK tool,',
     expect(page).to have_content 'Thought saved'
 
     page.execute_script('window.scrollTo(0,5000)')
-    click_on 'Next'
+    find('.btn.btn-primary.pull-right').click
     expect(page).to have_content 'Add a New Thought'
   end
 
@@ -107,8 +107,8 @@ describe 'Active participant signs in, navigates to THINK tool,',
     expect(page).to have_content 'I am insignificant'
 
     find('.sorting', text: 'Pattern').click
-    table_row = page.all('tr:nth-child(1)')
-    expect(table_row[1]).to have_content 'Labeling and Mislabeling'
+    expect(page.all('tr:nth-child(1)')[1])
+      .to have_content 'Labeling and Mislabeling'
   end
 
   it 'uses the skip functionality in all the slideshows in THINK' do

@@ -92,12 +92,12 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
       within('#stepped-patients') do
         expect(page).to have_css('tr', text: 'TFD-PHQ')
+      end
 
-        within('tr', text: 'TFD-PHQ') do
-          expect(page)
-            .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
-          expect(page).to_not have_content 'Details'
-        end
+      within('tr', text: 'TFD-PHQ') do
+        expect(page)
+          .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
+        expect(page).to_not have_content 'Details'
       end
     end
 
@@ -108,14 +108,12 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
     it 'selects Withdraw to end active status of participant and is still' \
        'able to see patient specific data' do
-      within('#patients', text: 'TFD-1111') do
-        within('table#patients tr', text: 'TFD-Withdraw') do
-          unless driver == :firefox
-            page.driver.execute_script('window.confirm = function() {return true}')
-          end
-
-          click_on 'Terminate Access'
+      within('table#patients tr', text: 'TFD-Withdraw') do
+        unless driver == :firefox
+          page.driver.execute_script('window.confirm = function() {return true}')
         end
+
+        click_on 'Terminate Access'
       end
 
       if driver == :firefox
@@ -131,13 +129,11 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       click_on 'Inactive Patients'
       expect(page).to have_content 'TFD-Withdraw'
 
-      within('#patients', text: 'TFD-Withdraw') do
-        within('table#patients tr', text: 'TFD-Withdraw') do
-          expect(page)
-            .to have_content 'Withdrawn ' \
-                             "#{Date.today.prev_day.strftime('%m/%d/%Y')}"
-          click_on 'TFD-Withdraw'
-        end
+      within('table#patients tr', text: 'TFD-Withdraw') do
+        expect(page)
+          .to have_content 'Withdrawn ' \
+                           "#{Date.today.prev_day.strftime('%m/%d/%Y')}"
+        click_on 'TFD-Withdraw'
       end
 
       expect(page).to have_css('h1', text: 'Participant TFD-Withdraw')
@@ -217,16 +213,16 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
         one_week_ago = Date.today - 6
         one_month_ago = Date.today - 27
-        expect(page).to have_content "#{one_week_ago.strftime('%m/%d/%Y')} " \
-                                     "- #{Date.today.strftime('%m/%d/%Y')}"
+        expect(page).to have_content "#{one_week_ago.strftime('%b %d %Y')} " \
+                                     "- #{Date.today.strftime('%b %d %Y')}"
 
         page.execute_script('window.scrollTo(0,5000)')
         within('.btn-group') do
           find('.btn.btn-default', text: '28 day').click
         end
 
-        expect(page).to have_content "#{one_month_ago.strftime('%m/%d/%Y')} " \
-                                     "- #{Date.today.strftime('%m/%d/%Y')}"
+        expect(page).to have_content "#{one_month_ago.strftime('%b %d %Y')} " \
+                                     "- #{Date.today.strftime('%b %d %Y')}"
 
         within('.btn-group') do
           find('.btn.btn-default', text: '7 Day').click
@@ -236,12 +232,13 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         click_on 'Previous Period'
         one_week_ago_1 = Date.today - 7
         two_weeks_ago = Date.today - 13
-        expect(page).to have_content "#{two_weeks_ago.strftime('%m/%d/%Y')} " \
-                                     "- #{one_week_ago_1.strftime('%m/%d/%Y')}"
+        expect(page).to have_content "#{two_weeks_ago.strftime('%b %d %Y')} " \
+                                     "- #{one_week_ago_1.strftime('%b %d %Y')}"
       end
     end
 
     it 'views PHQ9' do
+      page.execute_script('window.scrollTo(0,5000)')
       within('#stepped-patients') do
         click_on 'TFD-PHQ'
       end
@@ -251,15 +248,16 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
           three_weeks_ago = Date.today - 21
           expect(page)
             .to have_content 'Released ' \
-                             "#{three_weeks_ago.strftime('%Y-%m-%d')}" \
+                             "#{three_weeks_ago.strftime('%m/%d/%Y')}" \
                              ' Created ' \
-                             "#{three_weeks_ago.strftime('%Y-%m-%d')}" \
+                             "#{three_weeks_ago.strftime('%m/%d/%Y')}" \
                              ' 9 * 1 2  1 2 1 1 1  '
         end
       end
     end
 
     it 'creates a new PHQ9 assessment' do
+      page.execute_script('window.scrollTo(0,5000)')
       within('#stepped-patients') do
         click_on 'TFD-PHQ'
       end
@@ -293,6 +291,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     end
 
     it 'manages an existing PHQ9 assessment' do
+      page.execute_script('window.scrollTo(0,5000)')
       within('#stepped-patients') do
         click_on 'TFD-PHQ'
       end
@@ -323,6 +322,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     end
 
     it 'deletes an existing PHQ9 assessment' do
+      page.execute_script('window.scrollTo(0,5000)')
       within('#stepped-patients') do
         click_on 'TFD-PHQ'
       end
@@ -348,34 +348,31 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
     it 'views Mood' do
       select_patient('TFD-1111')
+      expect(page).to have_content 'General Patient Info'
+
+      page.execute_script('window.scrolTo(0,5000)')
       within('#mood-container') do
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          four_wks_ago = Date.today - 28
-          expect(page).to have_content "9 #{four_wks_ago.strftime('%b %d %Y')}"
-        end
+        find('.sorting_desc').click
+        four_wks_ago = Date.today - 28
+        expect(page.all('tr:nth-child(1)')[1])
+          .to have_content "9 #{four_wks_ago.strftime('%b %d %Y')}"
       end
     end
 
     it 'views Feelings' do
       select_patient('TFD-1111')
       within('#feelings-container') do
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          expect(page).to have_content 'longing 2 ' \
-                                       "#{Date.today.strftime('%b %d %Y')}"
-        end
+        expect(page.all('tr:nth-child(1)')[1])
+          .to have_content "longing 2 #{Date.today.strftime('%b %d %Y')}"
       end
     end
 
     it 'views Logins' do
       select_patient('TFD-1111')
       within('#logins-container') do
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          unless page.has_text?('No data available in table')
-            expect(page).to have_content Date.today.strftime('%b %d %Y')
-          end
+        unless page.has_text?('No data available in table')
+          expect(page.all('tr:nth-child(1)')[1])
+            .to have_content Date.today.strftime('%b %d %Y')
         end
       end
     end
@@ -383,16 +380,14 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'views Lessons' do
       select_patient('TFD-1111')
       within('#lessons-container') do
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          unless page.has_text?('No data available in table')
-            expect(page)
-              .to have_content 'Do - Awareness Introduction This is just the ' \
-                               'beginning... ' \
-                               "#{Time.now.strftime('%b %d %Y %H')}"
+        unless page.has_text?('No data available in table')
+          expect(page.all('tr:nth-child(1)')[1])
+            .to have_content 'Do - Awareness Introduction This is just the ' \
+                             'beginning... ' \
+                             "#{Time.now.strftime('%b %d %Y %I')}"
 
-            expect(page).to have_content 'less than a minute'
-          end
+          expect(page.all('tr:nth-child(1)')[1])
+            .to have_content 'less than a minute'
         end
       end
     end
@@ -400,14 +395,12 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
     it 'views Audio Access' do
       select_patient('TFD-1111')
       within('#media-access-container') do
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          expect(page).to have_content 'Audio! ' \
-                                       "#{Date.today.strftime('%m/%d/%Y')}" \
-                                       " #{Date.today.strftime('%b %d %Y')}"
-          unless page.has_text?('Not Completed')
-            expect(page).to have_content '2 minutes'
-          end
+        expect(page.all('tr:nth-child(1)')[1]).to have_content 'Audio! ' \
+                                     "#{Date.today.strftime('%m/%d/%Y')}" \
+                                     " #{Date.today.strftime('%b %d %Y')}"
+
+        unless page.has_text?('Not Completed')
+          expect(page.all('tr:nth-child(1)')[1]).to have_content '2 minutes'
         end
       end
     end
@@ -422,7 +415,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       end
 
       expect(page).to have_content 'Daily Averages for ' \
-                                   "#{Date.today.strftime('%b %d, %Y')}"
+                                   "#{Date.today.strftime('%b %d %Y')}"
 
       expect(page).to have_content 'Average Accomplishment Discrepancy'
 
@@ -432,7 +425,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       click_on 'Previous Day'
       expect(page)
         .to have_content 'Daily Averages for ' \
-                         "#{Date.today.prev_day.strftime('%b %d, %Y')}"
+                         "#{Date.today.prev_day.strftime('%b %d %Y')}"
 
       page.execute_script('window.scrollTo(0,5000)')
       endtime = Time.now + (60 * 60)
@@ -452,7 +445,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       page.execute_script('window.scrollTo(0,5000)')
       click_on 'Next Day'
       expect(page).to have_content 'Daily Averages for ' \
-                                   "#{Date.today.strftime('%b %d, %Y')}"
+                                   "#{Date.today.strftime('%b %d %Y')}"
 
       click_on 'Visualize'
       click_on 'Last 3 Days'
@@ -494,14 +487,11 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
           end
         end
 
-        table_row = page.all('tr:nth-child(1)')
-        within table_row[1] do
-          if table_row[1].has_text? 'Reviewed and did not complete'
-            click_on 'Noncompliance'
-            within('.popover.fade.right.in') do
-              expect(page).to have_content "Why was this not completed?\nI " \
-                                           "didn't have time"
-            end
+        if page.all('tr:nth-child(1)')[1].has_text? 'Reviewed and did not complete'
+          click_on 'Noncompliance'
+          within('.popover.fade.right.in') do
+            expect(page).to have_content "Why was this not completed?\nI " \
+                                         "didn't have time"
           end
         end
       end
@@ -545,7 +535,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       within('#messages-container') do
         within('tr', text: 'I like') do
           expect(page).to have_content 'I like this app ' \
-                                       "#{Date.today.strftime('%m/%d/%Y')}"
+                                       "#{Date.today.strftime('%b %d %Y')}"
         end
       end
     end

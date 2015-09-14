@@ -184,7 +184,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
   it 'uses Your Activities viz' do
     click_on 'Your Activities'
     expect(page).to have_content 'Daily Averages for ' \
-                                 "#{Date.today.strftime('%b %d, %Y')}"
+                                 "#{Date.today.strftime('%b %d %Y')}"
 
     expect(page).to have_content 'Average Accomplishment Discrepancy'
 
@@ -194,7 +194,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     page.execute_script('window.scrollTo(0,5000)')
     click_on 'Previous Day'
     expect(page).to have_content 'Daily Averages for ' \
-                                 "#{Date.today.prev_day.strftime('%b %d, %Y')}"
+                                 "#{Date.today.prev_day.strftime('%b %d %Y')}"
 
     page.execute_script('window.scrollTo(0,5000)')
     endtime = Time.now + (60 * 60)
@@ -215,7 +215,7 @@ describe 'Active participant in group 1 signs in, navigates to DO tool,',
     page.execute_script('window.scrollTo(0,100000)')
     click_on 'Next Day'
     expect(page).to have_content 'Daily Averages for ' \
-                                 "#{Date.today.strftime('%b %d, %Y')}"
+                                 "#{Date.today.strftime('%b %d %Y')}"
 
     click_on 'Visualize'
     click_on 'Last 3 Days'
