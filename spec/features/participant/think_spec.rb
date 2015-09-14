@@ -102,9 +102,13 @@ describe 'Active participant signs in, navigates to THINK tool,',
     expect(page).to have_content '#1 Identifying'
   end
 
-  it 'visits Thoughts' do
+  it 'visits Thoughts and sort by column Pattern' do
     click_on 'Thoughts'
     expect(page).to have_content 'I am insignificant'
+
+    find('.sorting', text: 'Pattern').click
+    table_row = page.all('tr:nth-child(1)')
+    expect(table_row[1]).to have_content 'Labeling and Mislabeling'
   end
 
   it 'uses the skip functionality in all the slideshows in THINK' do
