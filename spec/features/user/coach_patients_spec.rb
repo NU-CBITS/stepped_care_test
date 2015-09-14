@@ -92,12 +92,12 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
       within('#stepped-patients') do
         expect(page).to have_css('tr', text: 'TFD-PHQ')
-      end
 
-      within('tr', text: 'TFD-PHQ') do
-        expect(page)
-          .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
-        expect(page).to_not have_content 'Details'
+        within('tr', text: 'TFD-PHQ') do
+          expect(page)
+            .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
+          expect(page).to_not have_content 'Details'
+        end
       end
     end
 
