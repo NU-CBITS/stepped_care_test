@@ -19,10 +19,13 @@ describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
 
       click_on 'Assign New Group'
       select 'Group 1', from: 'membership_group_id'
-      fill_in 'membership_start_date',
-              with: Date.today.prev_day.strftime('%Y-%m-%d')
-      next_year = Date.today + 365
-      fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
+      unless driver == :chrome
+        fill_in 'membership_start_date',
+                with: Date.today.prev_day.strftime('%Y-%m-%d')
+        next_year = Date.today + 365
+        fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
+      end
+
       weeks_later = Date.today + 20 * 7
       expect(page).to have_content 'Standard number of weeks: 20, Projected ' \
                                    'End Date from today: ' \
@@ -31,7 +34,7 @@ describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
       click_on 'Assign'
       expect(page).to have_content 'Group was successfully assigned'
 
-      if driver != :chrome
+      unless driver == :chrome
         expect(page).to have_content "Membership Status: Active\nCurrent " \
                                      'Group: Group 1'
       end
@@ -67,6 +70,34 @@ describe 'User Dashboard Bugs,', type: :feature, sauce: sauce_labs do
 
         expect(page).to have_content "Logins Today: 0\nLogins during this " \
                                      "treatment week: 0\nTotal Logins: 11"
+      end
+    end
+  end
+
+  describe 'Participant reads lesson' do
+    it 'Clinician sees correct duration calculation' do
+      sign_in_pt(ENV['Participant_Email'], ENV['Participant_Password'])
+      visit "#{ENV['Base_URL']}/navigator/contexts/LEARN"
+      click_on 'Do - Awareness Introduction'
+      sleep(60 * 2)
+      click_on 'Next'
+      click_on 'Finish'
+      find('h1', text: 'LEARN')
+      visit ENV['Base_URL']
+      sign_out
+
+      sign_in_user(ENV['Clinician_Email'], ENV['Clinician_Password'])
+      visit "#{ENV['Base_URL']}/think_feel_do_dashboard/arms"
+      click_on 'Arm 1'
+      click_on 'Group 1'
+      click_on 'Patient Dashboard'
+      select_patient('TFD-1111')
+      within('#lessons-container') do
+        expect(page.all('tr:nth-child(1)')[1])
+          .to have_content 'Do - Awareness Introduction This is just the ' \
+                           "beginning... #{Time.now.strftime('%b %d %Y %I')}"
+
+        expect(page.all('tr:nth-child(1)')[1]).to have_content '2 minutes'
       end
     end
   end

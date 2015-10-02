@@ -12,7 +12,7 @@ describe 'Active participant in group 1 signs in, navigates to LEARN,',
 
     expect(page).to have_content 'Do - Awareness Introduction'
 
-    find('.panel-title').click
+    first('.panel-title', text: 'Week 1').click
     expect(page).to_not have_content 'Do - Awareness Introduction'
   end
 
@@ -20,8 +20,9 @@ describe 'Active participant in group 1 signs in, navigates to LEARN,',
     click_on 'Do - Awareness Introduction'
     expect(page).to have_content 'This is just the beginning...'
 
+    click_on 'Next'
     click_on 'Finish'
-    expect(page).to have_content "Read on #{Date.today.strftime('%b %e')}"
+    expect(page).to have_content "Read on #{Date.today.strftime('%b %d')}"
 
     expect(page).to have_content 'Printable'
   end
@@ -34,5 +35,16 @@ describe 'Active participant in group 1 signs in, navigates to LEARN,',
 
     click_on 'Return to Lessons'
     expect(page).to have_content 'Week 1'
+  end
+
+  it 'only sees lessons listed to the end of study length' do
+    sixteen_wks = Date.today + 105
+    seventeen_wks = Date.today + 112
+    expect(page)
+      .to have_css('.panel-title.panel-unreleased',
+                   text: "Week 16 · #{sixteen_wks.strftime('%b %d %Y')}")
+    expect(page)
+      .to_not have_css('.panel-title.panel-unreleased',
+                       text: "Week 17 · #{seventeen_wks.strftime('%b %d %Y')}")
   end
 end

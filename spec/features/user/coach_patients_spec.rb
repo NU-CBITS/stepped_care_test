@@ -11,6 +11,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       click_on 'Arm 1'
       click_on 'Group 1'
       click_on 'Patient Dashboard'
+      find('h1', text: 'Patient Dashboard')
     end
 
     it 'views a list of active participants assigned to the coach' do
@@ -95,7 +96,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
 
         within('tr', text: 'TFD-PHQ') do
           expect(page)
-            .to have_content "Stepped #{Date.today.strftime('%Y-%m-%d')}"
+            .to have_content "Stepped #{Date.today.strftime('%m/%d/%Y')}"
           expect(page).to_not have_content 'Details'
         end
       end
@@ -350,7 +351,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       select_patient('TFD-1111')
       expect(page).to have_content 'General Patient Info'
 
-      page.execute_script('window.scrolTo(0,5000)')
+      page.execute_script('window.scrollTo(0,5000)')
       within('#mood-container') do
         find('.sorting_desc').click
         four_wks_ago = Date.today - 28
@@ -387,7 +388,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
                              "#{Time.now.strftime('%b %d %Y %I')}"
 
           expect(page.all('tr:nth-child(1)')[1])
-            .to have_content 'less than a minute'
+            .to have_content 'less than 5 seconds'
         end
       end
     end
@@ -422,6 +423,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
       click_on 'Daily Summaries'
       expect(page).to_not have_content 'Average Accomplishment Discrepancy'
 
+      page.execute_script('window.scrollBy(0,500)')
       click_on 'Previous Day'
       expect(page)
         .to have_content 'Daily Averages for ' \
@@ -582,10 +584,10 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         click_on 'Patient Dashboard'
         select_patient('TFD-1111')
         expect(page).to have_content 'Last Activity Detected At: ' \
-                                     "#{Time.now.strftime('%A, %b %d %Y %H:%M')}"
+                                     "#{Time.now.strftime('%A, %b %d %Y %I:%M')}"
 
         expect(page).to have_content 'Duration of Last Session: ' \
-                                     'less than a minute'
+                                     'less than 5 seconds'
       end
     end
   end

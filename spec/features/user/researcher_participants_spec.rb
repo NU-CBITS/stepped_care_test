@@ -78,7 +78,7 @@ describe 'Researcher signs in, navigates to Participants,',
     expect(page).to have_content 'Memberships is invalid'
   end
 
-  if driver != :chrome
+  unless driver == :chrome
     it 'cannot assign a group membership with a blank end date' do
       page.execute_script('window.scrollTo(0,5000)')
       click_on 'Tests'
@@ -112,10 +112,13 @@ describe 'Researcher signs in, navigates to Participants,',
     click_on 'Tests'
     click_on 'Assign New Group'
     select 'Group 1', from: 'membership_group_id'
-    fill_in 'membership_start_date',
-            with: Date.today.prev_day.strftime('%Y-%m-%d')
-    next_year = Date.today + 365
-    fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
+    unless driver == :chrome
+      fill_in 'membership_start_date',
+              with: Date.today.prev_day.strftime('%Y-%m-%d')
+      next_year = Date.today + 365
+      fill_in 'membership_end_date', with: next_year.strftime('%Y-%m-%d')
+    end
+
     weeks_later = Date.today + 20 * 7
     expect(page).to have_content 'Standard number of weeks: 20, Projected End' \
                                  ' Date from today: ' \
@@ -124,7 +127,7 @@ describe 'Researcher signs in, navigates to Participants,',
     click_on 'Assign'
     expect(page).to have_content 'Group was successfully assigned'
 
-    if driver != :chrome
+    unless driver == :chrome
       expect(page).to have_content "Membership Status: Active\nCurrent " \
                                    'Group: Group 1'
     end
