@@ -92,7 +92,6 @@ describe 'Participant Bugs', type: :feature, sauce: sauce_labs do
       select 'anxious', from: 'emotional_rating_emotion_id'
       select 'negative', from: 'emotional_rating_is_positive'
       select '4', from: 'emotional_rating[rating]'
-
       page.execute_script('window.scrollTo(0,5000)')
       click_on 'Next'
       expect(page).to have_content 'Emotional Rating saved'

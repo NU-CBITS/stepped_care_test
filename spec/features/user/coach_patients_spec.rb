@@ -147,7 +147,7 @@ describe 'Coach signs in,', type: :feature, sauce: sauce_labs do
         expect(page).to have_content 'Started on: ' \
                                      "#{Date.today.strftime('%A, %m/%d/%Y')}" \
                                      "\n20 weeks from the start date is: " \
-                                     "#{weeks_later.strftime('%m/%d/%Y')}" \
+                                     "#{weeks_later.strftime('%A, %m/%d/%Y')}" \
                                      "\nStatus: Active Currently in week 1"
 
         unless page.has_text? 'week: 0'
